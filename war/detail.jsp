@@ -24,12 +24,18 @@ String keywords = (String) request.getAttribute("keyword");
 			<div class="bl">
 				<h2><%=question.getTitle() %></h2>
 				<div class="clear"></div>
+				<br/>
+				<strong>Question by</strong> <a href="/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
+				<br/><br/>
 				<%=question.getContent().getValue() %>
 				<%=Utils.convert2DomainString(question.getTags()) %> 
 				<br/>
 				<hr size="1"/>
 				<h2>Answer</h2>
 				<div class="clear"></div>
+				<br/>
+				<strong>Answer by</strong> <a href="/author/<%=answer.getAliasAuthor()%>" class="author"><%=answer.getAuthor() %></a>
+				<br/><br/>
 				<%
 				if(answer != null)
 				{

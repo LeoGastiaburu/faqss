@@ -136,7 +136,7 @@ color: white;
 color: #FF9900;
 }
 .br{
-width: 215px;
+width: 210px;
 float: right;
 }
 .br h3{
@@ -173,10 +173,7 @@ color: #444444;
 font-size: 14px;
 font-weight: bold;
 }
-hr{
-width: 715px;
-float: left;
-}
+
 pre.prettyprint {
     border: 0 solid #888888;
     padding: 2px;
@@ -193,7 +190,6 @@ pre {
     max-height: 600px;
     overflow: auto;
     padding: 5px 5px 20px;
-    width: 715px;
 }
 pre span {
 font-size: 15px;
@@ -215,4 +211,11 @@ font-size: 15px;
 }
 .com {
     color: #880000;
+}
+.author{
+color: #0077CC;
+text-decoration: none;
+}
+.author:HOVER {
+	color: #FF9900;
 }
