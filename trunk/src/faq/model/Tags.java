@@ -19,7 +19,15 @@ public class Tags {
 	@Persistent
 	private String alias;
 	@Persistent
+	private int count;
+	@Persistent
 	private Date lastUpdateDate;
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public Key getKey() {
 		return key;
 	}
