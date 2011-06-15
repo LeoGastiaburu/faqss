@@ -1,5 +1,10 @@
+<%@page import="faq.service.Utils"%>
+<%@page import="faq.string.Replace"%>
+<%@page import="java.util.List"%>
+<%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%
+List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
@@ -13,7 +18,7 @@ String keywords = (String) request.getAttribute("keyword");
 
 		<div class="bd">
 			<div class="bl">
-				<h2>Recent View Question</h2>
+				<h2>Latest Question</h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -34,126 +39,39 @@ String keywords = (String) request.getAttribute("keyword");
 				</div>
 				<div class="clear"></div>
 				<ul class="lq">
-					<li>
-						<h1><a href="#">I can't get the index.html to update with the new one.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a> 
-					</li>
-					<li>
-						<h1><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">Android Application Screen Support for Phones and Tablets.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">I can't get the index.html to update with the new one</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a> <a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a> 
-					</li>
-					<li>
-						<h1><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></h1>
-						<p>I am quite new to Android. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">Android Application Screen Support for Phones and Tablets.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a> <a href="#">css</a>
-					</li><li>
-						<h1><a href="#">I can't get the index.html to update with the new one</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">Android Application Screen Support for Phones and Tablets.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></h1>
-						<p>I am quite new to Android. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">Android Application Screen Support for Phones and Tablets.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a> <a href="#">css</a>
-					</li><li>
-						<h1><a href="#">I can't get the index.html to update with the new one</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
-					<li>
-						<h1><a href="#">Android Application Screen Support for Phones and Tablets.</a></h1>
-						<p>I am quite new to Android Development. I am developing an application that should run on Android-based phones as well as on Android-based Tablets.</p>
-						<a href="#">css</a>  <a href="#">jquery</a> <a href="#">php</a>
-					</li>
+					<%
+					if(listQuestion.size()>0)
+					{
+						for(int i=0;i<listQuestion.size();i++)
+						{
+					%>
+							<li>
+								<h1><a href="/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<p>
+									<%
+										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
+										if(des.length() > 200)
+										{
+											des = des.substring(0,200)+" ...";
+										}
+										out.println(des);
+									%>
+								</p>
+								<%=Utils.convert2DomainString(listQuestion.get(i).getTags()) %> 
+							</li>
+					<%
+						}
+					}
+					%>
 				</ul>
 			</div>
 			<div class="br">
-				<a href="#"><img src="/images/question.gif" alt="" /></a>
-				<h3>Recent tags</h3>
-				<ul class="ret">
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-					<li><a href="#">frame work</a><span class="it">× 11</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-					<li><a href="#">frame work</a><span class="it">× 11</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-					<li><a href="#">frame work</a><span class="it">× 11</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-					<li><a href="#">frame work</a><span class="it">× 11</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-					<li><a href="#">frame work</a><span class="it">× 11</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">cache php</a><span class="it">× 41</span></li>
-					<li><a href="#">html</a><span class="it">× 81</span></li>
-					<li><a href="#">css</a><span class="it">× 100</span></li>
-				</ul>
-				<h3>Recent view question</h3>
-				<ul class="vr">
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></li>
-					<li><a href="#">Android Application Screen Support</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></li>
-					<li><a href="#">Android Application Screen Support</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-				</ul>
-				<h3>Recent view question</h3>
-				<ul class="vr">
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></li>
-					<li><a href="#">Android Application Screen Support</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-					<li><a href="#">jQuery Deferreds - Pass result of $.when to $.then</a></li>
-					<li><a href="#">Android Application Screen Support</a></li>
-					<li><a href="#">Android Application Screen Support for Phones and Tablets</a></li>
-				</ul>
+				
+				<jsp:include page="element/top_right.jsp"></jsp:include>
+				<jsp:include page="element/tag.jsp"></jsp:include>
+				<jsp:include page="element/recent_view.jsp"></jsp:include>
+				<jsp:include page="element/random.jsp"></jsp:include>
+
 			</div>
 			<div class="clear"></div>
 		</div>
