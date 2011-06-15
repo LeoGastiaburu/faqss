@@ -1,5 +1,6 @@
 package faq.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -18,6 +19,8 @@ public class Question {
 	@Persistent
 	private Date lastUpdateDate;
 	@Persistent
+	private Date date;
+	@Persistent
 	private String title;
 	@Persistent
 	private String alias;
@@ -29,6 +32,25 @@ public class Question {
 	private String aliasAuthor;
 	@Persistent
 	private Text content;
+	@Persistent
+	private ArrayList<String> tags = new ArrayList<String>();
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public void addTags(String tag)
+	{
+		if(!this.tags.contains(tag))
+			this.tags.add(tag);
+	}
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
 	public String getAliasAuthor() {
 		return aliasAuthor;
 	}
