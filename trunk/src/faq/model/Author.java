@@ -13,12 +13,41 @@ public class Author {
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	@Persistent
-	private String name;	
+	private String name;
+	@Persistent
+	private String alias;
 	@Persistent
 	private String url;
 	@Persistent
 	private String avatar;
-	
+	@Persistent
+	private int countQuestion;
+	@Persistent
+	private int countAnswer;
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	public int getCountQuestion() {
+		return countQuestion;
+	}
+
+	public void setCountQuestion(int countQuestion) {
+		this.countQuestion = countQuestion;
+	}
+
+	public int getCountAnswer() {
+		return countAnswer;
+	}
+
+	public void setCountAnswer(int countAnswer) {
+		this.countAnswer = countAnswer;
+	}
+
 	public Key getKey() {
 		return key;
 	}
