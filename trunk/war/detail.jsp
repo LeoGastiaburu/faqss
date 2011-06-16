@@ -17,9 +17,6 @@ String keywords = (String) request.getAttribute("keyword");
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
 </jsp:include>
-<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="http://efreedom.com/Javascript/Prettify/Prettify.js"></script>
-<script type="text/javascript" language="javascript">$(document).ready(function () { prettyPrint(); });</script>
 		<div class="bd">
 			<div class="bl">
 				<h2><%=question.getTitle() %></h2>
@@ -66,11 +63,13 @@ String keywords = (String) request.getAttribute("keyword");
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/tag.jsp"></jsp:include>
 				<jsp:include page="element/recent_view.jsp"></jsp:include>
 				<jsp:include page="element/random.jsp"></jsp:include>
 
 			</div>
 			<div class="clear"></div>
 		</div>
+<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="/js/code.js"></script>
+<script type="text/javascript" language="javascript">$(document).ready(function () { prettyPrint(); });</script>		
 <%@ include file='/layout/footer.jsp'%>
