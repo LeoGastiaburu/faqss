@@ -29,6 +29,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Tag</servlet-name>
+		<servlet-class>faq.controller.TagServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tag</servlet-name>
+		<url-pattern>/tag/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>CrawContent</servlet-name>
 		<servlet-class>faq.craw.CrawContentServlet</servlet-class>
 	</servlet>
