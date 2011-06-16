@@ -1,13 +1,8 @@
 package faq.service;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +10,6 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -25,6 +19,8 @@ import com.google.appengine.api.datastore.Text;
 import faq.data.QnAPersistenceManager;
 import faq.model.Answer;
 import faq.model.Question;
+import faq.model.TagQuestion;
+import faq.model.Tags;
 import faq.string.Replace;
 
 
@@ -52,14 +48,54 @@ public class CrawContent {
 					String questionAuthor = doc.select("#hypQuestionAuthor").text();
 					String answerAuthor = doc.select("#hypAnswerAuthor").text();
 					Elements tags = doc.select(".topicBoxSmall");
-					
-					System.out.print(question);
+					Date date = new Date();
 					
 					if(tags.size() > 0)
 					{
 						for(int i=0;i<tags.size();i++)
 						{
 							listQuestion.get(j).addTags(tags.get(i).text());
+							
+							TagQuestion tagQuestion = new TagQuestion();
+							for(int k=0;k<tags.size();k++)
+							{
+								tagQuestion.addTags(tags.get(k).text());
+							}
+							tagQuestion.setAliasTag(Replace.replace(tags.get(i).text()));
+							tagQuestion.setAliasQuestion(listQuestion.get(j).getAlias());
+							tagQuestion.setTitleQuestion(listQuestion.get(j).getTitle());
+							
+							String desQuestion = "";
+							if(question.replaceAll("\\<.*?\\>", "").length() > 200)
+							{
+								desQuestion = question.replaceAll("\\<.*?\\>", "").substring(0,200);
+							} else {
+								desQuestion = question.replaceAll("\\<.*?\\>", "");
+							}
+							
+							tagQuestion.setDesQuestion(desQuestion);
+							psm.makePersistent(tagQuestion);
+							
+							PersistenceManager psms = QnAPersistenceManager.get().getPersistenceManager();
+							Query query_tag = psms.newQuery(Tags.class);
+							query_tag.setFilter("alias=='"+Replace.replace(tags.get(i).text())+"'");
+							@SuppressWarnings("unchecked")
+							List<Tags> check_tag = (List<Tags>) query_tag.execute();
+							if(check_tag.size() > 0)
+							{
+								check_tag.get(0).setCount(check_tag.get(0).getCount()+1);
+								psms=JDOHelper.getPersistenceManager(check_tag.get(0));
+		     					psms.currentTransaction().begin();
+		     					psms.makePersistent(check_tag.get(0));
+		     					psms.currentTransaction().commit();
+							} else {
+								Tags tag = new Tags();
+								tag.setName(tags.get(i).text());
+								tag.setAlias(Replace.replace(tags.get(i).text()));
+								tag.setLastUpdateDate(date);
+								tag.setCount(1);
+								psms.makePersistent(tag);
+							}
 						}
 					}
 					
@@ -69,7 +105,7 @@ public class CrawContent {
 
 					Text content = new Text(question);
 					listQuestion.get(j).setContent(content);
-					Date date = new Date();
+					
 					listQuestion.get(j).setLastUpdateDate(date);
 					listQuestion.get(j).setDate(date);
 					

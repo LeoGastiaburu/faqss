@@ -1,5 +1,7 @@
 package faq.model;
 
+import java.util.ArrayList;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -15,11 +17,24 @@ public class TagQuestion {
 	@Persistent
 	private String aliasTag;
 	@Persistent
+	private ArrayList<String> tags = new ArrayList<String>();
+	@Persistent
 	private String aliasQuestion;
 	@Persistent
 	private String titleQuestion;
 	@Persistent
 	private String desQuestion;
+	public void addTags(String tag)
+	{
+		if(!this.tags.contains(tag))
+			this.tags.add(tag);
+	}
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
 	public String getDesQuestion() {
 		return desQuestion;
 	}
