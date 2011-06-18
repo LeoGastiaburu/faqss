@@ -108,19 +108,15 @@ public class CrawContent {
 					
 					listQuestion.get(j).setLastUpdateDate(date);
 					listQuestion.get(j).setDate(date);
+					content = new Text(answer);
+					listQuestion.get(j).setContentAnwer(content);	
+					listQuestion.get(j).setAuthorAnwer(answerAuthor);
+					listQuestion.get(j).setAliasAuthorAnwer(Replace.replace(answerAuthor));
 					
 					psm=JDOHelper.getPersistenceManager(listQuestion.get(j));
  					psm.currentTransaction().begin();
  					psm.makePersistent(listQuestion.get(j));
  					psm.currentTransaction().commit();
-					
-					Answer answerInsert = new Answer();
-					answerInsert.setAuthor(answerAuthor);
-					answerInsert.setAliasAuthor(Replace.replace(answerAuthor));
-					Text contentAnswer = new Text(answer);
-					answerInsert.setContent(contentAnswer);
-					answerInsert.setQuestionKey(listQuestion.get(j).getKey());
-					psm.makePersistent(answerInsert);
 					
 					
 					

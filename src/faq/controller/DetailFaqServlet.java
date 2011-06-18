@@ -54,15 +54,6 @@ public class DetailFaqServlet extends HttpServlet {
 		
 		if(faq.size() > 0)
 		{
-			Query query_answer = psm.newQuery(Answer.class);
-			query_answer.setFilter("questionKey==:key");
-			@SuppressWarnings("unchecked")
-			List<Answer> answer = (List<Answer>) query_answer.execute(faq.get(0).getKey());
-			
-			if(answer.size() > 0)
-			{
-				req.setAttribute("answer", answer.get(0));
-			}
 			Cache cache=null;
 	        try {
 	            cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());
