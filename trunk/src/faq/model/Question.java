@@ -33,7 +33,31 @@ public class Question {
 	@Persistent
 	private Text content;
 	@Persistent
+	private Text contentAnwer;
+	@Persistent
+	private String authorAnwer;
+	@Persistent
+	private String aliasAuthorAnwer;
+	@Persistent
 	private ArrayList<String> tags = new ArrayList<String>();
+	public Text getContentAnwer() {
+		return contentAnwer;
+	}
+	public void setContentAnwer(Text contentAnwer) {
+		this.contentAnwer = contentAnwer;
+	}
+	public String getAuthorAnwer() {
+		return authorAnwer;
+	}
+	public void setAuthorAnwer(String authorAnwer) {
+		this.authorAnwer = authorAnwer;
+	}
+	public String getAliasAuthorAnwer() {
+		return aliasAuthorAnwer;
+	}
+	public void setAliasAuthorAnwer(String aliasAuthorAnwer) {
+		this.aliasAuthorAnwer = aliasAuthorAnwer;
+	}
 	public Date getDate() {
 		return date;
 	}
