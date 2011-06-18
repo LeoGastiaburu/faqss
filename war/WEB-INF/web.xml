@@ -38,6 +38,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Author</servlet-name>
+		<servlet-class>faq.controller.AuthorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Author</servlet-name>
+		<url-pattern>/author/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>CrawContent</servlet-name>
 		<servlet-class>faq.craw.CrawContentServlet</servlet-class>
 	</servlet>
