@@ -222,3 +222,12 @@ text-decoration: none;
 .author:HOVER {
 	color: #FF9900;
 }
+.bl h4{
+font-size: 17px;
+}
+.bl h4 a{
+color: #0C85BA;
+}
+.bl h4 a:HOVER {
+	color: #FF9900;
+}

@@ -6,7 +6,6 @@
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%
 Question question = (Question)request.getAttribute("faq");
-Answer answer = (Answer)request.getAttribute("answer");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
@@ -31,12 +30,12 @@ String keywords = (String) request.getAttribute("keyword");
 				<h2>Answer</h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Answer by</strong> <a href="/author/<%=answer.getAliasAuthor()%>" class="author"><%=answer.getAuthor() %></a>
+				<strong>Answer by</strong> <a href="/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
 				<%
-				if(answer != null)
+				if(question.getContentAnwer() != null)
 				{
-					out.println(answer.getContent().getValue());
+					out.println(question.getContentAnwer().getValue());
 				}
 				%>
 				<br/>
