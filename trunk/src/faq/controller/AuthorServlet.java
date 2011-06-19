@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
 import faq.model.Question;
-import faq.model.Tags;
 
 @SuppressWarnings("serial")
 public class AuthorServlet extends HttpServlet {

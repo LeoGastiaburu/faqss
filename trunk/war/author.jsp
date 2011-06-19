@@ -54,7 +54,7 @@ if(listQuestionAnwer.size()>0)
 				{
 				%>
 				<hr size="1"/>
-				<h4>List questions   ( <a href="/author-anwer/<%=listQuestion.get(0).getAliasAuthor()%>">View all</a> )</h4>
+				<h4>List questions   ( <a href="/author-question/<%=listQuestion.get(0).getAliasAuthor()%>">View all</a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%
