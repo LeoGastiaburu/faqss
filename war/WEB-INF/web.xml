@@ -47,6 +47,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>AuthorAnwer</servlet-name>
+		<servlet-class>faq.controller.AuthorAnwerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthorAnwer</servlet-name>
+		<url-pattern>/author-anwer/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AuthorQuestion</servlet-name>
+		<servlet-class>faq.controller.AuthorQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthorQuestion</servlet-name>
+		<url-pattern>/author-question/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>CrawContent</servlet-name>
 		<servlet-class>faq.craw.CrawContentServlet</servlet-class>
 	</servlet>
