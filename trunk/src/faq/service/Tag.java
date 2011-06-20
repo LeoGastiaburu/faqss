@@ -75,8 +75,11 @@ public class Tag {
 				            }
 		            	}
 		            }
-					 
-		            
+		            ArrayList<String> list = new ArrayList<String>(term.values());
+		            Collections.sort(list);
+		            for (int i = 0; i < list.size(); i++) {
+						System.out.println(list.get(i));
+					}
 //		            System.out.println( "Total size of our hash table is " + term.get(2));
 //
 //		            Enumeration<String> e = term.keys();
