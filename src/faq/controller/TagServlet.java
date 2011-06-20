@@ -51,6 +51,7 @@ public class TagServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		List<Tags> tags = (List<Tags>)tag.execute();
 		req.setAttribute("tags", tags);
+		req.setAttribute("start", title_url.substring(0,1));
 		try {
 			req.getRequestDispatcher("/tag.jsp").forward(req, resp);
 		} catch (ServletException e) {

@@ -20,6 +20,9 @@ import net.sf.jsr107cache.CacheManager;
 import faq.data.QnAPersistenceManager;
 import faq.model.Answer;
 import faq.model.Question;
+import faq.model.TagQuestion;
+import faq.model.Tags;
+import faq.string.Replace;
 
 @SuppressWarnings("serial")
 public class DetailFaqServlet extends HttpServlet {
@@ -54,6 +57,44 @@ public class DetailFaqServlet extends HttpServlet {
 		
 		if(faq.size() > 0)
 		{
+			String where = "";
+			String where_two = "";
+			for(Object jString : faq.get(0).getTags())
+			{
+				if(where.equals(""))
+				{
+					where = "alias=='"+Replace.replace(jString.toString())+"'";
+				} else {
+					where = where + "|| alias=='"+Replace.replace(jString.toString())+"'";
+				}
+				if(where_two.equals(""))
+				{
+					where_two = "aliasTag=='"+Replace.replace(jString.toString())+"'";
+				} else {
+					where_two = where_two + "|| aliasTag=='"+Replace.replace(jString.toString())+"'";
+				}
+			}
+			if(where.equals(""))
+			{
+				where = "alias==null";
+			}
+			if(where_two.equals(""))
+			{
+				where_two = "alias==null";
+			}
+			Query query_tag = psm.newQuery(Tags.class);
+			query_tag.setFilter(where);
+			@SuppressWarnings("unchecked")
+			List<Tags> listTags = (List<Tags>) query_tag.execute();
+			req.setAttribute("listTags", listTags);
+			
+			Query query_question = psm.newQuery(TagQuestion.class);
+			query_question.setFilter(where_two);
+			query_question.setRange(0,50);
+			@SuppressWarnings("unchecked")
+			List<TagQuestion> listTagQuestion = (List<TagQuestion>) query_question.execute();
+			req.setAttribute("listTagQuestion", listTagQuestion);
+			
 			Cache cache=null;
 	        try {
 	            cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());
