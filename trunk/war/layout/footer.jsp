@@ -1,5 +1,8 @@
 		<div class="ft">
-			Copyright © 2011 All rights Reserved : Contact Us | Rss | Sitemap | Character | Category 
+			<a href="http://stackoverflow.com">stackexchange.com</a> 
+			<a href="http://blog.stackoverflow.com/category/cc-wiki-dump/">public data dump</a> and are licensed under the cc-wiki license.
+			<br/>
+			Logo, design and layout © 2011 vdc 
 		</div>
 	</body>
 </html>		

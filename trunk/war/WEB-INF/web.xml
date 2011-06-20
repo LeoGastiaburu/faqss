@@ -56,12 +56,48 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>ListQuestion</servlet-name>
+		<servlet-class>faq.controller.ListQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListQuestion</servlet-name>
+		<url-pattern>/list-questions/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>AuthorQuestion</servlet-name>
 		<servlet-class>faq.controller.AuthorQuestionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AuthorQuestion</servlet-name>
 		<url-pattern>/author-question/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Rss</servlet-name>
+		<servlet-class>faq.controller.RssServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Rss</servlet-name>
+		<url-pattern>/rss</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Sitemap</servlet-name>
+		<servlet-class>faq.controller.SitemapServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Sitemap</servlet-name>
+		<url-pattern>/sitemap</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Contact</servlet-name>
+		<servlet-class>faq.controller.ContactServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Contact</servlet-name>
+		<url-pattern>/contact</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
