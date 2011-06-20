@@ -1,19 +1,16 @@
-<%@page import="faq.model.Tags"%>
-<%@page import="faq.model.TagQuestion"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-List<TagQuestion> listQuestion = (List<TagQuestion>)request.getAttribute("listQuestion");
-List<Tags> tags = (List<Tags>) request.getAttribute("tags");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
-String start = (String) request.getAttribute("start");
+String tag = "contact";
 %>
 <jsp:include page="layout/header.jsp">
+	<jsp:param name="tag" value="<%=tag %>"/>
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
@@ -21,7 +18,7 @@ String start = (String) request.getAttribute("start");
 
 		<div class="bd">
 			<div class="bl">
-				<h2>Tag : <% if(tags.size() > 0){out.print(tags.get(0).getName());} %></h2>
+				<h2>Contact</h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -42,33 +39,26 @@ String start = (String) request.getAttribute("start");
 				</div>
 				<div class="clear"></div>
 				<ul class="lq">
-					<%
-					if(listQuestion.size()>0)
-					{
-						for(int i=0;i<listQuestion.size();i++)
-						{
-					%>
-							<li>
-								<h1><a href="/question/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
-								<p>
-									<%
-										out.println(listQuestion.get(i).getDesQuestion());
-									%>
-								</p>
-								<%=Utils.convert2DomainString(listQuestion.get(i).getTags()) %>  
-							</li>
-					<%
-						}
-					}
-					%>
+					<li>
+						If you have any questions, or comments and suggestions, please use the form below to contact us. Or you can mail to contact [at] yooarticles.com .
+						<br/><br/>
+						<form action="/sendmail" method="post" class="send_mail">
+							Your name :<br/>
+							<input  type="text" name="name"/>
+							Your email :<br/>
+							<input  type="text" name="email"/>
+							Message :<br/>
+							<textarea name="message"></textarea>
+							<button type="submit">Send</button>
+						</form>
+					</li>
 				</ul>
 			</div>
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/other_tag.jsp">
-					<jsp:param name="start" value="<%=start %>"/>
-				</jsp:include>
+				<jsp:include page="element/recent_view.jsp"></jsp:include>
+				<jsp:include page="element/random.jsp"></jsp:include>
 
 			</div>
 			<div class="clear"></div>

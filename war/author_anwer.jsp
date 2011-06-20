@@ -76,8 +76,6 @@ if(listQuestion.size()>0)
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="author" value="<%=author %>"/>
 				</jsp:include>
-				<jsp:include page="element/recent_view.jsp"></jsp:include>
-				<jsp:include page="element/random.jsp"></jsp:include>
 
 			</div>
 			<div class="clear"></div>

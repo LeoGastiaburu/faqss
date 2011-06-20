@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="faq.model.TagQuestion"%>
+<%@page import="faq.model.Tags"%>
 <%@page import="faq.model.Answer"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
@@ -6,6 +9,8 @@
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%
 Question question = (Question)request.getAttribute("faq");
+List<Tags> listTags = (List<Tags>)request.getAttribute("listTags");
+List<TagQuestion> listTagQuestion = (List<TagQuestion>)request.getAttribute("listTagQuestion");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
@@ -58,13 +63,56 @@ String keywords = (String) request.getAttribute("keyword");
 					<g:plusone size="standard" count="true"></g:plusone>
 				</div>
 				<div class="clear"></div>
+				<br/>
+				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=APP_ID&amp;xfbml=1"></script><fb:comments href="http://www.yooarticles.com/article/<%=question.getAlias() %>" width="728"></fb:comments>
 			</div>
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/recent_view.jsp"></jsp:include>
-				<jsp:include page="element/random.jsp"></jsp:include>
-
+				<%
+				if(listTags.size()>0)
+				{
+				%>
+				<h3>Tagged</h3>
+				<ul class="ret">
+					<%
+					for(int i=0;i<listTags.size();i++)
+					{
+					%>
+						<li><a href="/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+					<%
+					}
+					%>
+				</ul>
+				<%
+				}
+				%>
+				<%
+				if(listTagQuestion.size()>0)
+				{
+				%>
+				<h3>Related</h3>
+				<ul class="vr">
+					<%
+					ArrayList<String> check = new ArrayList<String>();
+					for(int i=0;i<listTagQuestion.size();i++)
+					{
+						if(!check.contains(listTagQuestion.get(i).getAliasQuestion()))
+						{
+							check.add(listTagQuestion.get(i).getAliasQuestion());
+							if(!listTagQuestion.get(i).getAliasQuestion().equals(question.getAlias()))
+							{
+					%>
+								<li><a href="/question/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
+					<%
+							}
+						}
+					}
+					%>
+				</ul>
+				<%
+				}
+				%>
 			</div>
 			<div class="clear"></div>
 		</div>

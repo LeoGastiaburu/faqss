@@ -9,9 +9,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Vector;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
 
 
 
@@ -25,23 +32,20 @@ public class Tag {
 
 					String message = null;
 					try {
-						message = URLEncoder.encode("Android-based phones as well as on Android-based Tablets.", "UTF-8");
+						message = URLEncoder.encode("Of course absolute positioning from css and stuff. What i want to do is when i'm on the last article of a category, the next arrow to not disappear, but to link to the first article in the same category. Loop navigation.I was thinking on a filter, but verifying the next piggie thing i wrote, i think i should be shame about my php knowledge. LOL.", "UTF-8");
 					} catch (UnsupportedEncodingException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					
-					URL url = new URL("http://nlpdotnet.com/Services/Tagger.aspx");
+					URL url = new URL("http://cogcomp.cs.illinois.edu/demo/pos/results.php");
 		            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		            connection.setDoOutput(true);
 		            connection.setRequestMethod("POST");
-		            connection.setRequestProperty("Content-Type", "multipart/form-data"); 
+		            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 		            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 		           
-		            writer.write("__VIEWSTATE=/wEPDwULLTE2Njk3ODM0MzYPZBYCZg9kFgJmD2QWAgIDDxYCHgdlbmN0eXBlBRNtdWx0aXBhcnQvZm9ybS1kYXRhFgICCw9kFgICBQ9kFgICBw8PFgIeBFRleHQFW0FuZHJvaWQtYmFzZWQvTk4NCnBob25lcy9OTlMNCmFzL1JCDQp3ZWxsL1JCDQphcy9JTg0Kb24vSU4NCkFuZHJvaWQtYmFzZWQvTk4NClRhYmxldHMvTk5TDQpkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAU3Y3RsMDAkY3RsMDAkQ3BoTWFpbiRDcGhMZWN0dXJlQ29udGVudCRjaGVja0JveE9wdGlvbnMkMAU3Y3RsMDAkY3RsMDAkQ3BoTWFpbiRDcGhMZWN0dXJlQ29udGVudCRjaGVja0JveE9wdGlvbnMkMQU3Y3RsMDAkY3RsMDAkQ3BoTWFpbiRDcGhMZWN0dXJlQ29udGVudCRjaGVja0JveE9wdGlvbnMkMgU3Y3RsMDAkY3RsMDAkQ3BoTWFpbiRDcGhMZWN0dXJlQ29udGVudCRjaGVja0JveE9wdGlvbnMkMiMbT+AVTECBGeBl67sFVWxt2DoY");
-		            writer.write("&__EVENTVALIDATION=/wEWCgKGm+qrDwLtzfHTDgKjwOzBDgLGmYcsAq+wj4AGAq/tp5MHApSEiv4MAvma7OgCAonS7NYLAsvL5rkI7+4ZX400kz7q9b3blMBHB6fUQOk=");
-		            writer.write("&ctl00$ctl00$CphMain$CphLectureContent$checkBoxOptions$2=on");
-		            writer.write("&ctl00$ctl00$CphMain$CphLectureContent$txtbxInput="+message);
+		            writer.write("text="+message);
 		            writer.close();
 		            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 			           	 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -54,7 +58,35 @@ public class Tag {
 			    			 }
 			           	 doc = Jsoup.parse(content);
 		            }
-		            System.out.print(doc.select("#ctl00_ctl00_CphMain_CphLectureContent_txtbxOutput"));
+		            java.util.Hashtable<String, String> term = new java.util.Hashtable<String, String>();
+		            
+		            Elements nou = doc.select("#results").select(".token").select(".NN");
+		            int count = 1;
+		            if(nou.size() > 0)
+		            {
+		            	for(int i = 0;i<nou.size();i++)
+		            	{
+				            if(term.containsKey(nou.get(i).text())) {
+				            	count = Integer.parseInt(term.get(nou.get(i).text()))+1;
+				            	term.put( nou.get(i).text(), Integer.toString(count));
+				            }
+				            else {
+				            	term.put( nou.get(i).text(), "1");
+				            }
+		            	}
+		            }
+					 
+		            
+//		            System.out.println( "Total size of our hash table is " + term.get(2));
+//
+//		            Enumeration<String> e = term.keys();
+//
+//		            while(e.hasMoreElements()){
+//		                String temp = e.nextElement().toString();
+//		                System.out.println( "Key: " + temp + "\t Value: " + term.get(temp));
+//		            }
+
+//		            System.out.print(doc.select("#results").select(".token").select(".NN"));
 				
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
