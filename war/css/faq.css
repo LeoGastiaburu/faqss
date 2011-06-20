@@ -230,3 +230,12 @@ color: #0C85BA;
 .bl h4 a:HOVER {
 	color: #FF9900;
 }
+.send_mail textarea {
+    display: block;
+    height: 150px;
+    width: 400px;
+}
+.send_mail input {
+    display: block;
+    width: 300px;
+}
