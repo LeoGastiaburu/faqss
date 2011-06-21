@@ -17,6 +17,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>Faq</servlet-name>
 		<url-pattern>/</url-pattern>
+		<url-pattern>/en</url-pattern>
+		<url-pattern>/es</url-pattern>
+		<url-pattern>/de</url-pattern>
+		<url-pattern>/fr</url-pattern>
+		<url-pattern>/hi</url-pattern>
+		<url-pattern>/ja</url-pattern>
+		<url-pattern>/ko</url-pattern>
+		<url-pattern>/nl</url-pattern>
+		<url-pattern>/pl</url-pattern>
+		<url-pattern>/pt</url-pattern>
+		<url-pattern>/ro</url-pattern>
+		<url-pattern>/tr</url-pattern>
+		<url-pattern>/ru</url-pattern>
+		<url-pattern>/zh</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -25,7 +39,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DetailFaq</servlet-name>
-		<url-pattern>/question/*</url-pattern>
+		<url-pattern>/en/question/*</url-pattern>
+		<url-pattern>/es/question/*</url-pattern>
+		<url-pattern>/de/question/*</url-pattern>
+		<url-pattern>/fr/question/*</url-pattern>
+		<url-pattern>/hi/question/*</url-pattern>
+		<url-pattern>/ja/question/*</url-pattern>
+		<url-pattern>/ko/question/*</url-pattern>
+		<url-pattern>/nl/question/*</url-pattern>
+		<url-pattern>/pl/question/*</url-pattern>
+		<url-pattern>/pt/question/*</url-pattern>
+		<url-pattern>/ro/question/*</url-pattern>
+		<url-pattern>/tr/question/*</url-pattern>
+		<url-pattern>/ru/question/*</url-pattern>
+		<url-pattern>/zh/question/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -34,7 +61,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Tag</servlet-name>
-		<url-pattern>/tag/*</url-pattern>
+		<url-pattern>/en/tag/*</url-pattern>
+		<url-pattern>/es/tag/*</url-pattern>
+		<url-pattern>/de/tag/*</url-pattern>
+		<url-pattern>/fr/tag/*</url-pattern>
+		<url-pattern>/hi/tag/*</url-pattern>
+		<url-pattern>/ja/tag/*</url-pattern>
+		<url-pattern>/ko/tag/*</url-pattern>
+		<url-pattern>/nl/tag/*</url-pattern>
+		<url-pattern>/pl/tag/*</url-pattern>
+		<url-pattern>/pt/tag/*</url-pattern>
+		<url-pattern>/ro/tag/*</url-pattern>
+		<url-pattern>/tr/tag/*</url-pattern>
+		<url-pattern>/ru/tag/*</url-pattern>
+		<url-pattern>/zh/tag/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -43,7 +83,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Author</servlet-name>
-		<url-pattern>/author/*</url-pattern>
+		<url-pattern>/en/author/*</url-pattern>
+		<url-pattern>/es/author/*</url-pattern>
+		<url-pattern>/de/author/*</url-pattern>
+		<url-pattern>/fr/author/*</url-pattern>
+		<url-pattern>/hi/author/*</url-pattern>
+		<url-pattern>/ja/author/*</url-pattern>
+		<url-pattern>/ko/author/*</url-pattern>
+		<url-pattern>/nl/author/*</url-pattern>
+		<url-pattern>/pl/author/*</url-pattern>
+		<url-pattern>/pt/author/*</url-pattern>
+		<url-pattern>/ro/author/*</url-pattern>
+		<url-pattern>/tr/author/*</url-pattern>
+		<url-pattern>/ru/author/*</url-pattern>
+		<url-pattern>/zh/author/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -51,8 +104,21 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>faq.controller.AuthorAnwerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AuthorAnwer</servlet-name>
-		<url-pattern>/author-anwer/*</url-pattern>
+		<servlet-name>AuthorAnwer</servlet-name>	
+		<url-pattern>/en/author-anwer/*</url-pattern>
+		<url-pattern>/es/author-anwer/*</url-pattern>
+		<url-pattern>/de/author-anwer/*</url-pattern>
+		<url-pattern>/fr/author-anwer/*</url-pattern>
+		<url-pattern>/hi/author-anwer/*</url-pattern>
+		<url-pattern>/ja/author-anwer/*</url-pattern>
+		<url-pattern>/ko/author-anwer/*</url-pattern>
+		<url-pattern>/nl/author-anwer/*</url-pattern>
+		<url-pattern>/pl/author-anwer/*</url-pattern>
+		<url-pattern>/pt/author-anwer/*</url-pattern>
+		<url-pattern>/ro/author-anwer/*</url-pattern>
+		<url-pattern>/tr/author-anwer/*</url-pattern>
+		<url-pattern>/ru/author-anwer/*</url-pattern>
+		<url-pattern>/zh/author-anwer/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -61,7 +127,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListQuestion</servlet-name>
-		<url-pattern>/list-questions/*</url-pattern>
+		<url-pattern>/en/list-questions/*</url-pattern>
+		<url-pattern>/es/list-questions/*</url-pattern>
+		<url-pattern>/de/list-questions/*</url-pattern>
+		<url-pattern>/fr/list-questions/*</url-pattern>
+		<url-pattern>/hi/list-questions/*</url-pattern>
+		<url-pattern>/ja/list-questions/*</url-pattern>
+		<url-pattern>/ko/list-questions/*</url-pattern>
+		<url-pattern>/nl/list-questions/*</url-pattern>
+		<url-pattern>/pl/list-questions/*</url-pattern>
+		<url-pattern>/pt/list-questions/*</url-pattern>
+		<url-pattern>/ro/list-questions/*</url-pattern>
+		<url-pattern>/tr/list-questions/*</url-pattern>
+		<url-pattern>/ru/list-questions/*</url-pattern>
+		<url-pattern>/zh/list-questions/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -70,7 +149,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AuthorQuestion</servlet-name>
-		<url-pattern>/author-question/*</url-pattern>
+		<url-pattern>/en/author-question/*</url-pattern>
+		<url-pattern>/es/author-question/*</url-pattern>
+		<url-pattern>/de/author-question/*</url-pattern>
+		<url-pattern>/fr/author-question/*</url-pattern>
+		<url-pattern>/hi/author-question/*</url-pattern>
+		<url-pattern>/ja/author-question/*</url-pattern>
+		<url-pattern>/ko/author-question/*</url-pattern>
+		<url-pattern>/nl/author-question/*</url-pattern>
+		<url-pattern>/pl/author-question/*</url-pattern>
+		<url-pattern>/pt/author-question/*</url-pattern>
+		<url-pattern>/ro/author-question/*</url-pattern>
+		<url-pattern>/tr/author-question/*</url-pattern>
+		<url-pattern>/ru/author-question/*</url-pattern>
+		<url-pattern>/zh/author-question/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -97,7 +189,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Contact</servlet-name>
-		<url-pattern>/contact</url-pattern>
+		<url-pattern>/en/contact</url-pattern>
+		<url-pattern>/es/contact</url-pattern>
+		<url-pattern>/de/contact</url-pattern>
+		<url-pattern>/fr/contact</url-pattern>
+		<url-pattern>/hi/contact</url-pattern>
+		<url-pattern>/ja/contact</url-pattern>
+		<url-pattern>/ko/contact</url-pattern>
+		<url-pattern>/nl/contact</url-pattern>
+		<url-pattern>/pl/contact</url-pattern>
+		<url-pattern>/pt/contact</url-pattern>
+		<url-pattern>/ro/contact</url-pattern>
+		<url-pattern>/tr/contact</url-pattern>
+		<url-pattern>/ru/contact</url-pattern>
+		<url-pattern>/zh/contact</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
