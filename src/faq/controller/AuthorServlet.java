@@ -25,7 +25,7 @@ public class AuthorServlet extends HttpServlet {
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
         
-        if(count!=2)
+        if(count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -34,7 +34,11 @@ public class AuthorServlet extends HttpServlet {
         	
         }
 		// skip one token /sites/gooogle.com (remove sites)
+        String language = st.nextToken();
 		st.nextToken();
+		
+		req.setAttribute("language", language);
+		
 		String title_url = st.nextToken();
 		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();

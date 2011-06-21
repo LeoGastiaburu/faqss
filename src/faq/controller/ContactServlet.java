@@ -1,6 +1,7 @@
 package faq.controller;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,24 @@ public class ContactServlet extends HttpServlet {
 			throws IOException {
 		resp.setContentType("text/html");
 		resp.getWriter().println("Hello, world");
+		
+		String path = ((HttpServletRequest)req).getRequestURI();
+		
+		StringTokenizer st = new StringTokenizer( path,"/");
+        int count = st.countTokens(); 
+        
+        if(count!=2)
+        {
+        	
+        	resp.getWriter().println("Bad request : "+req.getRequestURI());
+        	resp.getWriter().close();
+        	return ;
+        	
+        }
+		// skip one token /sites/gooogle.com (remove sites)
+        String language = st.nextToken();
+		
+		req.setAttribute("language", language);
 		
 		req.setAttribute("seo_title", "Contact us");
 		req.setAttribute("title", "Contact us");
