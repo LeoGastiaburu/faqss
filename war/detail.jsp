@@ -27,7 +27,7 @@ String language = (String) request.getAttribute("language");
 				<h2><%=question.getTitle() %></h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Question by</strong> <a href="/author/<%=language %>/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
+				<strong>Question by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
 				<%=question.getContent().getValue() %>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
@@ -36,7 +36,7 @@ String language = (String) request.getAttribute("language");
 				<h2>Answer</h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Answer by</strong> <a href="/author/<%=language %>/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
+				<strong>Answer by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
 				<%
 				if(question.getContentAnwer() != null)
@@ -80,7 +80,7 @@ String language = (String) request.getAttribute("language");
 					for(int i=0;i<listTags.size();i++)
 					{
 					%>
-						<li><a href="/tag/<%=language %>/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+						<li><a href="/<%=language %>/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
 					<%
 					}
 					%>
@@ -104,7 +104,7 @@ String language = (String) request.getAttribute("language");
 							if(!listTagQuestion.get(i).getAliasQuestion().equals(question.getAlias()))
 							{
 					%>
-								<li><a href="/question/<%=language %>/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
+								<li><a href="/<%=language %>/question/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
 					<%
 							}
 						}

@@ -14,6 +14,7 @@ String language = (String) request.getAttribute("language");
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
+	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
 
 		<div class="bd">
@@ -46,7 +47,7 @@ String language = (String) request.getAttribute("language");
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=language %>/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
 								<p>
 									<%
 										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
@@ -68,9 +69,15 @@ String language = (String) request.getAttribute("language");
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/tag.jsp"></jsp:include>
-				<jsp:include page="element/recent_view.jsp"></jsp:include>
-				<jsp:include page="element/random.jsp"></jsp:include>
+				<jsp:include page="element/tag.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
+				<jsp:include page="element/recent_view.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
+				<jsp:include page="element/random.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
 
 			</div>
 			<div class="clear"></div>
