@@ -10,6 +10,7 @@ Query query = psm.newQuery(Tags.class);
 query.setOrdering("lastUpdateDate desc");
 query.setRange(0,30);
 List<Tags> listTags = (List<Tags>) query.execute();
+String language = request.getParameter("language"); 
 %>
 <%
 if(listTags.size()>0)
@@ -21,7 +22,7 @@ if(listTags.size()>0)
 	for(int i=0;i<listTags.size();i++)
 	{
 	%>
-		<li><a href="/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+		<li><a href="/<%=language %>/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
 	<%
 	}
 	%>

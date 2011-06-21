@@ -13,6 +13,7 @@ query.setFilter("aliasAuthorAnwer == '"+alias+"'");
 query.setOrdering("date desc");
 query.setRange(0,10);
 List<Question> listQuestion = (List<Question>)query.execute();
+String language = request.getParameter("language"); 
 %>
 <%
 if(listQuestion.size()>0)
@@ -24,7 +25,7 @@ if(listQuestion.size()>0)
 	for(int i=0;i<listQuestion.size();i++)
 	{
 	%>
-		<li><a href="/question/<%=listQuestion.get(i).getAlias()%>" title="<%=Replace.remove(listQuestion.get(i).getTitle())%>"><%=listQuestion.get(i).getTitle() %></a></li>
+		<li><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias()%>" title="<%=Replace.remove(listQuestion.get(i).getTitle())%>"><%=listQuestion.get(i).getTitle() %></a></li>
 	<%
 	}
 	%>
