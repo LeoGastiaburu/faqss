@@ -34,9 +34,9 @@ public class TagServlet extends HttpServlet {
         	return ;
         	
         }
-		// skip one token /sites/gooogle.com (remove sites)		
+		// skip one token /sites/gooogle.com (remove sites)	
+        String language = st.nextToken();
 		st.nextToken();
-		String language = st.nextToken();
 		
 		req.setAttribute("language", language);
 		

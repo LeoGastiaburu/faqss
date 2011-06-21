@@ -26,7 +26,6 @@ public class FaqServlet extends HttpServlet {
         String language = "en";
 		if(count != 0)
 		{
-			st.nextToken();
 			language = st.nextToken();
 		}
 		
