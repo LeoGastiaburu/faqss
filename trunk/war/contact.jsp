@@ -8,12 +8,14 @@ String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
 String tag = "contact";
+String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="tag" value="<%=tag %>"/>
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
+	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
 
 		<div class="bd">
@@ -57,8 +59,12 @@ String tag = "contact";
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/recent_view.jsp"></jsp:include>
-				<jsp:include page="element/random.jsp"></jsp:include>
+				<jsp:include page="element/recent_view.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
+				<jsp:include page="element/random.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
 
 			</div>
 			<div class="clear"></div>

@@ -51,7 +51,7 @@ String language = (String) request.getAttribute("language");
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=language %>/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
 								<p>
 									<%
 										out.println(listQuestion.get(i).getDesQuestion());

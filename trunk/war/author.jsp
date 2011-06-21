@@ -19,12 +19,13 @@ if(listQuestionAnwer.size()>0)
 {
 	author = listQuestionAnwer.get(0).getAuthorAnwer();
 }
-
+String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
+	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
 
 		<div class="bd">
@@ -54,7 +55,7 @@ if(listQuestionAnwer.size()>0)
 				{
 				%>
 				<hr size="1"/>
-				<h4>List questions   ( <a href="/author-question/<%=listQuestion.get(0).getAliasAuthor()%>">View all</a> )</h4>
+				<h4>List questions   ( <a href="/<%=language %>/author-question/<%=listQuestion.get(0).getAliasAuthor()%>">View all</a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%
@@ -62,7 +63,7 @@ if(listQuestionAnwer.size()>0)
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
 								<p>
 									<%
 										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
@@ -73,7 +74,7 @@ if(listQuestionAnwer.size()>0)
 										out.println(des);
 									%>
 								</p>
-								<%=Utils.convert2DomainString(listQuestion.get(i).getTags()) %> 
+								<%=Utils.convert2DomainString(listQuestion.get(i).getTags(),language) %> 
 							</li>
 					<%
 						}
@@ -87,7 +88,7 @@ if(listQuestionAnwer.size()>0)
 				{
 				%>
 				<hr size="1"/>
-				<h4>List anwers  ( <a href="/author-anwer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>">View all</a> )</h4>
+				<h4>List anwers  ( <a href="/<%=language %>/author-anwer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>">View all</a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%
@@ -96,7 +97,7 @@ if(listQuestionAnwer.size()>0)
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=listQuestionAnwer.get(i).getAlias() %>" title="<%=Replace.replace(listQuestionAnwer.get(i).getTitle()) %>"><%=listQuestionAnwer.get(i).getTitle() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestionAnwer.get(i).getAlias() %>" title="<%=Replace.replace(listQuestionAnwer.get(i).getTitle()) %>"><%=listQuestionAnwer.get(i).getTitle() %></a></h1>
 								<p>
 									<%
 										String des = listQuestionAnwer.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
@@ -107,7 +108,7 @@ if(listQuestionAnwer.size()>0)
 										out.println(des);
 									%>
 								</p>
-								<%=Utils.convert2DomainString(listQuestionAnwer.get(i).getTags()) %> 
+								<%=Utils.convert2DomainString(listQuestionAnwer.get(i).getTags(),language) %> 
 							</li>
 					<%
 						}
@@ -120,9 +121,15 @@ if(listQuestionAnwer.size()>0)
 			<div class="br">
 				
 				<jsp:include page="element/top_right.jsp"></jsp:include>
-				<jsp:include page="element/tag.jsp"></jsp:include>
-				<jsp:include page="element/recent_view.jsp"></jsp:include>
-				<jsp:include page="element/random.jsp"></jsp:include>
+				<jsp:include page="element/tag.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
+				<jsp:include page="element/recent_view.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
+				<jsp:include page="element/random.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
 
 			</div>
 			<div class="clear"></div>
