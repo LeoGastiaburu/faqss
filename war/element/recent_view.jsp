@@ -13,6 +13,7 @@ try {
    e.printStackTrace();
    
 }
+String language = request.getParameter("language");
 %>
 <%
 if(cache!=null&&cache.containsKey("lastPing"))
@@ -25,7 +26,7 @@ if(cache!=null&&cache.containsKey("lastPing"))
 	for(String faq : lastView) 
 	{
 %>		
-		<li><a href="/question/<%=Replace.replace(faq)%>" title="<%=Replace.remove(faq)%>"><%=faq %></a></li>	
+		<li><a href="/<%=language %>/question/<%=Replace.replace(faq)%>" title="<%=Replace.remove(faq)%>"><%=faq %></a></li>	
 <%
 	}
 %>

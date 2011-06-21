@@ -7,6 +7,7 @@
 <%
 String author = request.getParameter("author");
 String alias = request.getParameter("alias");
+String language = request.getParameter("language"); 
 PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 Query query = psm.newQuery(Question.class);
 query.setFilter("aliasAuthor == '"+alias+"'");
@@ -24,7 +25,7 @@ if(listQuestion.size()>0)
 	for(int i=0;i<listQuestion.size();i++)
 	{
 	%>
-		<li><a href="/question/<%=listQuestion.get(i).getAlias()%>" title="<%=Replace.remove(listQuestion.get(i).getTitle())%>"><%=listQuestion.get(i).getTitle() %></a></li>
+		<li><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias()%>" title="<%=Replace.remove(listQuestion.get(i).getTitle())%>"><%=listQuestion.get(i).getTitle() %></a></li>
 	<%
 	}
 	%>
