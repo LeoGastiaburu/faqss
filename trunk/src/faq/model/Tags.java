@@ -22,6 +22,14 @@ public class Tags {
 	private int count;
 	@Persistent
 	private Date lastUpdateDate;
+	@Persistent
+	private Date date;
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	public int getCount() {
 		return count;
 	}

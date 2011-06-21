@@ -12,11 +12,13 @@ String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
 String start = (String) request.getAttribute("start");
+String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
+	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
 
 		<div class="bd">
@@ -49,13 +51,13 @@ String start = (String) request.getAttribute("start");
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
+								<h1><a href="/question/<%=language %>/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
 								<p>
 									<%
 										out.println(listQuestion.get(i).getDesQuestion());
 									%>
 								</p>
-								<%=Utils.convert2DomainString(listQuestion.get(i).getTags()) %>  
+								<%=Utils.convert2DomainString(listQuestion.get(i).getTags(),language) %>  
 							</li>
 					<%
 						}
@@ -68,6 +70,7 @@ String start = (String) request.getAttribute("start");
 				<jsp:include page="element/top_right.jsp"></jsp:include>
 				<jsp:include page="element/other_tag.jsp">
 					<jsp:param name="start" value="<%=start %>"/>
+					<jsp:param name="language" value="<%=language %>"/>
 				</jsp:include>
 
 			</div>

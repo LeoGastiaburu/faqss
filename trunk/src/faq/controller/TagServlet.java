@@ -26,7 +26,7 @@ public class TagServlet extends HttpServlet {
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
         
-        if(count!=2)
+        if(count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -34,8 +34,12 @@ public class TagServlet extends HttpServlet {
         	return ;
         	
         }
-		// skip one token /sites/gooogle.com (remove sites)
+		// skip one token /sites/gooogle.com (remove sites)		
 		st.nextToken();
+		String language = st.nextToken();
+		
+		req.setAttribute("language", language);
+		
 		String title_url = st.nextToken();
 		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();

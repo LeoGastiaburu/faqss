@@ -6,11 +6,12 @@
 <%@page import="javax.jdo.PersistenceManager"%>
 <%
 String start = request.getParameter("start"); 
+String language = request.getParameter("language"); 
 PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 Query query = psm.newQuery(Tags.class);
-query.setFilter("name >= :1 && name < :2");
+query.setOrdering("date asc");
 query.setRange(0,50);
-List<Tags> listTags = (List<Tags>) query.execute(start, (start + "\ufffd"));
+List<Tags> listTags = (List<Tags>) query.execute();
 %>
 <%
 if(listTags.size()>0)
@@ -22,7 +23,7 @@ if(listTags.size()>0)
 	for(int i=0;i<listTags.size();i++)
 	{
 	%>
-		<li><a href="/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+		<li><a href="/tag/<%=language %>/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
 	<%
 	}
 	%>

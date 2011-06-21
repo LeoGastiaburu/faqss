@@ -6,18 +6,27 @@ import faq.string.Replace;
 
 public class Utils {
 
-	public static String convert2DomainString(List list)
+	public static String convert2DomainString(List list,String language)
 	{
 		
 		String str="";
 		int k=0;
 		for(Object jString : list)
 		{
-			str+="<a href=\"/tag/"+Replace.replace(jString.toString())+"\" class='tags'>"+jString+"</a> ";
+			str+="<a href=\"/tag/"+language+"/"+Replace.replace(jString.toString())+"\" class='tags'>"+jString+"</a> ";
 			k++;
-			if(k >= 14)break;	
+			if(k >= 7)break;	
 		}
 		return str;
 	}
-	
+	public static String showAlltag(List list,String language)
+	{
+		
+		String str="";
+		for(Object jString : list)
+		{
+			str+="<a href=\"/tag/"+language+"/"+Replace.replace(jString.toString())+"\" class='tags'>"+jString+"</a> ";	
+		}
+		return str;
+	}
 }

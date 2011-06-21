@@ -8,7 +8,7 @@ List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
-
+String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -46,7 +46,7 @@ String keywords = (String) request.getAttribute("keyword");
 						{
 					%>
 							<li>
-								<h1><a href="/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<h1><a href="/question/<%=language %>/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
 								<p>
 									<%
 										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
@@ -57,7 +57,7 @@ String keywords = (String) request.getAttribute("keyword");
 										out.println(des);
 									%>
 								</p>
-								<%=Utils.convert2DomainString(listQuestion.get(i).getTags()) %> 
+								<%=Utils.convert2DomainString(listQuestion.get(i).getTags(),language) %> 
 							</li>
 					<%
 						}
