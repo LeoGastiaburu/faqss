@@ -14,28 +14,29 @@ List<TagQuestion> listTagQuestion = (List<TagQuestion>)request.getAttribute("lis
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
-
+String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
+	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
 		<div class="bd">
 			<div class="bl">
 				<h2><%=question.getTitle() %></h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Question by</strong> <a href="/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
+				<strong>Question by</strong> <a href="/author/<%=language %>/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
 				<%=question.getContent().getValue() %>
-				<%=Utils.convert2DomainString(question.getTags()) %> 
+				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
 				<hr size="1"/>
 				<h2>Answer</h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Answer by</strong> <a href="/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
+				<strong>Answer by</strong> <a href="/author/<%=language %>/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
 				<%
 				if(question.getContentAnwer() != null)
@@ -79,7 +80,7 @@ String keywords = (String) request.getAttribute("keyword");
 					for(int i=0;i<listTags.size();i++)
 					{
 					%>
-						<li><a href="/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+						<li><a href="/tag/<%=language %>/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
 					<%
 					}
 					%>
@@ -103,7 +104,7 @@ String keywords = (String) request.getAttribute("keyword");
 							if(!listTagQuestion.get(i).getAliasQuestion().equals(question.getAlias()))
 							{
 					%>
-								<li><a href="/question/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
+								<li><a href="/question/<%=language %>/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
 					<%
 							}
 						}

@@ -45,49 +45,73 @@ public class Tag {
 		            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 		            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 		           
-		            writer.write("text="+message);
+		            writer.write("text="+message.replaceAll("[\\W]+", " "));
 		            writer.close();
 		            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 			           	 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			           	 String content = "";
 			           	 while(1==1)
-			    			 {
-			    				 String str = reader.readLine();
-			    				 if(str==null) break;
-			    				 content+=str;   				
-			    			 }
+		    			 {
+		    				 String str = reader.readLine();
+		    				 if(str==null) break;
+		    				 content+=str;   				
+		    			 }
 			           	 doc = Jsoup.parse(content);
 		            }
-		            java.util.Hashtable<String, String> term = new java.util.Hashtable<String, String>();
+		            
+		            ArrayList<String> term = new ArrayList<String>();
 		            
 		            Elements nou = doc.select("#results").select(".token").select(".NN");
-		            int count = 1;
+		   
 		            if(nou.size() > 0)
 		            {
 		            	for(int i = 0;i<nou.size();i++)
 		            	{
-				            if(term.containsKey(nou.get(i).text())) {
-				            	count = Integer.parseInt(term.get(nou.get(i).text()))+1;
-				            	term.put( nou.get(i).text(), Integer.toString(count));
-				            }
-				            else {
-				            	term.put( nou.get(i).text(), "1");
+				            if(!term.contains(nou.get(i).text())) {
+				            	term.add(nou.get(i).text());
 				            }
 		            	}
 		            }
-		            ArrayList<String> list = new ArrayList<String>(term.values());
-		            Collections.sort(list);
-		            for (int i = 0; i < list.size(); i++) {
-						System.out.println(list.get(i));
+
+		            nou = doc.select("#results").select(".token").select(".NNS");
+		 		   
+		            if(nou.size() > 0)
+		            {
+		            	for(int i = 0;i<nou.size();i++)
+		            	{
+				            if(!term.contains(nou.get(i).text())) {
+				            	term.add(nou.get(i).text());
+				            }
+		            	}
+		            }
+		            
+		            nou = doc.select("#results").select(".token").select(".NNP");
+		 		   
+		            if(nou.size() > 0)
+		            {
+		            	for(int i = 0;i<nou.size();i++)
+		            	{
+				            if(!term.contains(nou.get(i).text())) {
+				            	term.add(nou.get(i).text());
+				            }
+		            	}
+		            }
+		            
+		            nou = doc.select("#results").select(".token").select(".NNPS");
+			 		   
+		            if(nou.size() > 0)
+		            {
+		            	for(int i = 0;i<nou.size();i++)
+		            	{
+				            if(!term.contains(nou.get(i).text())) {
+				            	term.add(nou.get(i).text());
+				            }
+		            	}
+		            }
+		            
+		            for (int i = 0; i < term.size(); i++) {
+						System.out.println(term.get(i));
 					}
-//		            System.out.println( "Total size of our hash table is " + term.get(2));
-//
-//		            Enumeration<String> e = term.keys();
-//
-//		            while(e.hasMoreElements()){
-//		                String temp = e.nextElement().toString();
-//		                System.out.println( "Key: " + temp + "\t Value: " + term.get(temp));
-//		            }
 
 //		            System.out.print(doc.select("#results").select(".token").select(".NN"));
 				

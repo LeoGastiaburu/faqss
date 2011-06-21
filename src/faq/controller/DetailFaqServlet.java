@@ -38,7 +38,7 @@ public class DetailFaqServlet extends HttpServlet {
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
         
-        if(count!=2)
+        if(count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -48,6 +48,10 @@ public class DetailFaqServlet extends HttpServlet {
         }
 		// skip one token /sites/gooogle.com (remove sites)
 		st.nextToken();
+		String language = st.nextToken();
+		
+		req.setAttribute("language", language);
+		
 		String title_url = st.nextToken();
 		
 		Query query = psm.newQuery(Question.class);
