@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
+import faq.model.Question;
 import faq.model.TagQuestion;
 import faq.model.Tags;
 
@@ -47,7 +48,32 @@ public class TagServlet extends HttpServlet {
 		query.setFilter("aliasTag=='"+title_url+"'");
 		query.setRange(0,30);
 		@SuppressWarnings("unchecked")
-		List<TagQuestion> listQuestion = (List<TagQuestion>) query.execute();
+		List<TagQuestion> listTag = (List<TagQuestion>) query.execute();
+		
+		String where = "";
+		if(listTag.size() > 0)
+		{
+			for(int i=0;i<listTag.size();i++)
+			{
+				if(where.equals(""))
+				{
+					where = "alias=='"+listTag.get(i).getAliasQuestion()+"'";
+				} else {
+					where = where + "|| alias=='"+listTag.get(i).getAliasQuestion()+"'";
+				}
+			}
+		}
+		if(where.equals(""))
+		{
+			where = "alias==null";
+		}
+		
+		Query query2 = psm.newQuery(Question.class);
+		query2.setFilter(where);
+		query2.setRange(0,30);
+		@SuppressWarnings("unchecked")
+		List<Question> listQuestion = (List<Question>) query2.execute();
+		
 		req.setAttribute("listQuestion", listQuestion);
 		
 		Query tag = psm.newQuery(Tags.class);

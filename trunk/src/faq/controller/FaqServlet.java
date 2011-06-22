@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.Seo;
 import faq.model.Question;
 
 @SuppressWarnings("serial")
@@ -39,6 +40,10 @@ public class FaqServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		List<Question> listQuestion = (List<Question>) query.execute();
 		req.setAttribute("listQuestion", listQuestion);
+		
+		req.setAttribute("title", Seo.title(language));
+		req.setAttribute("keyword", Seo.keyword(language));
+		req.setAttribute("description", Seo.description(language));
 		
 		try {
 			req.getRequestDispatcher("/index.jsp").forward(req, resp);
