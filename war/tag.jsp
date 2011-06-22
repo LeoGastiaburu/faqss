@@ -1,3 +1,4 @@
+<%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.model.Tags"%>
 <%@page import="faq.model.TagQuestion"%>
 <%@page import="faq.service.Utils"%>
@@ -6,7 +7,7 @@
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-List<TagQuestion> listQuestion = (List<TagQuestion>)request.getAttribute("listQuestion");
+List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 List<Tags> tags = (List<Tags>) request.getAttribute("tags");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
@@ -51,10 +52,15 @@ String language = (String) request.getAttribute("language");
 						{
 					%>
 							<li>
-								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAliasQuestion() %>" title="<%=Replace.replace(listQuestion.get(i).getTitleQuestion()) %>"><%=listQuestion.get(i).getTitleQuestion() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
 								<p>
 									<%
-										out.println(listQuestion.get(i).getDesQuestion());
+										String des = RunLanguage.question(listQuestion.get(i),language).replaceAll("\\<.*?\\>", ""); 
+										if(des.length() > 200)
+										{
+											des = des.substring(0,200)+" ...";
+										}
+										out.println(des);
 									%>
 								</p>
 								<%=Utils.convert2DomainString(listQuestion.get(i).getTags(),language) %>  

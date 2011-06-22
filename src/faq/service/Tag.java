@@ -38,14 +38,14 @@ public class Tag {
 						e1.printStackTrace();
 					}
 					
-					URL url = new URL("http://cogcomp.cs.illinois.edu/demo/pos/results.php");
+					URL url = new URL("http://o2tv.vn/tag.php");
 		            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		            connection.setDoOutput(true);
 		            connection.setRequestMethod("POST");
 		            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 		            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 		           
-		            writer.write("text="+message.replaceAll("[\\W]+", " "));
+		            writer.write("str="+message.replaceAll("[\\W]+", " "));
 		            writer.close();
 		            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 			           	 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -59,61 +59,9 @@ public class Tag {
 			           	 doc = Jsoup.parse(content);
 		            }
 		            
-		            ArrayList<String> term = new ArrayList<String>();
-		            
-		            Elements nou = doc.select("#results").select(".token").select(".NN");
-		   
-		            if(nou.size() > 0)
-		            {
-		            	for(int i = 0;i<nou.size();i++)
-		            	{
-				            if(!term.contains(nou.get(i).text())) {
-				            	term.add(nou.get(i).text());
-				            }
-		            	}
-		            }
+		           
 
-		            nou = doc.select("#results").select(".token").select(".NNS");
-		 		   
-		            if(nou.size() > 0)
-		            {
-		            	for(int i = 0;i<nou.size();i++)
-		            	{
-				            if(!term.contains(nou.get(i).text())) {
-				            	term.add(nou.get(i).text());
-				            }
-		            	}
-		            }
-		            
-		            nou = doc.select("#results").select(".token").select(".NNP");
-		 		   
-		            if(nou.size() > 0)
-		            {
-		            	for(int i = 0;i<nou.size();i++)
-		            	{
-				            if(!term.contains(nou.get(i).text())) {
-				            	term.add(nou.get(i).text());
-				            }
-		            	}
-		            }
-		            
-		            nou = doc.select("#results").select(".token").select(".NNPS");
-			 		   
-		            if(nou.size() > 0)
-		            {
-		            	for(int i = 0;i<nou.size();i++)
-		            	{
-				            if(!term.contains(nou.get(i).text())) {
-				            	term.add(nou.get(i).text());
-				            }
-		            	}
-		            }
-		            
-		            for (int i = 0; i < term.size(); i++) {
-						System.out.println(term.get(i));
-					}
-
-//		            System.out.print(doc.select("#results").select(".token").select(".NN"));
+		            System.out.print(doc.select(".tag"));
 				
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
