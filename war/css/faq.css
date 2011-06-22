@@ -113,7 +113,7 @@ padding-left: 0;
 .lq h1 a:hover{
 background: none;
 }
-.lq a,.ret a,.tags{
+.lq a,.ret a,.tags,.lt a{
 color: #FF9900;
 text-decoration: none;
 padding: 5px;
@@ -127,7 +127,7 @@ padding: 3px 4px;
 text-decoration: none;
 white-space: nowrap;
 }
-.lq a:HOVER,.ret a:HOVER,.tags:HOVER{
+.lq a:HOVER,.ret a:HOVER,.tags:HOVER,.lt a:HOVER{
 background: #3e6d8e;
 color: white;
 }
@@ -238,4 +238,18 @@ color: #0C85BA;
 .send_mail input {
     display: block;
     width: 300px;
+}
+.lt{
+list-style: none;
+margin-top: 10px;
+}
+.lt li{
+float: left;
+padding: 5px 5px 5px 0px;
+width: 185px;
+overflow: hidden;
+}
+.tt{
+font-size: 24px;
+margin-bottom: 10px;
 }
