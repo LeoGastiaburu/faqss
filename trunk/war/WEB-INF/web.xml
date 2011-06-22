@@ -56,6 +56,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>ListTag</servlet-name>
+		<servlet-class>faq.controller.ListTagServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListTag</servlet-name>
+		<url-pattern>/en/list-tags/*</url-pattern>
+		<url-pattern>/es/list-tags/*</url-pattern>
+		<url-pattern>/de/list-tags/*</url-pattern>
+		<url-pattern>/fr/list-tags/*</url-pattern>
+		<url-pattern>/hi/list-tags/*</url-pattern>
+		<url-pattern>/ja/list-tags/*</url-pattern>
+		<url-pattern>/ko/list-tags/*</url-pattern>
+		<url-pattern>/nl/list-tags/*</url-pattern>
+		<url-pattern>/pl/list-tags/*</url-pattern>
+		<url-pattern>/pt/list-tags/*</url-pattern>
+		<url-pattern>/ro/list-tags/*</url-pattern>
+		<url-pattern>/tr/list-tags/*</url-pattern>
+		<url-pattern>/ru/list-tags/*</url-pattern>
+		<url-pattern>/zh/list-tags/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Tag</servlet-name>
 		<servlet-class>faq.controller.TagServlet</servlet-class>
 	</servlet>
