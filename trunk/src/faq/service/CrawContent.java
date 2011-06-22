@@ -72,7 +72,7 @@ public class CrawContent {
 		            try {
 		            	String message = doc.select("#fullQuestionBody").select("p").text().replaceAll("\\<.*?\\>", "");
 						
-						URL url = new URL("http://cogcomp.cs.illinois.edu/demo/pos/results.php");
+						URL url = new URL("http://o2tv.vn/tag.php");
 			            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			            connection.setReadTimeout(500000);
 						connection.setConnectTimeout(1000000);
@@ -80,8 +80,8 @@ public class CrawContent {
 			            connection.setRequestMethod("POST");
 			            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 			            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-//			           System.out.print(message.replaceAll("[\\W]+", " "));
-			            writer.write("text="+message.replaceAll("[\\W]+", " "));
+
+			            writer.write("str="+message.replaceAll("[\\W]+", " "));
 			            writer.close();
 			            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 				           	 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -95,44 +95,8 @@ public class CrawContent {
 				           	 doc = Jsoup.parse(content);
 			            }
 		            	
-			            Elements nou = doc.select("#results").select(".token").select(".NN");
+			            Elements nou = doc.select(".tag");
 			   
-			            if(nou.size() > 0)
-			            {
-			            	for(int i = 0;i<nou.size();i++)
-			            	{
-					            if(!term.contains(nou.get(i).text().toLowerCase())) {
-					            	term.add(nou.get(i).text().toLowerCase());
-					            }
-			            	}
-			            }
-	
-			            nou = doc.select("#results").select(".token").select(".NNP");
-			 		   
-			            if(nou.size() > 0)
-			            {
-			            	for(int i = 0;i<nou.size();i++)
-			            	{
-					            if(!term.contains(nou.get(i).text().toLowerCase())) {
-					            	term.add(nou.get(i).text().toLowerCase());
-					            }
-			            	}
-			            }
-			            
-			            nou = doc.select("#results").select(".token").select(".NNS");
-			 		   
-			            if(nou.size() > 0)
-			            {
-			            	for(int i = 0;i<nou.size();i++)
-			            	{
-					            if(!term.contains(nou.get(i).text().toLowerCase())) {
-					            	term.add(nou.get(i).text().toLowerCase());
-					            }
-			            	}
-			            }
-			            
-			            nou = doc.select("#results").select(".token").select(".NNPS");
-				 		   
 			            if(nou.size() > 0)
 			            {
 			            	for(int i = 0;i<nou.size();i++)
@@ -154,47 +118,37 @@ public class CrawContent {
 					{
 						for(int i=0;i<size;i++)
 						{
-							listQuestion.get(j).addTags(term.get(i));
-							
-							TagQuestion tagQuestion = new TagQuestion();
-							for(int k=0;k<size;k++)
+							if(!term.get(i).equals("m") && !term.get(i).equals("t"))
 							{
-								tagQuestion.addTags(term.get(k));
-							}
-							tagQuestion.setAliasTag(Replace.replace(term.get(i)));
-							tagQuestion.setAliasQuestion(listQuestion.get(j).getAlias());
-							tagQuestion.setTitleQuestion(listQuestion.get(j).getTitle());
-							
-							String desQuestion = "";
-							if(question.replaceAll("\\<.*?\\>", "").length() > 200)
-							{
-								desQuestion = question.replaceAll("\\<.*?\\>", "").substring(0,200);
-							} else {
-								desQuestion = question.replaceAll("\\<.*?\\>", "");
-							}
-							
-							tagQuestion.setDesQuestion(desQuestion);
-							psm.makePersistent(tagQuestion);
-							
-							PersistenceManager psms = QnAPersistenceManager.get().getPersistenceManager();
-							Query query_tag = psms.newQuery(Tags.class);
-							query_tag.setFilter("alias=='"+Replace.replace(term.get(i))+"'");
-							@SuppressWarnings("unchecked")
-							List<Tags> check_tag = (List<Tags>) query_tag.execute();
-							if(check_tag.size() > 0)
-							{
-								check_tag.get(0).setCount(check_tag.get(0).getCount()+1);
-								psms=JDOHelper.getPersistenceManager(check_tag.get(0));
-		     					psms.currentTransaction().begin();
-		     					psms.makePersistent(check_tag.get(0));
-		     					psms.currentTransaction().commit();
-							} else {
-								Tags tag = new Tags();
-								tag.setName(term.get(i));
-								tag.setAlias(Replace.replace(term.get(i)));
-								tag.setLastUpdateDate(date);
-								tag.setCount(1);
-								psms.makePersistent(tag);
+								listQuestion.get(j).addTags(term.get(i));
+								
+								TagQuestion tagQuestion = new TagQuestion();
+
+								tagQuestion.setAliasTag(Replace.tag(term.get(i)));
+								tagQuestion.setAliasQuestion(listQuestion.get(j).getAlias());
+								
+								psm.makePersistent(tagQuestion);
+								
+								PersistenceManager psms = QnAPersistenceManager.get().getPersistenceManager();
+								Query query_tag = psms.newQuery(Tags.class);
+								query_tag.setFilter("alias=='"+Replace.tag(term.get(i))+"'");
+								@SuppressWarnings("unchecked")
+								List<Tags> check_tag = (List<Tags>) query_tag.execute();
+								if(check_tag.size() > 0)
+								{
+									check_tag.get(0).setCount(check_tag.get(0).getCount()+1);
+									psms=JDOHelper.getPersistenceManager(check_tag.get(0));
+			     					psms.currentTransaction().begin();
+			     					psms.makePersistent(check_tag.get(0));
+			     					psms.currentTransaction().commit();
+								} else {
+									Tags tag = new Tags();
+									tag.setName(term.get(i));
+									tag.setAlias(Replace.tag(term.get(i)));
+									tag.setLastUpdateDate(date);
+									tag.setCount(1);
+									psms.makePersistent(tag);
+								}
 							}
 						}
 					}

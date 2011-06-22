@@ -1,3 +1,4 @@
+<%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
@@ -52,10 +53,10 @@ String language = (String) request.getAttribute("language");
 						{
 					%>
 							<li>
-								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(RunLanguage.title(listQuestion.get(i),language)) %>"><%=RunLanguage.title(listQuestion.get(i),language) %></a></h1>
 								<p>
 									<%
-										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
+										String des = RunLanguage.question(listQuestion.get(i),language).replaceAll("\\<.*?\\>", ""); 
 										if(des.length() > 200)
 										{
 											des = des.substring(0,200)+" ...";

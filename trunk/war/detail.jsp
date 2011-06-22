@@ -1,3 +1,4 @@
+<%@page import="faq.language.RunLanguage"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="faq.model.TagQuestion"%>
 <%@page import="faq.model.Tags"%>
@@ -10,7 +11,7 @@
 <%
 Question question = (Question)request.getAttribute("faq");
 List<Tags> listTags = (List<Tags>)request.getAttribute("listTags");
-List<TagQuestion> listTagQuestion = (List<TagQuestion>)request.getAttribute("listTagQuestion");
+List<Question> listTagQuestion = (List<Question>)request.getAttribute("listTagQuestion");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
@@ -24,12 +25,12 @@ String language = (String) request.getAttribute("language");
 </jsp:include>
 		<div class="bd">
 			<div class="bl">
-				<h2><%=question.getTitle() %></h2>
+				<h2><%=RunLanguage.title(question,language) %></h2>
 				<div class="clear"></div>
 				<br/>
 				<strong>Question by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
-				<%=question.getContent().getValue() %>
+				<%=RunLanguage.question(question,language) %>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
 				<hr size="1"/>
@@ -38,12 +39,7 @@ String language = (String) request.getAttribute("language");
 				<br/>
 				<strong>Answer by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
-				<%
-				if(question.getContentAnwer() != null)
-				{
-					out.println(question.getContentAnwer().getValue());
-				}
-				%>
+				<%=RunLanguage.anwer(question,language)%>
 				<br/>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
@@ -92,22 +88,15 @@ String language = (String) request.getAttribute("language");
 				if(listTagQuestion.size()>0)
 				{
 				%>
-				<h3>Related</h3>
+				<h3>Other questions</h3>
 				<ul class="vr">
 					<%
 					ArrayList<String> check = new ArrayList<String>();
 					for(int i=0;i<listTagQuestion.size();i++)
 					{
-						if(!check.contains(listTagQuestion.get(i).getAliasQuestion()))
-						{
-							check.add(listTagQuestion.get(i).getAliasQuestion());
-							if(!listTagQuestion.get(i).getAliasQuestion().equals(question.getAlias()))
-							{
 					%>
-								<li><a href="/<%=language %>/question/<%=listTagQuestion.get(i).getAliasQuestion()%>" title="<%=Replace.remove(listTagQuestion.get(i).getTitleQuestion())%>"><%=listTagQuestion.get(i).getTitleQuestion() %></a></li>
+						<li><a href="/<%=language %>/question/<%=listTagQuestion.get(i).getAlias()%>" title="<%=Replace.remove(RunLanguage.title(listTagQuestion.get(i),language))%>"><%=RunLanguage.title(listTagQuestion.get(i),language) %></a></li>
 					<%
-							}
-						}
 					}
 					%>
 				</ul>

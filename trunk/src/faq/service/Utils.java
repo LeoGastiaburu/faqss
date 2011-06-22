@@ -13,7 +13,7 @@ public class Utils {
 		int k=0;
 		for(Object jString : list)
 		{
-			str+="<a href=\"/"+language+"/tag/"+Replace.replace(jString.toString())+"\" class='tags'>"+jString+"</a> ";
+			str+="<a href=\"/"+language+"/tag/"+Replace.tag(jString.toString())+"\" class='tags'>"+jString+"</a> ";
 			k++;
 			if(k >= 7)break;	
 		}
@@ -25,7 +25,7 @@ public class Utils {
 		String str="";
 		for(Object jString : list)
 		{
-			str+="<a href=\"/"+language+"/tag/"+Replace.replace(jString.toString())+"\" class='tags'>"+jString+"</a> ";	
+			str+="<a href=\"/"+language+"/tag/"+Replace.tag(jString.toString())+"\" class='tags'>"+jString+"</a> ";	
 		}
 		return str;
 	}
