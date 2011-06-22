@@ -18,7 +18,8 @@ import net.sf.jsr107cache.CacheException;
 import net.sf.jsr107cache.CacheManager;
 
 import faq.data.QnAPersistenceManager;
-import faq.model.Answer;
+import faq.language.RunLanguage;
+import faq.language.Seo;
 import faq.model.Question;
 import faq.model.TagQuestion;
 import faq.model.Tags;
@@ -63,40 +64,33 @@ public class DetailFaqServlet extends HttpServlet {
 		{
 			String where = "";
 			String where_two = "";
+			String keyword = "";
 			for(Object jString : faq.get(0).getTags())
 			{
+				keyword += jString.toString()+",";
 				if(where.equals(""))
 				{
 					where = "alias=='"+Replace.replace(jString.toString())+"'";
 				} else {
 					where = where + "|| alias=='"+Replace.replace(jString.toString())+"'";
 				}
-				if(where_two.equals(""))
-				{
-					where_two = "aliasTag=='"+Replace.replace(jString.toString())+"'";
-				} else {
-					where_two = where_two + "|| aliasTag=='"+Replace.replace(jString.toString())+"'";
-				}
 			}
 			if(where.equals(""))
 			{
 				where = "alias==null";
 			}
-			if(where_two.equals(""))
-			{
-				where_two = "alias==null";
-			}
+
 			Query query_tag = psm.newQuery(Tags.class);
 			query_tag.setFilter(where);
 			@SuppressWarnings("unchecked")
 			List<Tags> listTags = (List<Tags>) query_tag.execute();
 			req.setAttribute("listTags", listTags);
 			
-			Query query_question = psm.newQuery(TagQuestion.class);
-			query_question.setFilter(where_two);
-			query_question.setRange(0,50);
+			Query query_question = psm.newQuery(Question.class);
+			query_question.setFilter("aliasAuthor == '"+faq.get(0).getAliasAuthor()+"' && alias != '"+faq.get(0).getAlias()+"'");
+			query_question.setRange(0,10);
 			@SuppressWarnings("unchecked")
-			List<TagQuestion> listTagQuestion = (List<TagQuestion>) query_question.execute();
+			List<Question> listTagQuestion = (List<Question>) query_question.execute();
 			req.setAttribute("listTagQuestion", listTagQuestion);
 			
 			Cache cache=null;
@@ -124,7 +118,15 @@ public class DetailFaqServlet extends HttpServlet {
 	        	lastPing.add(faq.get(0).getTitle());
 	        	cache.put("lastPing", lastPing);
 	        }
-			
+	        String des = RunLanguage.question(faq.get(0),language).replaceAll("\\<.*?\\>", "").replaceAll("[^\\w!@#$%^&*-=+:;?.,/\\\\]+", " "); 
+			if(des.length() > 200)
+			{
+				des = des.substring(0,200)+" ...";
+			}
+	        req.setAttribute("title", RunLanguage.title(faq.get(0), language));
+			req.setAttribute("keyword", keyword);
+			req.setAttribute("description", des);
+	        
 			req.setAttribute("faq", faq.get(0));
 			try {
 				req.getRequestDispatcher("/detail.jsp").forward(req, resp);

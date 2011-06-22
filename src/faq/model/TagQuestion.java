@@ -17,30 +17,8 @@ public class TagQuestion {
 	@Persistent
 	private String aliasTag;
 	@Persistent
-	private ArrayList<String> tags = new ArrayList<String>();
-	@Persistent
 	private String aliasQuestion;
-	@Persistent
-	private String titleQuestion;
-	@Persistent
-	private String desQuestion;
-	public void addTags(String tag)
-	{
-		if(!this.tags.contains(tag))
-			this.tags.add(tag);
-	}
-	public ArrayList<String> getTags() {
-		return tags;
-	}
-	public void setTags(ArrayList<String> tags) {
-		this.tags = tags;
-	}
-	public String getDesQuestion() {
-		return desQuestion;
-	}
-	public void setDesQuestion(String desQuestion) {
-		this.desQuestion = desQuestion;
-	}
+
 	public Key getKey() {
 		return key;
 	}
@@ -58,12 +36,6 @@ public class TagQuestion {
 	}
 	public void setAliasQuestion(String aliasQuestion) {
 		this.aliasQuestion = aliasQuestion;
-	}
-	public String getTitleQuestion() {
-		return titleQuestion;
-	}
-	public void setTitleQuestion(String titleQuestion) {
-		this.titleQuestion = titleQuestion;
 	}
 
 }
