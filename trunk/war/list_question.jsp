@@ -1,17 +1,20 @@
+<%@page import="faq.language.RunLanguage"%>
+<%@page import="faq.language.Seo"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
-List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
-String title = (String) request.getAttribute("title");
-String description = (String) request.getAttribute("description");
-String keywords = (String) request.getAttribute("keyword");
-String tag = "question";
-String language = (String) request.getAttribute("language");
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
+String language = (String) request.getAttribute("language");
+List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
+String title = "Page "+cur_page+" - List question";
+String description = title+Seo.description(language);
+String keywords = Seo.keyword(language);
+String tag = "question";
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -51,10 +54,10 @@ String cur_page = (String) request.getAttribute("page");
 						{
 					%>
 							<li>
-								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(listQuestion.get(i).getTitle()) %>"><%=listQuestion.get(i).getTitle() %></a></h1>
+								<h1><a href="/<%=language %>/question/<%=listQuestion.get(i).getAlias() %>" title="<%=Replace.replace(RunLanguage.title(listQuestion.get(i),language)) %>"><%=RunLanguage.title(listQuestion.get(i),language) %></a></h1>
 								<p>
 									<%
-										String des = listQuestion.get(i).getContent().getValue().replaceAll("\\<.*?\\>", ""); 
+										String des = RunLanguage.question(listQuestion.get(i),language).replaceAll("\\<.*?\\>", ""); 
 										if(des.length() > 200)
 										{
 											des = des.substring(0,200)+" ...";

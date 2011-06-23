@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
 Question question = (Question)request.getAttribute("faq");
 List<Tags> listTags = (List<Tags>)request.getAttribute("listTags");

@@ -1,14 +1,17 @@
+<%@page import="faq.language.Seo"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
-String title = (String) request.getAttribute("title");
-String description = (String) request.getAttribute("description");
-String keywords = (String) request.getAttribute("keyword");
-String tag = "contact";
 String language = (String) request.getAttribute("language");
+String title = "Contact us";
+String description = title+"."+Seo.description(language);
+String keywords = Seo.keyword(language);
+String tag = "contact";
+
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="tag" value="<%=tag %>"/>
