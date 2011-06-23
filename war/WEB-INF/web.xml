@@ -83,20 +83,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListAuthor</servlet-name>
-		<url-pattern>/en/list-users/*</url-pattern>
-		<url-pattern>/es/list-users/*</url-pattern>
-		<url-pattern>/de/list-users/*</url-pattern>
-		<url-pattern>/fr/list-users/*</url-pattern>
-		<url-pattern>/hi/list-users/*</url-pattern>
-		<url-pattern>/ja/list-users/*</url-pattern>
-		<url-pattern>/ko/list-users/*</url-pattern>
-		<url-pattern>/nl/list-users/*</url-pattern>
-		<url-pattern>/pl/list-users/*</url-pattern>
-		<url-pattern>/pt/list-users/*</url-pattern>
-		<url-pattern>/ro/list-users/*</url-pattern>
-		<url-pattern>/tr/list-users/*</url-pattern>
-		<url-pattern>/ru/list-users/*</url-pattern>
-		<url-pattern>/zh/list-users/*</url-pattern>
+		<url-pattern>/en/list-authors/*</url-pattern>
+		<url-pattern>/es/list-authors/*</url-pattern>
+		<url-pattern>/de/list-authors/*</url-pattern>
+		<url-pattern>/fr/list-authors/*</url-pattern>
+		<url-pattern>/hi/list-authors/*</url-pattern>
+		<url-pattern>/ja/list-authors/*</url-pattern>
+		<url-pattern>/ko/list-authors/*</url-pattern>
+		<url-pattern>/nl/list-authors/*</url-pattern>
+		<url-pattern>/pl/list-authors/*</url-pattern>
+		<url-pattern>/pt/list-authors/*</url-pattern>
+		<url-pattern>/ro/list-authors/*</url-pattern>
+		<url-pattern>/tr/list-authors/*</url-pattern>
+		<url-pattern>/ru/list-authors/*</url-pattern>
+		<url-pattern>/zh/list-authors/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

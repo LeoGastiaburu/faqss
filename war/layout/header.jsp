@@ -17,14 +17,16 @@ String language = request.getParameter("language");
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<div class="tl"></div>
+		<div class="tl">
+			<jsp:include page="/element/flag.jsp"></jsp:include>
+		</div>
 		<div class="hd">
 			<a href="/<%=language %>" class="lg"><img src="/images/logwo.jpg" alt="logo"/></a>
 			<ul class="menu">
 				<li><a href="/<%=language %>" title="Home" <%=(tag.equals("home"))?"class=\"at\"":"" %>><%=Language.menu_home(language) %></a></li>
 				<li><a href="/<%=language %>/list-questions" title="question" <%=(tag.equals("question"))?"class=\"at\"":"" %>><%=Language.menu_question(language) %></a></li>
 				<li><a href="/<%=language %>/list-tags" title="tags" <%=(tag.equals("tag"))?"class=\"at\"":"" %>><%=Language.menu_tag(language) %></a></li>
-				<li><a href="/<%=language %>/list-users" title="users" <%=(tag.equals("user"))?"class=\"at\"":"" %>><%=Language.menu_user(language) %></a></li>
+				<li><a href="/<%=language %>/list-authors" title="users" <%=(tag.equals("user"))?"class=\"at\"":"" %>><%=Language.menu_user(language) %></a></li>
 				<li><a href="/<%=language %>/contact" title="contact" <%=(tag.equals("contact"))?"class=\"at\"":"" %>><%=Language.menu_contact(language) %></a></li>
 				<li><a href="/<%=language %>/sitemap" title="site map" target="_blank">Site map</a></li>
 				<li><a href="/<%=language %>/rss" title="rss" target="_blank">Rss</a></li>	
