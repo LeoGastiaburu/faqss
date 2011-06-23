@@ -1,6 +1,11 @@
 package faq.service;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.Charset;
 
 import javax.jdo.PersistenceManager;
 
@@ -22,7 +27,26 @@ public class CrawUrl {
 		Document doc;
 		try {
 			String url = "http://efreedom.com/Questions/0/";
-			doc = Jsoup.connect(url).get();
+			
+			URL dataURL = new URL(url);
+			HttpURLConnection connection1 = (HttpURLConnection) dataURL.openConnection();
+			connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+			
+			connection1.setReadTimeout(500000);
+			connection1.setConnectTimeout(1000000);
+			
+			BufferedReader reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+			String content1 = "";
+			while(1==1)
+			{
+				String str = reader1.readLine();
+				if(str==null) break;
+				content1+=str;
+				
+			}
+			doc = Jsoup.parse(content1);
+			
+//			doc = Jsoup.connect(url).get();
 			
 			Elements titles = doc.select(".topicTitle a"); 
 			
