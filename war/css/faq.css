@@ -31,7 +31,7 @@ margin: auto;
 }
 .tl {
     background: none repeat scroll 0 0 #FF9900;
-    height: 13px;
+    height: 15px;
 }
 .bd{
 width: 950px;
@@ -163,6 +163,10 @@ padding: 10px;
 margin: auto;
 text-align: center;
 font-weight: bold;
+}
+.ft a{
+color: #0077CC;
+text-decoration: none;
 }
 .ret{
 list-style: none;
@@ -309,6 +313,11 @@ margin-left:3px;
 padding:3px 5px;
 }
 
-paginate a:hover {
+.paginate a:hover {
 color:red;
+}
+.flag{
+width: 950px;
+margin: auto;
+text-align: right;
 }
