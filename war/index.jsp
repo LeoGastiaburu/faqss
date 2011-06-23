@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
 List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 String title = (String) request.getAttribute("title");

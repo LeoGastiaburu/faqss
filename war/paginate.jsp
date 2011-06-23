@@ -4,7 +4,7 @@
 	int cur_page = Integer.parseInt((String)request.getParameter("cur_page"));
 	int number_game = Integer.parseInt((String)request.getParameter("number_game"));
 	String url = request.getParameter("url");
-	int limit = 1;
+	int limit = 30;
 	
 	if(cur_page == 1 && number_game < limit)
 	{

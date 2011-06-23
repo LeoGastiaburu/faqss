@@ -1,3 +1,4 @@
+<%@page import="faq.language.Seo"%>
 <%@page import="java.util.Random"%>
 <%@page import="faq.model.Author"%>
 <%@page import="faq.model.Tags"%>
@@ -8,15 +9,17 @@
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
-List<Author> authors = (List<Author>)request.getAttribute("authors");
-String title = (String) request.getAttribute("title");
-String description = (String) request.getAttribute("description");
-String keywords = (String) request.getAttribute("keyword");
-String language = (String) request.getAttribute("language");
-String tag = "user";
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
+String language = (String) request.getAttribute("language");
+List<Author> authors = (List<Author>)request.getAttribute("authors");
+String title = "Page "+cur_page+" - List author";
+String description = title+Seo.description(language);
+String keywords = Seo.keyword(language);
+String tag = "user";
+
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>

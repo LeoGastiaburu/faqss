@@ -1,15 +1,15 @@
+<%@page import="faq.language.Seo"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
+<% request.setCharacterEncoding("utf-8");%>
 <%
 List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
-String title = (String) request.getAttribute("title");
 String author = (String)request.getAttribute("author");
-String description = (String) request.getAttribute("description");
-String keywords = (String) request.getAttribute("keyword");
+
 if(listQuestion.size()>0)
 {
 	author = listQuestion.get(0).getAuthorAnwer();
@@ -17,6 +17,10 @@ if(listQuestion.size()>0)
 String language = (String) request.getAttribute("language");
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
+
+String keywords = author+","+Seo.keyword(language);
+String title = "Page "+cur_page+" - "+author+"'s answers : ";
+String description = title+"."+Seo.description(language);
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
