@@ -78,6 +78,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>ListAuthor</servlet-name>
+		<servlet-class>faq.controller.ListAuthorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListAuthor</servlet-name>
+		<url-pattern>/en/list-users/*</url-pattern>
+		<url-pattern>/es/list-users/*</url-pattern>
+		<url-pattern>/de/list-users/*</url-pattern>
+		<url-pattern>/fr/list-users/*</url-pattern>
+		<url-pattern>/hi/list-users/*</url-pattern>
+		<url-pattern>/ja/list-users/*</url-pattern>
+		<url-pattern>/ko/list-users/*</url-pattern>
+		<url-pattern>/nl/list-users/*</url-pattern>
+		<url-pattern>/pl/list-users/*</url-pattern>
+		<url-pattern>/pt/list-users/*</url-pattern>
+		<url-pattern>/ro/list-users/*</url-pattern>
+		<url-pattern>/tr/list-users/*</url-pattern>
+		<url-pattern>/ru/list-users/*</url-pattern>
+		<url-pattern>/zh/list-users/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Tag</servlet-name>
 		<servlet-class>faq.controller.TagServlet</servlet-class>
 	</servlet>
@@ -193,7 +215,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Rss</servlet-name>
-		<url-pattern>/rss</url-pattern>
+		<url-pattern>/en/rss</url-pattern>
+		<url-pattern>/es/rss</url-pattern>
+		<url-pattern>/de/rss</url-pattern>
+		<url-pattern>/fr/rss</url-pattern>
+		<url-pattern>/hi/rss</url-pattern>
+		<url-pattern>/ja/rss</url-pattern>
+		<url-pattern>/ko/rss</url-pattern>
+		<url-pattern>/nl/rss</url-pattern>
+		<url-pattern>/pl/rss</url-pattern>
+		<url-pattern>/pt/rss</url-pattern>
+		<url-pattern>/ro/rss</url-pattern>
+		<url-pattern>/tr/rss</url-pattern>
+		<url-pattern>/ru/rss</url-pattern>
+		<url-pattern>/zh/rss</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -202,7 +237,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Sitemap</servlet-name>
-		<url-pattern>/sitemap</url-pattern>
+		<url-pattern>/en/sitemap</url-pattern>
+		<url-pattern>/es/sitemap</url-pattern>
+		<url-pattern>/de/sitemap</url-pattern>
+		<url-pattern>/fr/sitemap</url-pattern>
+		<url-pattern>/hi/sitemap</url-pattern>
+		<url-pattern>/ja/sitemap</url-pattern>
+		<url-pattern>/ko/sitemap</url-pattern>
+		<url-pattern>/nl/sitemap</url-pattern>
+		<url-pattern>/pl/sitemap</url-pattern>
+		<url-pattern>/pt/sitemap</url-pattern>
+		<url-pattern>/ro/sitemap</url-pattern>
+		<url-pattern>/tr/sitemap</url-pattern>
+		<url-pattern>/ru/sitemap</url-pattern>
+		<url-pattern>/zh/sitemap</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
