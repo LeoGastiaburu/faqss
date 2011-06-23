@@ -1,8 +1,7 @@
-<div class='flag'>
-	<a href="/en"><img src="/images/flag_english.gif" alt="english" /></a>
-	<a href="/de"><img src="/images/flag_germany.jpeg" alt="germany" /></a>
-	<a href="/es"><img src="/images/flag_Spanish.png" alt="Spanish" /></a>
-	<a href="/fr"><img src="/images/fr.png" alt="French" /></a>
-	<a href="/hi"><img src="/images/hi.png" alt="Hindi" /></a>
-	<a href="/ja"><img src="/images/ja.gif" alt="Japan" /></a>
-</div>
+
+	<ul class='flag'>
+		<li class="en"><a href="/en">&nbsp;</a></li>
+		<li class="es"><a href="/es">&nbsp;</a></li>
+		<li class="de"><a href="/de">&nbsp;</a></li>
+		<li class="fr"><a href="/fr">&nbsp;</a></li>
+	</ul>
