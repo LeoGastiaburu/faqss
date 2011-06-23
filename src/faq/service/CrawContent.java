@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,7 +51,26 @@ public class CrawContent {
 			{
 				for(int j=0;j<listQuestion.size();j++)
 				{
-					doc = Jsoup.connect(listQuestion.get(j).getUrl()).get();
+					URL dataURL = new URL(listQuestion.get(j).getUrl());
+					HttpURLConnection connection1 = (HttpURLConnection) dataURL.openConnection();
+					connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+					
+					connection1.setReadTimeout(500000);
+					connection1.setConnectTimeout(1000000);
+					
+					BufferedReader reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+					String content1 = "";
+					while(1==1)
+					{
+						String str = reader1.readLine();
+						if(str==null) break;
+						content1+=str;
+						
+					}
+					doc = Jsoup.parse(content1);
+					
+					
+//					doc = Jsoup.connect(listQuestion.get(j).getUrl()).get();
 					
 					String question = doc.select("#fullQuestionBody").html();
 					String answer = doc.select("#fullAnswerBody").html();

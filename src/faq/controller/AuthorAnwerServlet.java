@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.Seo;
 import faq.model.Question;
 
 @SuppressWarnings("serial")
