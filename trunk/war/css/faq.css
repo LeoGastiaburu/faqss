@@ -319,5 +319,27 @@ color:red;
 .flag{
 width: 950px;
 margin: auto;
-text-align: right;
+list-style: none;
+}
+.flag li {
+float: right;
+width: 16px;
+height: 13px;
+margin-left: 10px;
+}
+.flag li a{
+display: block;
+text-decoration: none;
+}
+.en{
+background: url("/images/flag.gif") scroll 0px -15px no-repeat;
+}
+.es{
+background: url("/images/flag.gif") scroll 0px 1px no-repeat;
+}
+.de{
+background: url("/images/flag.gif") scroll 0px -32px no-repeat;
+}
+.fr{
+background: url("/images/flag.gif") scroll 0px -49px no-repeat;
 }
