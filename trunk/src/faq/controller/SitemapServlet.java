@@ -3,6 +3,7 @@ package faq.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -20,6 +21,24 @@ public class SitemapServlet extends HttpServlet {
 			throws IOException {
 	
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
+		
+		String path = ((HttpServletRequest)req).getRequestURI();
+		
+		StringTokenizer st = new StringTokenizer( path,"/");
+        int count = st.countTokens(); 
+        
+        if(count!=2)
+        {
+        	
+        	resp.getWriter().println("Bad request : "+req.getRequestURI());
+        	resp.getWriter().close();
+        	return ;
+        	
+        }
+		// skip one token /sites/gooogle.com (remove sites)
+        String language = st.nextToken();
+		
+		req.setAttribute("language", language);
 		
 		Query query = psm.newQuery(Question.class);
 		query.setOrdering("date desc");
