@@ -19,13 +19,13 @@
     <channel>
     
     <title><![CDATA[ <%=title %>]]></title>
-    <link>http://www.yooarticles.com/</link>
+    <link>http://www.gardenquestions.com/<%=language %></link>
     <description><![CDATA[<%=description %>]]></description>
     <dc:language>en-ca</dc:language>
-    <dc:creator>vdc</dc:creator>
+    <dc:creator>google app engine</dc:creator>
 
     <dc:rights>Copyright 2011</dc:rights>
-    <admin:generatorAgent rdf:resource="http://www.yooarticles.com/" />
+    <admin:generatorAgent rdf:resource="http://www.gardenquestions.com/" />
     	<%
     		for(int i=0;i<listArticles.size();i++)
     		{
@@ -38,7 +38,7 @@
     	%>
 		       <item>
 		          <title><![CDATA[ <%=RunLanguage.title(tmp,language)%> ]]></title>
-		          <link>http://www.yooarticles.com/question/<%=tmp.getAlias() %></link>
+		          <link>http://www.gardenquestions.com/<%=language %>/question/<%=tmp.getAlias() %></link>
 		          <guid><%=RunLanguage.title(tmp,language)%></guid>
 		
 		          <description><![CDATA[ <%=des %>]]></description>

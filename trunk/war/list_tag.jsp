@@ -12,12 +12,16 @@ String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
 String language = (String) request.getAttribute("language");
+String tag = "tag";
+String url = (String) request.getAttribute("url");
+String cur_page = (String) request.getAttribute("page");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
 	<jsp:param name="description" value="<%=description %>"/>
 	<jsp:param name="keywords" value="<%=keywords %>"/>
 	<jsp:param name="language" value="<%=language %>"/>
+	<jsp:param name="tag" value="<%=tag %>"/>
 </jsp:include>
 
 		<div class="bd">
@@ -35,6 +39,13 @@ String language = (String) request.getAttribute("language");
 					}
 				}
 				%>
+				<li class="paginate">
+					<jsp:include page="re_paginate.jsp">
+						<jsp:param name="cur_page" value="<%=cur_page %>"/>
+						<jsp:param name="url" value="<%=url %>"/>
+						<jsp:param name="number_game" value="<%=tags.size() %>"/>
+					</jsp:include>
+				</li>
 			</ul>
 			<div class="clear"></div>
 		</div>
