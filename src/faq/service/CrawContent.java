@@ -26,6 +26,7 @@ import com.google.appengine.api.datastore.Text;
 
 import faq.data.QnAPersistenceManager;
 import faq.model.Answer;
+import faq.model.Author;
 import faq.model.Question;
 import faq.model.TagQuestion;
 import faq.model.Tags;
@@ -58,6 +59,44 @@ public class CrawContent {
 					Elements tags = doc.select(".topicBoxSmall");
 					Date date = new Date();
 		            
+					Query query2 = psm.newQuery(Author.class);
+					query2.setFilter("alias=='"+Replace.replace(questionAuthor)+"'");
+					@SuppressWarnings("unchecked")
+					List<Author> checkQuestionAuthor = (List<Author>) query2.execute();
+					if(checkQuestionAuthor.size() > 0)
+					{
+						checkQuestionAuthor.get(0).setCountQuestion(checkQuestionAuthor.get(0).getCountQuestion()+1);
+						psm=JDOHelper.getPersistenceManager(checkQuestionAuthor.get(0));
+     					psm.currentTransaction().begin();
+     					psm.makePersistent(checkQuestionAuthor.get(0));
+     					psm.currentTransaction().commit();
+					} else {
+						Author author = new Author();
+						author.setName(questionAuthor);
+						author.setAlias(Replace.replace(questionAuthor));
+						author.setCountQuestion(1);
+						psm.makePersistent(author);
+					}
+					
+					Query query3 = psm.newQuery(Author.class);
+					query3.setFilter("alias=='"+Replace.replace(answerAuthor)+"'");
+					@SuppressWarnings("unchecked")
+					List<Author> checkAnwerAuthor = (List<Author>) query3.execute();
+					if(checkAnwerAuthor.size() > 0)
+					{
+						checkAnwerAuthor.get(0).setCountQuestion(checkAnwerAuthor.get(0).getCountQuestion()+1);
+						psm=JDOHelper.getPersistenceManager(checkAnwerAuthor.get(0));
+     					psm.currentTransaction().begin();
+     					psm.makePersistent(checkAnwerAuthor.get(0));
+     					psm.currentTransaction().commit();
+					} else {
+						Author author = new Author();
+						author.setName(answerAuthor);
+						author.setAlias(Replace.replace(answerAuthor));
+						author.setCountAnswer(1);
+						psm.makePersistent(author);
+					}
+					
 		            ArrayList<String> term = new ArrayList<String>();
 		            
 		            if(tags.size() > 0)
