@@ -23,8 +23,8 @@ public class ListQuestionServlet extends HttpServlet {
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
-        
-        if(count!=2)
+        String page = "1";
+        if(count!=2 && count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -37,11 +37,30 @@ public class ListQuestionServlet extends HttpServlet {
 		
 		req.setAttribute("language", language);
 		
+		if(count == 3)
+		{
+			st.nextToken();
+			page = st.nextToken();
+		}
+		//phan trang
+		int limit = 30; 
+		
+		for (int i = 0; i < page.length(); i++) {
+			 if ((page.charAt(i) >= 'A' && page.charAt(i) <= 'Z') || (page.charAt(i) >= 'a' && page.charAt(i) <= 'z')) {
+				 resp.sendRedirect("/");
+	             break;
+	         }
+       }
+		
+		int re_page = Integer.parseInt(page);
+		req.setAttribute("page", page);
+		req.setAttribute("url", language+"/list-questions");
+		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		Query query = psm.newQuery(Question.class);
 		query.setFilter("lastUpdateDate != null");
 		query.setOrdering("lastUpdateDate desc");
-		query.setRange(0,30);
+		query.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
 		@SuppressWarnings("unchecked")
 		List<Question> listQuestion = (List<Question>) query.execute();
 		req.setAttribute("listQuestion", listQuestion);

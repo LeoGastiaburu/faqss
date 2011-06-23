@@ -24,8 +24,8 @@ public class AuthorQuestionServlet extends HttpServlet {
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
-        
-        if(count!=3)
+        String page = "1";
+        if(count!=3&&count!=4)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -41,10 +41,28 @@ public class AuthorQuestionServlet extends HttpServlet {
 		
 		String title_url = st.nextToken();
 		
+		if(count == 4)
+		{
+			page = st.nextToken();
+		}
+		//phan trang
+		int limit = 30; 
+		
+		for (int i = 0; i < page.length(); i++) {
+			 if ((page.charAt(i) >= 'A' && page.charAt(i) <= 'Z') || (page.charAt(i) >= 'a' && page.charAt(i) <= 'z')) {
+				 resp.sendRedirect("/");
+	             break;
+	         }
+       }
+		
+		int re_page = Integer.parseInt(page);
+		req.setAttribute("page", page);
+		req.setAttribute("url", language+"/author-question/"+title_url);
+		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		Query query_anwer = psm.newQuery(Question.class);
 		query_anwer.setFilter("aliasAuthor=='"+title_url+"'");
-		query_anwer.setRange(0,30);
+		query_anwer.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
 		@SuppressWarnings("unchecked")
 		List<Question> listQuestion = (List<Question>) query_anwer.execute();
 		req.setAttribute("listQuestion", listQuestion);

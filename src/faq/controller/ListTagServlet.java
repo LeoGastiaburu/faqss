@@ -27,8 +27,8 @@ public class ListTagServlet extends HttpServlet {
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
-        
-        if(count!=2)
+        String page = "1";
+        if(count!=2&&count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -41,8 +41,27 @@ public class ListTagServlet extends HttpServlet {
 		
 		req.setAttribute("language", language);
 		
+		if(count == 3)
+		{
+			st.nextToken();
+			page = st.nextToken();
+		}
+		//phan trang
+		int limit = 100; 
+		
+		for (int i = 0; i < page.length(); i++) {
+			 if ((page.charAt(i) >= 'A' && page.charAt(i) <= 'Z') || (page.charAt(i) >= 'a' && page.charAt(i) <= 'z')) {
+				 resp.sendRedirect("/");
+	             break;
+	         }
+       }
+		
+		int re_page = Integer.parseInt(page);
+		req.setAttribute("page", page);
+		req.setAttribute("url", language+"/list-tags");
+		
 		Query query = psm.newQuery(Tags.class);
-		query.setRange(0,30);
+		query.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
 		@SuppressWarnings("unchecked")
 		List<Tags> tags = (List<Tags>) query.execute();
 		req.setAttribute("tags", tags);

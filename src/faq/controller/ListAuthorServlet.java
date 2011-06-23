@@ -12,22 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
-import faq.model.Question;
-import faq.model.TagQuestion;
+import faq.model.Author;
 import faq.model.Tags;
 
 @SuppressWarnings("serial")
-public class TagServlet extends HttpServlet {
+public class ListAuthorServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Hello, world");
+		
+		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
+		
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
         String page = "1";
-        if(count!=3 && count!=4)
+        if(count!=2&&count!=3)
         {
         	
         	resp.getWriter().println("Bad request : "+req.getRequestURI());
@@ -35,20 +37,18 @@ public class TagServlet extends HttpServlet {
         	return ;
         	
         }
-		// skip one token /sites/gooogle.com (remove sites)	
+		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
-		st.nextToken();
 		
 		req.setAttribute("language", language);
 		
-		String title_url = st.nextToken();
-		
-		if(count == 4)
+		if(count == 3)
 		{
+			st.nextToken();
 			page = st.nextToken();
 		}
 		//phan trang
-		int limit = 30; 
+		int limit = 40; 
 		
 		for (int i = 0; i < page.length(); i++) {
 			 if ((page.charAt(i) >= 'A' && page.charAt(i) <= 'Z') || (page.charAt(i) >= 'a' && page.charAt(i) <= 'z')) {
@@ -59,50 +59,16 @@ public class TagServlet extends HttpServlet {
 		
 		int re_page = Integer.parseInt(page);
 		req.setAttribute("page", page);
-		req.setAttribute("url", language+"/tag/"+title_url);
+		req.setAttribute("url", language+"/list-users");
 		
-		
-		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
-		Query query = psm.newQuery(TagQuestion.class);
-		query.setFilter("aliasTag=='"+title_url+"'");
+		Query query = psm.newQuery(Author.class);
 		query.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
 		@SuppressWarnings("unchecked")
-		List<TagQuestion> listTag = (List<TagQuestion>) query.execute();
+		List<Author> authors = (List<Author>) query.execute();
+		req.setAttribute("authors", authors);
 		
-		String where = "";
-		if(listTag.size() > 0)
-		{
-			for(int i=0;i<listTag.size();i++)
-			{
-				if(where.equals(""))
-				{
-					where = "alias=='"+listTag.get(i).getAliasQuestion()+"'";
-				} else {
-					where = where + "|| alias=='"+listTag.get(i).getAliasQuestion()+"'";
-				}
-			}
-		}
-		if(where.equals(""))
-		{
-			where = "alias==null";
-		}
-		
-		Query query2 = psm.newQuery(Question.class);
-		query2.setFilter(where);
-		query2.setRange(0,30);
-		@SuppressWarnings("unchecked")
-		List<Question> listQuestion = (List<Question>) query2.execute();
-		
-		req.setAttribute("listQuestion", listQuestion);
-		
-		Query tag = psm.newQuery(Tags.class);
-		tag.setFilter("alias=='"+title_url+"'");
-		@SuppressWarnings("unchecked")
-		List<Tags> tags = (List<Tags>)tag.execute();
-		req.setAttribute("tags", tags);
-		req.setAttribute("start", title_url.substring(0,1));
 		try {
-			req.getRequestDispatcher("/tag.jsp").forward(req, resp);
+			req.getRequestDispatcher("/list_author.jsp").forward(req, resp);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
