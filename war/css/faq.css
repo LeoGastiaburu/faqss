@@ -253,3 +253,62 @@ overflow: hidden;
 font-size: 24px;
 margin-bottom: 10px;
 }
+.lat{
+list-style: none;
+margin-top: 10px;
+}
+.lat li{
+float: left;
+padding: 5px 5px 5px 0px;
+width: 232px;
+overflow: hidden;
+margin-bottom: 20px;
+}
+.lat img{
+float: left;
+margin-right: 5px;
+}
+.lat a{
+text-decoration: none;
+color: #0C85BA;
+display: block;
+font-size: 15px;
+font-weight: bold;
+}
+.lat a:HOVER {
+	color: #FF9900;
+}
+.paginate {
+text-align:right;
+padding-right:30px;
+padding-top:20px;
+list-style: none;
+clear: both;
+}
+.lt .paginate,.lat .paginate{
+float: right;
+width: auto;
+margin-top: 20px;
+}
+.paginate a {
+text-decoration:none;
+border:1px solid #A8DCFF;
+color:#000;
+margin-left:3px;
+padding:3px 5px;
+font-size: 12px;
+display: inline;
+}
+
+.paginate span {
+text-decoration:none;
+border:1px solid #A8DCFF;
+background:#A8DCFF;
+color:red;
+margin-left:3px;
+padding:3px 5px;
+}
+
+paginate a:hover {
+color:red;
+}
