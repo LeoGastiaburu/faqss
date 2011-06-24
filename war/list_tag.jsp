@@ -1,3 +1,5 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.Seo"%>
 <%@page import="faq.model.Tags"%>
 <%@page import="faq.language.RunLanguage"%>
@@ -6,16 +8,21 @@
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
-<%
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
 String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
+<%
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
 List<Tags> tags = (List<Tags>)request.getAttribute("tags");
-String title = "Page "+cur_page+" - List tags";
-String description = title+Seo.description(language);
-String keywords = Seo.keyword(language);
+String title = resource.getString("page")+" "+cur_page+" - "+resource.getString("list_tag");
+String description = title+resource.getString("description");
+String keywords = resource.getString("keyword");
 String tag = "tag";
 
 %>
@@ -28,8 +35,8 @@ String tag = "tag";
 </jsp:include>
 
 		<div class="bd">
-			<h2 class="tt">List tag</h2>
-			<p>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question. </p>
+			<h2 class="tt"><%=resource.getString("list_tag") %></h2>
+			<p><%=resource.getString("text_tag") %></p>
 			<ul class="lt">
 				<%
 				if(tags.size()>0)
@@ -52,4 +59,6 @@ String tag = "tag";
 			</ul>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

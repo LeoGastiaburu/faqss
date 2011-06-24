@@ -1,15 +1,22 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.Seo"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
-<%
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
 String language = (String) request.getAttribute("language");
-String title = "Contact us";
-String description = title+"."+Seo.description(language);
-String keywords = Seo.keyword(language);
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
+<%
+String title = resource.getString("contact_us");
+String description = title+"."+resource.getString("description");
+String keywords = resource.getString("keyword");
 String tag = "contact";
 
 %>
@@ -23,7 +30,7 @@ String tag = "contact";
 
 		<div class="bd">
 			<div class="bl">
-				<h2>Contact</h2>
+				<h2><%=resource.getString("menu_contact") %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -45,16 +52,16 @@ String tag = "contact";
 				<div class="clear"></div>
 				<ul class="lq">
 					<li>
-						If you have any questions, or comments and suggestions, please use the form below to contact us. Or you can mail to contact [at] yooarticles.com .
+						<%=resource.getString("text_contact") %>
 						<br/><br/>
 						<form action="/sendmail" method="post" class="send_mail">
-							Your name :<br/>
+							<%=resource.getString("your_name") %> :<br/>
 							<input  type="text" name="name"/>
-							Your email :<br/>
+							<%=resource.getString("your_email") %> :<br/>
 							<input  type="text" name="email"/>
-							Message :<br/>
+							<%=resource.getString("message") %> :<br/>
 							<textarea name="message"></textarea>
-							<button type="submit">Send</button>
+							<button type="submit"><%=resource.getString("send") %></button>
 						</form>
 					</li>
 				</ul>
@@ -72,4 +79,6 @@ String tag = "contact";
 			</div>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

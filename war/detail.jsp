@@ -1,3 +1,6 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="faq.language.Language"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="faq.model.TagQuestion"%>
@@ -7,8 +10,14 @@
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
+String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
 <%
 Question question = (Question)request.getAttribute("faq");
 List<Tags> listTags = (List<Tags>)request.getAttribute("listTags");
@@ -16,7 +25,6 @@ List<Question> listTagQuestion = (List<Question>)request.getAttribute("listTagQu
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
-String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -29,16 +37,16 @@ String language = (String) request.getAttribute("language");
 				<h2><%=RunLanguage.title(question,language) %></h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Question by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
+				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
 				<%=RunLanguage.question(question,language) %>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
 				<hr size="1"/>
-				<h2>Answer</h2>
+				<h2><%=resource.getString("answer") %></h2>
 				<div class="clear"></div>
 				<br/>
-				<strong>Answer by</strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
+				<strong><%=resource.getString("anwer_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
 				<%=RunLanguage.anwer(question,language)%>
 				<br/>
@@ -71,7 +79,7 @@ String language = (String) request.getAttribute("language");
 				if(listTags.size()>0)
 				{
 				%>
-				<h3>Tagged</h3>
+				<h3><%=resource.getString("taged") %></h3>
 				<ul class="ret">
 					<%
 					for(int i=0;i<listTags.size();i++)
@@ -89,7 +97,7 @@ String language = (String) request.getAttribute("language");
 				if(listTagQuestion.size()>0)
 				{
 				%>
-				<h3>Other questions</h3>
+				<h3><%=resource.getString("other_tag") %></h3>
 				<ul class="vr">
 					<%
 					ArrayList<String> check = new ArrayList<String>();
@@ -110,4 +118,6 @@ String language = (String) request.getAttribute("language");
 <script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="/js/code.js"></script>
 <script type="text/javascript" language="javascript">$(document).ready(function () { prettyPrint(); });</script>		
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

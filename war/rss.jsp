@@ -1,8 +1,10 @@
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.model.Question"%>
 <%@page import="java.util.List"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
+	response.setHeader("Content-Type","text/html; charset=utf-8");
+	response.setHeader("Vary","Accept-Encoding");
+	response.setCharacterEncoding("utf-8");
   	List<Question> listArticles = (List<Question>) request.getAttribute("listArticles");
 	String title = (String) request.getAttribute("title");
 	String description = (String) request.getAttribute("description");
