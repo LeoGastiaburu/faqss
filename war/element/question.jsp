@@ -1,3 +1,5 @@
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="java.util.Locale"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
@@ -14,12 +16,13 @@ query.setFilter("aliasAuthor == '"+alias+"'");
 query.setOrdering("date desc");
 query.setRange(0,10);
 List<Question> listQuestion = (List<Question>)query.execute();
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
 %>
 <%
 if(listQuestion.size()>0)
 {
 %>
-<h3><%=author %>'s questions</h3>
+<h3><%=author %> <%=resource.getString("has_questions") %></h3>
 <ul class="vr">
 	<%
 	for(int i=0;i<listQuestion.size();i++)
