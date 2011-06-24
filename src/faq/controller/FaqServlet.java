@@ -2,6 +2,8 @@ package faq.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
 import javax.jdo.PersistenceManager;
@@ -17,9 +19,10 @@ import faq.model.Question;
 public class FaqServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		resp.setContentType("text/plain");
 		resp.getWriter().println("Hello, world");
-		
+		resp.setHeader("Content-Type","text/html; charset=utf-8");
+		resp.setHeader("Vary","Accept-Encoding");
+		resp.setCharacterEncoding("utf-8");
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
@@ -31,7 +34,7 @@ public class FaqServlet extends HttpServlet {
 		}
 		
 		req.setAttribute("language", language);
-		
+		ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		Query query = psm.newQuery(Question.class);
 		query.setFilter("lastUpdateDate != null");
@@ -41,9 +44,9 @@ public class FaqServlet extends HttpServlet {
 		List<Question> listQuestion = (List<Question>) query.execute();
 		req.setAttribute("listQuestion", listQuestion);
 		
-		req.setAttribute("title", Seo.title(language));
-		req.setAttribute("keyword", Seo.keyword(language));
-		req.setAttribute("description", Seo.description(language));
+		req.setAttribute("title", resource.getString("title"));
+		req.setAttribute("keyword", resource.getString("keyword"));
+		req.setAttribute("description", resource.getString("description"));
 		
 		try {
 			req.getRequestDispatcher("/index.jsp").forward(req, resp);

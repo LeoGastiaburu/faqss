@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ContactServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		resp.setContentType("text/html");
 		resp.getWriter().println("Hello, world");
-		
+		resp.setHeader("Content-Type","text/html; charset=utf-8");
+		resp.setHeader("Vary","Accept-Encoding");
+		resp.setCharacterEncoding("utf-8");
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
