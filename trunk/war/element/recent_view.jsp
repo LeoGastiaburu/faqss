@@ -1,3 +1,5 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Collections"%>
@@ -5,6 +7,8 @@
 <%@page import="javax.cache.CacheException"%>
 <%@page import="javax.cache.Cache"%>
 <%
+String language = request.getParameter("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
 Cache cache=null;
 
 try {
@@ -13,13 +17,12 @@ try {
    e.printStackTrace();
    
 }
-String language = request.getParameter("language");
 %>
 <%
 if(cache!=null&&cache.containsKey("lastPing"))
 {
 %>
-	<h3>Recent view question</h3>
+	<h3><%=resource.getString("recent_view_question") %></h3>
 	<ul class="vr">
 <%	
 	ArrayList<String> lastView = (ArrayList<String>)cache.get("lastPing");

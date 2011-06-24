@@ -31,7 +31,7 @@ margin: auto;
 }
 .tl {
     background: none repeat scroll 0 0 #FF9900;
-    height: 15px;
+    height: 14px;
 }
 .bd{
 width: 950px;
@@ -324,22 +324,52 @@ list-style: none;
 .flag li {
 float: right;
 width: 16px;
-height: 13px;
-margin-left: 10px;
+height: 12px;
+margin-left: 5px;
 }
 .flag li a{
 display: block;
 text-decoration: none;
 }
 .en{
-background: url("/images/flag.gif") scroll 0px -15px no-repeat;
+background: url("/images/flag.gif") scroll 0px -41px no-repeat;
 }
 .es{
 background: url("/images/flag.gif") scroll 0px 1px no-repeat;
 }
 .de{
-background: url("/images/flag.gif") scroll 0px -32px no-repeat;
+background: url("/images/flag.gif") scroll 0px -13px no-repeat;
 }
 .fr{
-background: url("/images/flag.gif") scroll 0px -49px no-repeat;
+background: url("/images/flag.gif") scroll 0px -27px no-repeat;
+}
+.hi{
+background: url("/images/flag.gif") scroll 0px -169px no-repeat;
+}
+.ja{
+background: url("/images/flag.gif") scroll 0px -55px no-repeat;
+}
+.ko{
+background: url("/images/flag.gif") scroll 0px -69px no-repeat;
+}
+.nl{
+background: url("/images/flag.gif") scroll 0px -83px no-repeat;
+}
+.pl{
+background: url("/images/flag.gif") scroll 0px -97px no-repeat;
+}
+.pt{
+background: url("/images/flag.gif") scroll 0px -111px no-repeat;
+}
+.ro{
+background: url("/images/flag.gif") scroll 0px -125px no-repeat;
+}
+.tr{
+background: url("/images/flag.gif") scroll 0px -139px no-repeat;
+}
+.ru{
+background: url("/images/flag.gif") scroll 0px -154px no-repeat;
+}
+.zh{
+background: url("/images/flag.gif") scroll 0px -169px no-repeat;
 }
