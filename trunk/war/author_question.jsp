@@ -1,11 +1,19 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.Seo"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
+String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
 <%
 List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 String author = (String)request.getAttribute("author");
@@ -14,13 +22,12 @@ if(listQuestion.size()>0)
 {
 	author = listQuestion.get(0).getAuthor();
 }
-String language = (String) request.getAttribute("language");
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
 
-String keywords = author+","+Seo.keyword(language);
-String title = "Page "+cur_page+" - "+author+"'s questions";
-String description = title+"."+Seo.description(language);
+String keywords = author+","+resource.getString("keyword");
+String title = resource.getString("page")+" "+cur_page+" - "+author+" "+resource.getString("has_questions");
+String description = title+"."+resource.getString("description");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -31,7 +38,7 @@ String description = title+"."+Seo.description(language);
 
 		<div class="bd">
 			<div class="bl">
-				<h2><%=author %>'s questions</h2>
+				<h2><%=author %> <%=resource.getString("has_questions") %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -97,4 +104,6 @@ String description = title+"."+Seo.description(language);
 			</div>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

@@ -1,11 +1,19 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.Seo"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
+String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
 <%
 List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 List<Question> listQuestionAnwer = (List<Question>)request.getAttribute("listQuestionAnwer");
@@ -19,11 +27,10 @@ if(listQuestionAnwer.size()>0)
 {
 	author = listQuestionAnwer.get(0).getAuthorAnwer();
 }
-String language = (String) request.getAttribute("language");
 
-String title = "Author : "+author;
-String description = title+"."+Seo.description(language);
-String keywords = author+","+Seo.keyword(language);
+String title = resource.getString("author")+" : "+author;
+String description = title+"."+resource.getString("description");
+String keywords = author+","+resource.getString("keyword");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -34,7 +41,7 @@ String keywords = author+","+Seo.keyword(language);
 
 		<div class="bd">
 			<div class="bl">
-				<h2>Author : <%=author %></h2>
+				<h2><%=resource.getString("author") %> : <%=author %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -59,7 +66,7 @@ String keywords = author+","+Seo.keyword(language);
 				{
 				%>
 				<hr size="1"/>
-				<h4>List questions   ( <a href="/<%=language %>/author-question/<%=listQuestion.get(0).getAliasAuthor()%>">View all</a> )</h4>
+				<h4><%=resource.getString("list_question") %>   ( <a href="/<%=language %>/author-question/<%=listQuestion.get(0).getAliasAuthor()%>"><%=resource.getString("view_all") %></a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%
@@ -92,7 +99,7 @@ String keywords = author+","+Seo.keyword(language);
 				{
 				%>
 				<hr size="1"/>
-				<h4>List anwers  ( <a href="/<%=language %>/author-anwer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>">View all</a> )</h4>
+				<h4><%=resource.getString("list_anwer") %>  ( <a href="/<%=language %>/author-anwer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>"><%=resource.getString("view_all") %></a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%
@@ -138,4 +145,6 @@ String keywords = author+","+Seo.keyword(language);
 			</div>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

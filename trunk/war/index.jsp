@@ -1,17 +1,24 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="faq.language.Language"%>
 <%@page import="faq.service.Utils"%>
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
+String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
 <%
 List<Question> listQuestion = (List<Question>)request.getAttribute("listQuestion");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
-String language = (String) request.getAttribute("language");
 %>
 <jsp:include page="layout/header.jsp">
 	<jsp:param name="title" value="<%=title %>"/>
@@ -19,10 +26,9 @@ String language = (String) request.getAttribute("language");
 	<jsp:param name="keywords" value="<%=keywords %>"/>
 	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
-
 		<div class="bd">
 			<div class="bl">
-				<h2><%=Language.lastest(language) %></h2>
+				<h2><%=resource.getString("lastest")%></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -85,4 +91,6 @@ String language = (String) request.getAttribute("language");
 			</div>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	

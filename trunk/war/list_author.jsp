@@ -1,3 +1,5 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="faq.language.Seo"%>
 <%@page import="java.util.Random"%>
 <%@page import="faq.model.Author"%>
@@ -8,14 +10,19 @@
 <%@page import="faq.string.Replace"%>
 <%@page import="java.util.List"%>
 <%@page import="faq.model.Question"%>
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
+<% 
+response.setHeader("Content-Type","text/html; charset=utf-8");
+response.setHeader("Vary","Accept-Encoding");
+response.setCharacterEncoding("utf-8");
+String language = (String) request.getAttribute("language");
+ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+%>
 <%
 String url = (String) request.getAttribute("url");
 String cur_page = (String) request.getAttribute("page");
-String language = (String) request.getAttribute("language");
 List<Author> authors = (List<Author>)request.getAttribute("authors");
-String title = "Page "+cur_page+" - List author";
+String title = resource.getString("page")+" "+cur_page+" - "+resource.getString("list_author");
 String description = title+Seo.description(language);
 String keywords = Seo.keyword(language);
 String tag = "user";
@@ -30,7 +37,7 @@ String tag = "user";
 </jsp:include>
 
 		<div class="bd">
-			<h2 class="tt">List author</h2>
+			<h2 class="tt"><%=resource.getString("list_author")%></h2>
 			<p>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question. </p>
 			<ul class="lat">
 				<%
@@ -45,8 +52,8 @@ String tag = "user";
 						<li>
 							<img alt="author" src="/images/author<%=rand+1 %>.png"/>
 							<a href="/<%=language%>/author/<%=authors.get(i).getAlias()%>"><%=authors.get(i).getName() %></a>
-							Questions :  <span class="it"><%=authors.get(i).getCountQuestion() %></span><br/>
-							Anwers :  <span class="it"><%=authors.get(i).getCountAnswer() %></span>
+							<%=resource.getString("menu_question")%> :  <span class="it"><%=authors.get(i).getCountQuestion() %></span><br/>
+							<%=resource.getString("answer")%> :  <span class="it"><%=authors.get(i).getCountAnswer() %></span>
 						</li>
 				<%
 					}
@@ -62,4 +69,6 @@ String tag = "user";
 			</ul>
 			<div class="clear"></div>
 		</div>
-<%@ include file='/layout/footer.jsp'%>
+<jsp:include page="/layout/footer.jsp">
+	<jsp:param name="language" value="<%=language %>"/>
+</jsp:include>	
