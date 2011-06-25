@@ -52,8 +52,8 @@ String tag = "user";
 						<li>
 							<img alt="author" src="/images/author<%=rand+1 %>.png"/>
 							<a href="/<%=language%>/author/<%=authors.get(i).getAlias()%>"><%=authors.get(i).getName() %></a>
-							<%=resource.getString("menu_question")%> :  <span class="it"><%=authors.get(i).getCountQuestion() %></span><br/>
-							<%=resource.getString("answer")%> :  <span class="it"><%=authors.get(i).getCountAnswer() %></span>
+							<%=resource.getString("menu_question")%> :  <span class="it"><a href="/<%=language%>/author-question/<%=authors.get(i).getAlias()%>"><%=authors.get(i).getCountQuestion() %></a></span><br/>
+							<%=resource.getString("answer")%> :  <span class="it"><a href="/<%=language%>/author-answer/<%=authors.get(i).getAlias()%>"><%=authors.get(i).getCountAnswer() %></a></span>
 						</li>
 				<%
 					}

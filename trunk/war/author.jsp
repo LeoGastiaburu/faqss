@@ -99,7 +99,7 @@ String keywords = author+","+resource.getString("keyword");
 				{
 				%>
 				<hr size="1"/>
-				<h4><%=resource.getString("list_anwer") %>  ( <a href="/<%=language %>/author-anwer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>"><%=resource.getString("view_all") %></a> )</h4>
+				<h4><%=resource.getString("list_anwer") %>  ( <a href="/<%=language %>/author-answer/<%=listQuestionAnwer.get(0).getAliasAuthorAnwer()%>"><%=resource.getString("view_all") %></a> )</h4>
 				<div class="clear"></div>
 				<ul class="lq">
 					<%

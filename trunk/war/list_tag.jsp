@@ -44,7 +44,7 @@ String tag = "tag";
 					for(int i=0;i<tags.size();i++)
 					{
 				%>
-						<li><a href="/<%=language%>/tag/<%=tags.get(i).getAlias()%>"><%=tags.get(i).getName() %></a><span class="it">× <%=tags.get(i).getCount() %></span></li>
+						<li><a href="/<%=language%>/tag/<%=tags.get(i).getAlias()%>"><%=tags.get(i).getName() %></a><span class="it"> x <%=tags.get(i).getCount() %></span></li>
 				<%
 					}
 				}

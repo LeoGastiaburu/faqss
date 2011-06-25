@@ -6,7 +6,7 @@ import faq.model.Question;
 
 public class RunLanguage {
 	public static Hashtable<String, String> string = new Hashtable<String, String>();
-	public static String title(Question question,String language) {
+	public static String title(Question question,String language) {		
 		string.put("en", question.getTitle());
 		string.put("es", (question.getEsTitle()!=null)?question.getEsTitle():"");
 		string.put("de", (question.getDeTitle()!=null)?question.getDeTitle():"");
