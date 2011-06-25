@@ -85,7 +85,7 @@ String keywords = (String) request.getAttribute("keyword");
 					for(int i=0;i<listTags.size();i++)
 					{
 					%>
-						<li><a href="/<%=language %>/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it">× <%=listTags.get(i).getCount() %></span></li>
+						<li><a href="/<%=language %>/tag/<%=listTags.get(i).getAlias()%>" title="<%=Replace.remove(listTags.get(i).getName())%>"><%=listTags.get(i).getName() %></a><span class="it"> x <%=listTags.get(i).getCount() %></span></li>
 					<%
 					}
 					%>
