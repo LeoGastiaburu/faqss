@@ -18,10 +18,10 @@ import faq.model.Question;
 public class AuthorQuestionServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		resp.getWriter().println("Hello, world");
 		resp.setHeader("Content-Type","text/html; charset=utf-8");
 		resp.setHeader("Vary","Accept-Encoding");
 		resp.setCharacterEncoding("utf-8");
+		resp.getWriter().println("Hello, world");
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
