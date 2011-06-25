@@ -29,10 +29,11 @@ import faq.string.Replace;
 public class DetailFaqServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		resp.getWriter().println("Hello, world");
+		
 		resp.setHeader("Content-Type","text/html; charset=utf-8");
 		resp.setHeader("Vary","Accept-Encoding");
 		resp.setCharacterEncoding("utf-8");
+		resp.getWriter().println("さんの質問");
 		resp.getWriter().println("Link has been deleted or does not exist, please choose another link");
 		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
