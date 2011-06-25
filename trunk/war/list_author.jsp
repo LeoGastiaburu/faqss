@@ -38,7 +38,7 @@ String tag = "user";
 
 		<div class="bd">
 			<h2 class="tt"><%=resource.getString("list_author")%></h2>
-			<p>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question. </p>
+			
 			<ul class="lat">
 				<%
 				Random generator = new Random();
