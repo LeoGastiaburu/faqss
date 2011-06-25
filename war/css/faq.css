@@ -176,7 +176,9 @@ color: #444444;
 font-size: 14px;
 font-weight: bold;
 }
-
+.it a{
+display: inline !important;
+}
 pre.prettyprint {
     border: 0 solid #888888;
     padding: 2px;

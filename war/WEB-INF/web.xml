@@ -149,20 +149,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AuthorAnwer</servlet-name>	
-		<url-pattern>/en/author-anwer/*</url-pattern>
-		<url-pattern>/es/author-anwer/*</url-pattern>
-		<url-pattern>/de/author-anwer/*</url-pattern>
-		<url-pattern>/fr/author-anwer/*</url-pattern>
-		<url-pattern>/hi/author-anwer/*</url-pattern>
-		<url-pattern>/ja/author-anwer/*</url-pattern>
-		<url-pattern>/ko/author-anwer/*</url-pattern>
-		<url-pattern>/nl/author-anwer/*</url-pattern>
-		<url-pattern>/pl/author-anwer/*</url-pattern>
-		<url-pattern>/pt/author-anwer/*</url-pattern>
-		<url-pattern>/ro/author-anwer/*</url-pattern>
-		<url-pattern>/tr/author-anwer/*</url-pattern>
-		<url-pattern>/ru/author-anwer/*</url-pattern>
-		<url-pattern>/zh/author-anwer/*</url-pattern>
+		<url-pattern>/en/author-answer/*</url-pattern>
+		<url-pattern>/es/author-answer/*</url-pattern>
+		<url-pattern>/de/author-answer/*</url-pattern>
+		<url-pattern>/fr/author-answer/*</url-pattern>
+		<url-pattern>/hi/author-answer/*</url-pattern>
+		<url-pattern>/ja/author-answer/*</url-pattern>
+		<url-pattern>/ko/author-answer/*</url-pattern>
+		<url-pattern>/nl/author-answer/*</url-pattern>
+		<url-pattern>/pl/author-answer/*</url-pattern>
+		<url-pattern>/pt/author-answer/*</url-pattern>
+		<url-pattern>/ro/author-answer/*</url-pattern>
+		<url-pattern>/tr/author-answer/*</url-pattern>
+		<url-pattern>/ru/author-answer/*</url-pattern>
+		<url-pattern>/zh/author-answer/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
