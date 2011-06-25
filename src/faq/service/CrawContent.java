@@ -78,6 +78,36 @@ public class CrawContent {
 					String answerAuthor = doc.select("#hypAnswerAuthor").text();
 					Elements tags = doc.select(".topicBoxSmall");
 					Date date = new Date();
+					
+					
+					dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ja.efreedom.com"));
+					connection1 = (HttpURLConnection) dataURL.openConnection();
+					connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+					
+					connection1.setReadTimeout(500000);
+					connection1.setConnectTimeout(1000000);
+					
+					reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+					content1 = "";
+					while(1==1)
+					{
+						String str = reader1.readLine();
+						if(str==null) break;
+						content1+=str;
+						
+					}
+					doc = Jsoup.parse(content1);
+					
+					
+//					doc = Jsoup.connect(listQuestion.get(j).getUrl()).get();
+					
+					String ja_question = doc.select("#fullQuestionBody").html();
+					String ja_title = doc.select("#questionTitle").html();
+					String ja_answer = doc.select("#fullAnswerBody").html();
+					
+					
+					
+					
 		            
 					Query query2 = psm.newQuery(Author.class);
 					query2.setFilter("alias=='"+Replace.replace(questionAuthor)+"'");
@@ -212,11 +242,17 @@ public class CrawContent {
 						}
 					}
 					
-
+					Text content;
 					listQuestion.get(j).setAuthor(questionAuthor);
 					listQuestion.get(j).setAliasAuthor(Replace.replace(questionAuthor));
+					listQuestion.get(j).setJaTitle(ja_title);
+					content = new Text(ja_question);
+					listQuestion.get(j).setJaContent(content);
+					listQuestion.get(j).setJaTitle(ja_title);
+					content = new Text(ja_answer);
+					listQuestion.get(j).setJaContentAnwer(content);
 
-					Text content = new Text(question);
+					content = new Text(question);
 					listQuestion.get(j).setContent(content);
 					
 					listQuestion.get(j).setLastUpdateDate(date);

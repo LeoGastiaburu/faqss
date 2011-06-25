@@ -38,7 +38,7 @@ String description = title+"."+resource.getString("description");
 
 		<div class="bd">
 			<div class="bl">
-				<h2><%=author %> <%=resource.getString("has_questions") %></h2>
+				<h2><%=author %>&nbsp;<%=resource.getString("has_questions") %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
