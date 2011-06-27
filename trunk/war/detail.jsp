@@ -74,7 +74,9 @@ String keywords = (String) request.getAttribute("keyword");
 			</div>
 			<div class="br">
 				
-				<jsp:include page="element/top_right.jsp"></jsp:include>
+				<jsp:include page="element/detail.jsp">
+					<jsp:param name="alias" value="<%=question.getAlias() %>"/>
+				</jsp:include>
 				<%
 				if(listTags.size()>0)
 				{

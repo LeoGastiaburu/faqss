@@ -375,3 +375,18 @@ background: url("/images/flag.gif") scroll 0px -154px no-repeat;
 .zh{
 background: url("/images/flag.gif") scroll 0px -169px no-repeat;
 }
+.lgu{
+list-style: none;
+
+}
+.lgu li{
+padding-left: 25px;
+margin-bottom: 5px;
+}
+.lgu li a{
+text-decoration: none;
+color: #0C85BA;
+}
+.lgu li a:HOVER {
+	color: #FF9900;
+}

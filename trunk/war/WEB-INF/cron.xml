@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+<cron>
+    <url>/craw_url</url>
+    <description>get url question</description>
+    <schedule>every 15 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_content</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron> 
+<cron>
+    <url>/craw_de</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_es</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_fr</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_hi</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_ja</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_ko</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_nl</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_pl</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_pt</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_ro</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_ru</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_tr</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_zh</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+</cronentries>
