@@ -21,6 +21,8 @@ public class Question {
 	@Persistent
 	private Date date;
 	@Persistent
+	private String cron;
+	@Persistent
 	private String title;
 	@Persistent
 	private String alias;
@@ -67,6 +69,54 @@ public class Question {
 	@Persistent
 	private String zhTitle;
 	@Persistent
+	private String oneTitle;
+	@Persistent
+	private String twoTitle;
+	@Persistent
+	private String threeTitle;
+	@Persistent
+	private String fourTitle;
+	@Persistent
+	private String fiveTitle;
+	@Persistent
+	private String sixTitle;
+	@Persistent
+	private String sevenTitle;
+	@Persistent
+	private String eightTitle;
+	@Persistent
+	private String nineTitle;
+	@Persistent
+	private String tenTitle;
+	@Persistent
+	private String elevenTitle;
+	@Persistent
+	private String twelveTitle;
+	@Persistent
+	private String thirteenTitle;
+	@Persistent
+	private String fourteenTitle;
+	@Persistent
+	private String fifteenTitle;
+	@Persistent
+	private String sixteenTitle;
+	@Persistent
+	private String seventeenTitle;
+	@Persistent
+	private String eighteenTitle;
+	@Persistent
+	private String nineteenTitle;
+	@Persistent
+	private String twentyTitle;
+	@Persistent
+	private String twentyOneTitle;
+	@Persistent
+	private String twentyTwoTitle;
+	@Persistent
+	private String twentyThreeTitle;
+	@Persistent
+	private String twentyFourTitle;
+	@Persistent
 	private Text esContent;
 	@Persistent
 	private Text deContent;
@@ -93,6 +143,54 @@ public class Question {
 	@Persistent
 	private Text zhContent;
 	@Persistent
+	private Text oneContent;
+	@Persistent
+	private Text twoContent;
+	@Persistent
+	private Text threeContent;
+	@Persistent
+	private Text fourContent;
+	@Persistent
+	private Text fiveContent;
+	@Persistent
+	private Text sixContent;
+	@Persistent
+	private Text sevenContent;
+	@Persistent
+	private Text eightContent;
+	@Persistent
+	private Text nineContent;
+	@Persistent
+	private Text tenContent;
+	@Persistent
+	private Text elevenContent;
+	@Persistent
+	private Text twelveContent;
+	@Persistent
+	private Text thirteenContent;
+	@Persistent
+	private Text fourteenContent;
+	@Persistent
+	private Text fifteenContent;
+	@Persistent
+	private Text sixteenContent;
+	@Persistent
+	private Text seventeenContent;
+	@Persistent
+	private Text eighteenContent;
+	@Persistent
+	private Text nineteenContent;
+	@Persistent
+	private Text twentyContent;
+	@Persistent
+	private Text twentyOneContent;
+	@Persistent
+	private Text twentyTwoContent;
+	@Persistent
+	private Text twentyThreeContent;
+	@Persistent
+	private Text twentyFourContent;
+	@Persistent
 	private Text esContentAnwer;
 	@Persistent
 	private Text deContentAnwer;
@@ -118,7 +216,487 @@ public class Question {
 	private Text ruContentAnwer;
 	@Persistent
 	private Text zhContentAnwer;
+	@Persistent
+	private Text oneContentAnwer;
+	@Persistent
+	private Text twoContentAnwer;
+	@Persistent
+	private Text threeContentAnwer;
+	@Persistent
+	private Text fourContentAnwer;
+	@Persistent
+	private Text fiveContentAnwer;
+	@Persistent
+	private Text sixContentAnwer;
+	@Persistent
+	private Text sevenContentAnwer;
+	@Persistent
+	private Text eightContentAnwer;
+	@Persistent
+	private Text nineContentAnwer;
+	@Persistent
+	private Text tenContentAnwer;
+	@Persistent
+	private Text elevenContentAnwer;
+	@Persistent
+	private Text twelveContentAnwer;
+	@Persistent
+	private Text thirteenContentAnwer;
+	@Persistent
+	private Text fourteenContentAnwer;
+	@Persistent
+	private Text fifteenContentAnwer;
+	@Persistent
+	private Text sixteenContentAnwer;
+	@Persistent
+	private Text seventeenContentAnwer;
+	@Persistent
+	private Text eighteenContentAnwer;
+	@Persistent
+	private Text nineteenContentAnwer;
+	@Persistent
+	private Text twentyContentAnwer;
+	@Persistent
+	private Text twentyOneContentAnwer;
+	@Persistent
+	private Text twentyTwoContentAnwer;
+	@Persistent
+	private Text twentyThreeContentAnwer;
+	@Persistent
+	private Text twentyFourContentAnwer;
 	
+	public String getOneTitle() {
+		return oneTitle;
+	}
+	public void setOneTitle(String oneTitle) {
+		this.oneTitle = oneTitle;
+	}
+	public String getTwoTitle() {
+		return twoTitle;
+	}
+	public void setTwoTitle(String twoTitle) {
+		this.twoTitle = twoTitle;
+	}
+	public String getThreeTitle() {
+		return threeTitle;
+	}
+	public void setThreeTitle(String threeTitle) {
+		this.threeTitle = threeTitle;
+	}
+	public String getFourTitle() {
+		return fourTitle;
+	}
+	public void setFourTitle(String fourTitle) {
+		this.fourTitle = fourTitle;
+	}
+	public String getFiveTitle() {
+		return fiveTitle;
+	}
+	public void setFiveTitle(String fiveTitle) {
+		this.fiveTitle = fiveTitle;
+	}
+	public String getSixTitle() {
+		return sixTitle;
+	}
+	public void setSixTitle(String sixTitle) {
+		this.sixTitle = sixTitle;
+	}
+	public String getSevenTitle() {
+		return sevenTitle;
+	}
+	public void setSevenTitle(String sevenTitle) {
+		this.sevenTitle = sevenTitle;
+	}
+	public String getEightTitle() {
+		return eightTitle;
+	}
+	public void setEightTitle(String eightTitle) {
+		this.eightTitle = eightTitle;
+	}
+	public String getNineTitle() {
+		return nineTitle;
+	}
+	public void setNineTitle(String nineTitle) {
+		this.nineTitle = nineTitle;
+	}
+	public String getTenTitle() {
+		return tenTitle;
+	}
+	public void setTenTitle(String tenTitle) {
+		this.tenTitle = tenTitle;
+	}
+	public String getElevenTitle() {
+		return elevenTitle;
+	}
+	public void setElevenTitle(String elevenTitle) {
+		this.elevenTitle = elevenTitle;
+	}
+	public String getTwelveTitle() {
+		return twelveTitle;
+	}
+	public void setTwelveTitle(String twelveTitle) {
+		this.twelveTitle = twelveTitle;
+	}
+	public String getThirteenTitle() {
+		return thirteenTitle;
+	}
+	public void setThirteenTitle(String thirteenTitle) {
+		this.thirteenTitle = thirteenTitle;
+	}
+	public String getFourteenTitle() {
+		return fourteenTitle;
+	}
+	public void setFourteenTitle(String fourteenTitle) {
+		this.fourteenTitle = fourteenTitle;
+	}
+	public String getFifteenTitle() {
+		return fifteenTitle;
+	}
+	public void setFifteenTitle(String fifteenTitle) {
+		this.fifteenTitle = fifteenTitle;
+	}
+	public String getSixteenTitle() {
+		return sixteenTitle;
+	}
+	public void setSixteenTitle(String sixteenTitle) {
+		this.sixteenTitle = sixteenTitle;
+	}
+	public String getSeventeenTitle() {
+		return seventeenTitle;
+	}
+	public void setSeventeenTitle(String seventeenTitle) {
+		this.seventeenTitle = seventeenTitle;
+	}
+	public String getEighteenTitle() {
+		return eighteenTitle;
+	}
+	public void setEighteenTitle(String eighteenTitle) {
+		this.eighteenTitle = eighteenTitle;
+	}
+	public String getNineteenTitle() {
+		return nineteenTitle;
+	}
+	public void setNineteenTitle(String nineteenTitle) {
+		this.nineteenTitle = nineteenTitle;
+	}
+	public String getTwentyTitle() {
+		return twentyTitle;
+	}
+	public void setTwentyTitle(String twentyTitle) {
+		this.twentyTitle = twentyTitle;
+	}
+	public String getTwentyOneTitle() {
+		return twentyOneTitle;
+	}
+	public void setTwentyOneTitle(String twentyOneTitle) {
+		this.twentyOneTitle = twentyOneTitle;
+	}
+	public String getTwentyTwoTitle() {
+		return twentyTwoTitle;
+	}
+	public void setTwentyTwoTitle(String twentyTwoTitle) {
+		this.twentyTwoTitle = twentyTwoTitle;
+	}
+	public String getTwentyThreeTitle() {
+		return twentyThreeTitle;
+	}
+	public void setTwentyThreeTitle(String twentyThreeTitle) {
+		this.twentyThreeTitle = twentyThreeTitle;
+	}
+	public String getTwentyFourTitle() {
+		return twentyFourTitle;
+	}
+	public void setTwentyFourTitle(String twentyFourTitle) {
+		this.twentyFourTitle = twentyFourTitle;
+	}
+	public Text getOneContent() {
+		return oneContent;
+	}
+	public void setOneContent(Text oneContent) {
+		this.oneContent = oneContent;
+	}
+	public Text getTwoContent() {
+		return twoContent;
+	}
+	public void setTwoContent(Text twoContent) {
+		this.twoContent = twoContent;
+	}
+	public Text getThreeContent() {
+		return threeContent;
+	}
+	public void setThreeContent(Text threeContent) {
+		this.threeContent = threeContent;
+	}
+	public Text getFourContent() {
+		return fourContent;
+	}
+	public void setFourContent(Text fourContent) {
+		this.fourContent = fourContent;
+	}
+	public Text getFiveContent() {
+		return fiveContent;
+	}
+	public void setFiveContent(Text fiveContent) {
+		this.fiveContent = fiveContent;
+	}
+	public Text getSixContent() {
+		return sixContent;
+	}
+	public void setSixContent(Text sixContent) {
+		this.sixContent = sixContent;
+	}
+	public Text getSevenContent() {
+		return sevenContent;
+	}
+	public void setSevenContent(Text sevenContent) {
+		this.sevenContent = sevenContent;
+	}
+	public Text getEightContent() {
+		return eightContent;
+	}
+	public void setEightContent(Text eightContent) {
+		this.eightContent = eightContent;
+	}
+	public Text getNineContent() {
+		return nineContent;
+	}
+	public void setNineContent(Text nineContent) {
+		this.nineContent = nineContent;
+	}
+	public Text getTenContent() {
+		return tenContent;
+	}
+	public void setTenContent(Text tenContent) {
+		this.tenContent = tenContent;
+	}
+	public Text getElevenContent() {
+		return elevenContent;
+	}
+	public void setElevenContent(Text elevenContent) {
+		this.elevenContent = elevenContent;
+	}
+	public Text getTwelveContent() {
+		return twelveContent;
+	}
+	public void setTwelveContent(Text twelveContent) {
+		this.twelveContent = twelveContent;
+	}
+	public Text getThirteenContent() {
+		return thirteenContent;
+	}
+	public void setThirteenContent(Text thirteenContent) {
+		this.thirteenContent = thirteenContent;
+	}
+	public Text getFourteenContent() {
+		return fourteenContent;
+	}
+	public void setFourteenContent(Text fourteenContent) {
+		this.fourteenContent = fourteenContent;
+	}
+	public Text getFifteenContent() {
+		return fifteenContent;
+	}
+	public void setFifteenContent(Text fifteenContent) {
+		this.fifteenContent = fifteenContent;
+	}
+	public Text getSixteenContent() {
+		return sixteenContent;
+	}
+	public void setSixteenContent(Text sixteenContent) {
+		this.sixteenContent = sixteenContent;
+	}
+	public Text getSeventeenContent() {
+		return seventeenContent;
+	}
+	public void setSeventeenContent(Text seventeenContent) {
+		this.seventeenContent = seventeenContent;
+	}
+	public Text getEighteenContent() {
+		return eighteenContent;
+	}
+	public void setEighteenContent(Text eighteenContent) {
+		this.eighteenContent = eighteenContent;
+	}
+	public Text getNineteenContent() {
+		return nineteenContent;
+	}
+	public void setNineteenContent(Text nineteenContent) {
+		this.nineteenContent = nineteenContent;
+	}
+	public Text getTwentyContent() {
+		return twentyContent;
+	}
+	public void setTwentyContent(Text twentyContent) {
+		this.twentyContent = twentyContent;
+	}
+	public Text getTwentyOneContent() {
+		return twentyOneContent;
+	}
+	public void setTwentyOneContent(Text twentyOneContent) {
+		this.twentyOneContent = twentyOneContent;
+	}
+	public Text getTwentyTwoContent() {
+		return twentyTwoContent;
+	}
+	public void setTwentyTwoContent(Text twentyTwoContent) {
+		this.twentyTwoContent = twentyTwoContent;
+	}
+	public Text getTwentyThreeContent() {
+		return twentyThreeContent;
+	}
+	public void setTwentyThreeContent(Text twentyThreeContent) {
+		this.twentyThreeContent = twentyThreeContent;
+	}
+	public Text getTwentyFourContent() {
+		return twentyFourContent;
+	}
+	public void setTwentyFourContent(Text twentyFourContent) {
+		this.twentyFourContent = twentyFourContent;
+	}
+	public Text getOneContentAnwer() {
+		return oneContentAnwer;
+	}
+	public void setOneContentAnwer(Text oneContentAnwer) {
+		this.oneContentAnwer = oneContentAnwer;
+	}
+	public Text getTwoContentAnwer() {
+		return twoContentAnwer;
+	}
+	public void setTwoContentAnwer(Text twoContentAnwer) {
+		this.twoContentAnwer = twoContentAnwer;
+	}
+	public Text getThreeContentAnwer() {
+		return threeContentAnwer;
+	}
+	public void setThreeContentAnwer(Text threeContentAnwer) {
+		this.threeContentAnwer = threeContentAnwer;
+	}
+	public Text getFourContentAnwer() {
+		return fourContentAnwer;
+	}
+	public void setFourContentAnwer(Text fourContentAnwer) {
+		this.fourContentAnwer = fourContentAnwer;
+	}
+	public Text getFiveContentAnwer() {
+		return fiveContentAnwer;
+	}
+	public void setFiveContentAnwer(Text fiveContentAnwer) {
+		this.fiveContentAnwer = fiveContentAnwer;
+	}
+	public Text getSixContentAnwer() {
+		return sixContentAnwer;
+	}
+	public void setSixContentAnwer(Text sixContentAnwer) {
+		this.sixContentAnwer = sixContentAnwer;
+	}
+	public Text getSevenContentAnwer() {
+		return sevenContentAnwer;
+	}
+	public void setSevenContentAnwer(Text sevenContentAnwer) {
+		this.sevenContentAnwer = sevenContentAnwer;
+	}
+	public Text getEightContentAnwer() {
+		return eightContentAnwer;
+	}
+	public void setEightContentAnwer(Text eightContentAnwer) {
+		this.eightContentAnwer = eightContentAnwer;
+	}
+	public Text getNineContentAnwer() {
+		return nineContentAnwer;
+	}
+	public void setNineContentAnwer(Text nineContentAnwer) {
+		this.nineContentAnwer = nineContentAnwer;
+	}
+	public Text getTenContentAnwer() {
+		return tenContentAnwer;
+	}
+	public void setTenContentAnwer(Text tenContentAnwer) {
+		this.tenContentAnwer = tenContentAnwer;
+	}
+	public Text getElevenContentAnwer() {
+		return elevenContentAnwer;
+	}
+	public void setElevenContentAnwer(Text elevenContentAnwer) {
+		this.elevenContentAnwer = elevenContentAnwer;
+	}
+	public Text getTwelveContentAnwer() {
+		return twelveContentAnwer;
+	}
+	public void setTwelveContentAnwer(Text twelveContentAnwer) {
+		this.twelveContentAnwer = twelveContentAnwer;
+	}
+	public Text getThirteenContentAnwer() {
+		return thirteenContentAnwer;
+	}
+	public void setThirteenContentAnwer(Text thirteenContentAnwer) {
+		this.thirteenContentAnwer = thirteenContentAnwer;
+	}
+	public Text getFourteenContentAnwer() {
+		return fourteenContentAnwer;
+	}
+	public void setFourteenContentAnwer(Text fourteenContentAnwer) {
+		this.fourteenContentAnwer = fourteenContentAnwer;
+	}
+	public Text getFifteenContentAnwer() {
+		return fifteenContentAnwer;
+	}
+	public void setFifteenContentAnwer(Text fifteenContentAnwer) {
+		this.fifteenContentAnwer = fifteenContentAnwer;
+	}
+	public Text getSixteenContentAnwer() {
+		return sixteenContentAnwer;
+	}
+	public void setSixteenContentAnwer(Text sixteenContentAnwer) {
+		this.sixteenContentAnwer = sixteenContentAnwer;
+	}
+	public Text getSeventeenContentAnwer() {
+		return seventeenContentAnwer;
+	}
+	public void setSeventeenContentAnwer(Text seventeenContentAnwer) {
+		this.seventeenContentAnwer = seventeenContentAnwer;
+	}
+	public Text getEighteenContentAnwer() {
+		return eighteenContentAnwer;
+	}
+	public void setEighteenContentAnwer(Text eighteenContentAnwer) {
+		this.eighteenContentAnwer = eighteenContentAnwer;
+	}
+	public Text getNineteenContentAnwer() {
+		return nineteenContentAnwer;
+	}
+	public void setNineteenContentAnwer(Text nineteenContentAnwer) {
+		this.nineteenContentAnwer = nineteenContentAnwer;
+	}
+	public Text getTwentyContentAnwer() {
+		return twentyContentAnwer;
+	}
+	public void setTwentyContentAnwer(Text twentyContentAnwer) {
+		this.twentyContentAnwer = twentyContentAnwer;
+	}
+	public Text getTwentyOneContentAnwer() {
+		return twentyOneContentAnwer;
+	}
+	public void setTwentyOneContentAnwer(Text twentyOneContentAnwer) {
+		this.twentyOneContentAnwer = twentyOneContentAnwer;
+	}
+	public Text getTwentyTwoContentAnwer() {
+		return twentyTwoContentAnwer;
+	}
+	public void setTwentyTwoContentAnwer(Text twentyTwoContentAnwer) {
+		this.twentyTwoContentAnwer = twentyTwoContentAnwer;
+	}
+	public Text getTwentyThreeContentAnwer() {
+		return twentyThreeContentAnwer;
+	}
+	public void setTwentyThreeContentAnwer(Text twentyThreeContentAnwer) {
+		this.twentyThreeContentAnwer = twentyThreeContentAnwer;
+	}
+	public Text getTwentyFourContentAnwer() {
+		return twentyFourContentAnwer;
+	}
+	public void setTwentyFourContentAnwer(Text twentyFourContentAnwer) {
+		this.twentyFourContentAnwer = twentyFourContentAnwer;
+	}
 	public String getEsTitle() {
 		return esTitle;
 	}
@@ -436,6 +1014,12 @@ public class Question {
 	}
 	public void setContent(Text content) {
 		this.content = content;
+	}
+	public String getCron() {
+		return cron;
+	}
+	public void setCron(String cron) {
+		this.cron = cron;
 	}
 	
 }

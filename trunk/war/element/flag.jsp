@@ -1,4 +1,4 @@
-
+<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <% request.setCharacterEncoding("utf-8");%>
 	<ul class='flag'>
 		<li class="en"><a href="/en" title="English">&nbsp;</a></li>
@@ -14,5 +14,5 @@
 		<li class="ro"><a href="/ro" title="română">&nbsp;</a></li>
 		<li class="tr"><a href="/tr" title="Türkçe">&nbsp;</a></li>
 		<li class="ru"><a href="/ru" title="русский">&nbsp;</a></li>
-		<li class="zh"><a href="/zh">&nbsp;</a></li>
+		<li class="zh"><a href="/zh" title="中文">&nbsp;</a></li>
 	</ul>
