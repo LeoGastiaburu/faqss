@@ -2,6 +2,8 @@ package faq.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
 import javax.jdo.PersistenceManager;
@@ -51,9 +53,10 @@ public class RssServlet extends HttpServlet {
 		List<Question> listArticles = (List<Question>) query_article.execute();
 		
 		req.setAttribute("listArticles", listArticles);
+		ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+		req.setAttribute("title", resource.getString("title"));
+		req.setAttribute("keyword", resource.getString("keyword"));
 		
-		req.setAttribute("title", "Submit free articles - Submit press release online free of charge");
-		req.setAttribute("description", "Free articles provided by yooarticles.com - your free articles directory. Find free online articles for your website, eZine or newsletters. Submit your Articles for free syndication and publication.");
 		
 		try {
 			req.getRequestDispatcher("/rss.jsp").forward(req, resp);
