@@ -6,14 +6,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 
+import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import faq.data.QnAPersistenceManager;
+import faq.model.Craw;
 import faq.model.Question;
 import faq.string.Replace;
 
@@ -26,7 +30,24 @@ public class CrawUrl {
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		Document doc;
 		try {
-			String url = "http://efreedom.com/Questions/0/";
+			Query query = psm.newQuery(Craw.class);
+			List<Craw> craw = (List<Craw>) query.execute();
+			int p = 0;
+			if(craw.size()<=0)
+			{
+				Craw page = new Craw();
+				page.setPage(0);
+				psm.makePersistent(page);
+			} else {
+				p = craw.get(0).getPage();
+				craw.get(0).setPage(craw.get(0).getPage()+1);
+				psm=JDOHelper.getPersistenceManager(craw.get(0));
+				psm.currentTransaction().begin();
+				psm.makePersistent(craw.get(0));
+				psm.currentTransaction().commit();
+			}
+			
+			String url = "http://efreedom.com/Questions/"+p;
 			
 			URL dataURL = new URL(url);
 			HttpURLConnection connection1 = (HttpURLConnection) dataURL.openConnection();
@@ -54,15 +75,21 @@ public class CrawUrl {
 			{
 				for(int i=0;i<titles.size();i++)
 				{
-					Question questionInsert = new Question();
-					
 					String title = titles.get(i).text();
-					
-					questionInsert.setTitle(title);
-					questionInsert.setAlias(Replace.replace(title));
-					questionInsert.setUrl("http://efreedom.com"+titles.get(i).attr("href"));
-					
-					psm.makePersistent(questionInsert);
+					Query query2 = psm.newQuery(Question.class);
+					query2.setFilter("alias=='"+Replace.replace(title)+"'");
+					@SuppressWarnings("unchecked")
+					List<Question> check = (List<Question>)query2.execute();
+					if(check.size()<=0)
+					{
+						Question questionInsert = new Question();
+						
+						questionInsert.setTitle(title);
+						questionInsert.setAlias(Replace.replace(title));
+						questionInsert.setUrl("http://efreedom.com"+titles.get(i).attr("href"));
+						
+						psm.makePersistent(questionInsert);
+					}
 				}
 			}
 			
