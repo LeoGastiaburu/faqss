@@ -285,6 +285,122 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>CrawDe</servlet-name>
+		<servlet-class>faq.craw.CrawDeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawDe</servlet-name>
+		<url-pattern>/craw_de</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawEs</servlet-name>
+		<servlet-class>faq.craw.CrawEsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawEs</servlet-name>
+		<url-pattern>/craw_es</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawFr</servlet-name>
+		<servlet-class>faq.craw.CrawFrServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawFr</servlet-name>
+		<url-pattern>/craw_fr</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawHi</servlet-name>
+		<servlet-class>faq.craw.CrawHiServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawHi</servlet-name>
+		<url-pattern>/craw_hi</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CrawJa</servlet-name>
+		<servlet-class>faq.craw.CrawJaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawJa</servlet-name>
+		<url-pattern>/craw_ja</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawKo</servlet-name>
+		<servlet-class>faq.craw.CrawKoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawKo</servlet-name>
+		<url-pattern>/craw_ko</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawNl</servlet-name>
+		<servlet-class>faq.craw.CrawNlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawNl</servlet-name>
+		<url-pattern>/craw_nl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawPl</servlet-name>
+		<servlet-class>faq.craw.CrawPlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawPl</servlet-name>
+		<url-pattern>/craw_pl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawPt</servlet-name>
+		<servlet-class>faq.craw.CrawPtServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawPt</servlet-name>
+		<url-pattern>/craw_pt</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawRo</servlet-name>
+		<servlet-class>faq.craw.CrawRoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawRo</servlet-name>
+		<url-pattern>/craw_ro</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawRu</servlet-name>
+		<servlet-class>faq.craw.CrawRuServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawRu</servlet-name>
+		<url-pattern>/craw_ru</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawTr</servlet-name>
+		<servlet-class>faq.craw.CrawTrServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawTr</servlet-name>
+		<url-pattern>/craw_tr</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CrawZh</servlet-name>
+		<servlet-class>faq.craw.CrawZhServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrawZh</servlet-name>
+		<url-pattern>/craw_zh</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>CrawUrl</servlet-name>
 		<servlet-class>faq.craw.CrawUrlServlet</servlet-class>
 	</servlet>
