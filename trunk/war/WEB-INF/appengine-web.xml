@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
 	<application>demoquestions</application>
-	<version>4</version>
+	<version>5</version>
 	
 	<!-- Configure java.util.logging -->
 	<system-properties>
 		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
 	</system-properties>
-	
+	<static-files>
+      
+        <include path="/css/*" expiration="5d 5h"/>
+        <include path="/robots.txt" expiration="5d 5h"/>
+        <include path="/google687c1b6706b5d4b4.html" expiration="1d"/>
+        <include path="/images/*" expiration="5d 5h"/>
+        <include path="/js/*" expiration="5d 5h"/>
+        <include path="/favicon.ico" expiration="10d 5h"/>        
+    </static-files>
 </appengine-web-app>
