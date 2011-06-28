@@ -81,48 +81,7 @@ public class CrawContent {
 					Date date = new Date();
 					
 					Text content;
-					
-					PersistenceManager psm1 = QnAPersistenceManager.get().getPersistenceManager();
-					Query query2 = psm1.newQuery(Author.class);
-					query2.setFilter("alias=='"+Replace.replace(questionAuthor)+"'");
-					@SuppressWarnings("unchecked")
-					List<Author> checkQuestionAuthor = (List<Author>) query2.execute();
-					if(checkQuestionAuthor.size() > 0)
-					{
-						checkQuestionAuthor.get(0).setCountQuestion(checkQuestionAuthor.get(0).getCountQuestion()+1);
-						psm1=JDOHelper.getPersistenceManager(checkQuestionAuthor.get(0));
-     					psm1.currentTransaction().begin();
-     					psm1.makePersistent(checkQuestionAuthor.get(0));
-     					psm1.currentTransaction().commit();
-					} else {
-						Author author = new Author();
-						author.setName(questionAuthor);
-						author.setAlias(Replace.replace(questionAuthor));
-						author.setCountQuestion(1);
-						psm1.makePersistent(author);
-					}
-					
-					PersistenceManager psm2 = QnAPersistenceManager.get().getPersistenceManager();
-					Query query3 = psm2.newQuery(Author.class);
-					query3.setFilter("alias=='"+Replace.replace(answerAuthor)+"'");
-					@SuppressWarnings("unchecked")
-					List<Author> checkAnwerAuthor = (List<Author>) query3.execute();
-					if(checkAnwerAuthor.size() > 0)
-					{
-						checkAnwerAuthor.get(0).setCountQuestion(checkAnwerAuthor.get(0).getCountQuestion()+1);
-						psm2=JDOHelper.getPersistenceManager(checkAnwerAuthor.get(0));
-     					psm2.currentTransaction().begin();
-     					psm2.makePersistent(checkAnwerAuthor.get(0));
-     					psm2.currentTransaction().commit();
-					} else {
-						Author author = new Author();
-						author.setName(answerAuthor);
-						author.setAlias(Replace.replace(answerAuthor));
-						author.setCountAnswer(1);
-						psm2.makePersistent(author);
-					}
-					
-		            ArrayList<String> term = new ArrayList<String>();
+					ArrayList<String> term = new ArrayList<String>();
 		            
 		            if(tags.size() > 0)
 					{
@@ -133,7 +92,7 @@ public class CrawContent {
 				             }
 						}
 					}
-		            try {
+					try {
 		            	String message = doc.select("#fullQuestionBody").select("p").text().replaceAll("\\<.*?\\>", "");
 						
 						URL url = new URL("http://o2tv.vn/tag.php");
@@ -165,7 +124,6 @@ public class CrawContent {
 			            {
 			            	for(int i = 0;i<nou.size();i++)
 			            	{
-			            		System.out.println(nou.get(i).text().toLowerCase());
 					            if(!term.contains(nou.get(i).text().toLowerCase())) {
 					            	term.add(nou.get(i).text().toLowerCase());
 					            }
@@ -175,7 +133,6 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					int size = term.size();
-					System.out.print(size);
 					if(size > 30)
 					{
 						size = 30;
@@ -218,6 +175,386 @@ public class CrawContent {
 							}
 						}
 					}
+					
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "de.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setDeTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setDeContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setDeContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "es.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setEsTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setEsContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setEsContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "fr.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setFrTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setFrContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setFrContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "hi.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setHiTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setHiContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setHiContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ja.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+						System.out.print(doc);
+						listQuestion.get(j).setJaTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setJaContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setJaContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ko.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setKoTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setKoContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setKoContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "nl.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setNlTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setNlContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setNlContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pl.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setPlTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setPlContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setPlContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pt.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setPtTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setPtContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setPtContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ro.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setRoTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setRoContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setRoContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ru.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setRuTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setRuContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setRuContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "tr.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+
+						listQuestion.get(j).setTrTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setTrContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setTrContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					try {
+						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "zh.efreedom.com"));
+						connection1 = (HttpURLConnection) dataURL.openConnection();
+						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
+						
+						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
+						content1 = "";
+						while(1==1)
+						{
+							String str = reader1.readLine();
+							if(str==null) break;
+							content1+=str;
+							
+						}
+						doc = Jsoup.parse(content1);
+						
+						listQuestion.get(j).setZhTitle(doc.select("#questionTitle").html());
+						content = new Text(doc.select("#fullQuestionBody").html());
+						listQuestion.get(j).setZhContent(content);
+						content = new Text(doc.select("#fullAnswerBody").html());
+						listQuestion.get(j).setZhContentAnwer(content);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					
+					PersistenceManager psm1 = QnAPersistenceManager.get().getPersistenceManager();
+					Query query2 = psm1.newQuery(Author.class);
+					query2.setFilter("alias=='"+Replace.replace(questionAuthor)+"'");
+					@SuppressWarnings("unchecked")
+					List<Author> checkQuestionAuthor = (List<Author>) query2.execute();
+					if(checkQuestionAuthor.size() > 0)
+					{
+						checkQuestionAuthor.get(0).setCountQuestion(checkQuestionAuthor.get(0).getCountQuestion()+1);
+						psm1=JDOHelper.getPersistenceManager(checkQuestionAuthor.get(0));
+     					psm1.currentTransaction().begin();
+     					psm1.makePersistent(checkQuestionAuthor.get(0));
+     					psm1.currentTransaction().commit();
+					} else {
+						Author author = new Author();
+						author.setName(questionAuthor);
+						author.setAlias(Replace.replace(questionAuthor));
+						author.setCountQuestion(1);
+						psm1.makePersistent(author);
+					}
+					
+					PersistenceManager psm2 = QnAPersistenceManager.get().getPersistenceManager();
+					Query query3 = psm2.newQuery(Author.class);
+					query3.setFilter("alias=='"+Replace.replace(answerAuthor)+"'");
+					@SuppressWarnings("unchecked")
+					List<Author> checkAnwerAuthor = (List<Author>) query3.execute();
+					if(checkAnwerAuthor.size() > 0)
+					{
+						checkAnwerAuthor.get(0).setCountQuestion(checkAnwerAuthor.get(0).getCountQuestion()+1);
+						psm2=JDOHelper.getPersistenceManager(checkAnwerAuthor.get(0));
+     					psm2.currentTransaction().begin();
+     					psm2.makePersistent(checkAnwerAuthor.get(0));
+     					psm2.currentTransaction().commit();
+					} else {
+						Author author = new Author();
+						author.setName(answerAuthor);
+						author.setAlias(Replace.replace(answerAuthor));
+						author.setCountAnswer(1);
+						psm2.makePersistent(author);
+					}
+		            
 					
 					listQuestion.get(j).setAuthor(questionAuthor);
 					listQuestion.get(j).setAliasAuthor(Replace.replace(questionAuthor));

@@ -61,7 +61,7 @@ public class ListAuthorServlet extends HttpServlet {
 		
 		int re_page = Integer.parseInt(page);
 		req.setAttribute("page", page);
-		req.setAttribute("url", language+"/list-users");
+		req.setAttribute("url", language+"/list-authors");
 		
 		Query query = psm.newQuery(Author.class);
 		query.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
