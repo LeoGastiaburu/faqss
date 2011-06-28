@@ -409,6 +409,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/craw_url</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>UpdateTag</servlet-name>
+		<servlet-class>faq.craw.UpdateTagServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateTag</servlet-name>
+		<url-pattern>/update_tag</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateQuestion</servlet-name>
+		<servlet-class>faq.craw.UpdateQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateQuestion</servlet-name>
+		<url-pattern>/update_question</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>

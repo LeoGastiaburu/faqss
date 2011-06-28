@@ -12,7 +12,7 @@
 PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 Query query = psm.newQuery(Question.class);
 query.setFilter("date != null");
-query.setOrdering("date desc");
+query.setOrdering("date asc");
 query.setRange(0,10);
 List<Question> listQuestion = (List<Question>)query.execute();
 String language = request.getParameter("language");

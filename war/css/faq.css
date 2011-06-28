@@ -381,7 +381,8 @@ list-style: none;
 }
 .lgu li{
 padding-left: 25px;
-margin-bottom: 5px;
+margin-bottom: 10px;
+height: 12px;
 }
 .lgu li a{
 text-decoration: none;
