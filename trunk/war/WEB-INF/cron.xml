@@ -10,68 +10,14 @@
     <description>get content question</description>
     <schedule>every 1 minutes</schedule>
 </cron> 
+
 <cron>
-    <url>/craw_de</url>
+    <url>/update_question</url>
     <description>get content question</description>
     <schedule>every 1 minutes</schedule>
 </cron>
 <cron>
-    <url>/craw_es</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_fr</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_hi</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_ja</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_ko</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_nl</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_pl</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_pt</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_ro</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_ru</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_tr</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_zh</url>
+    <url>/update_tag</url>
     <description>get content question</description>
     <schedule>every 1 minutes</schedule>
 </cron>
