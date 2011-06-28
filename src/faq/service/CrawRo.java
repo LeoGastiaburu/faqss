@@ -37,6 +37,7 @@ public class CrawRo {
 			
 			Query query = psm.newQuery(Question.class);
 			query.setFilter("roTitle == null");
+			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
 			List<Question> listQuestion = (List<Question>) query.execute();
@@ -57,7 +58,8 @@ public class CrawRo {
 						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ro.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
-
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
 						
 						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
 						content1 = "";

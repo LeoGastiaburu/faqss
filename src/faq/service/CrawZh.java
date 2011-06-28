@@ -37,6 +37,7 @@ public class CrawZh {
 			
 			Query query = psm.newQuery(Question.class);
 			query.setFilter("zhTitle == null");
+			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
 			List<Question> listQuestion = (List<Question>) query.execute();
@@ -45,7 +46,7 @@ public class CrawZh {
 			{
 				for(int j=0;j<listQuestion.size();j++)
 				{
-					URL dataURL = new URL(listQuestion.get(j).getUrl());
+					URL dataURL = new URL("http://efreedom.com/Question/1-6166/Good-PHP-IDE-Preferably-Free-Cheap");
 					HttpURLConnection connection1;
 					
 					BufferedReader reader1;
@@ -57,7 +58,8 @@ public class CrawZh {
 						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "zh.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
-
+						connection1.setReadTimeout(500000);
+						connection1.setConnectTimeout(1000000);
 						
 						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
 						content1 = "";
@@ -69,7 +71,7 @@ public class CrawZh {
 							
 						}
 						doc = Jsoup.parse(content1);
-
+						
 						listQuestion.get(j).setZhTitle(doc.select("#questionTitle").html());
 						content = new Text(doc.select("#fullQuestionBody").html());
 						listQuestion.get(j).setZhContent(content);
