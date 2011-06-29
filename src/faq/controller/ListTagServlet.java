@@ -63,6 +63,7 @@ public class ListTagServlet extends HttpServlet {
 		req.setAttribute("url", language+"/list-tags");
 		
 		Query query = psm.newQuery(Tags.class);
+		query.setOrdering("date asc");
 		query.setRange((limit*(re_page-1)), (limit*(re_page-1)+limit));
 		@SuppressWarnings("unchecked")
 		List<Tags> tags = (List<Tags>) query.execute();
