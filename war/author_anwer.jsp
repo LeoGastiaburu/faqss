@@ -94,7 +94,10 @@ String description = title+"."+resource.getString("description");
 			</div>
 			<div class="br">
 				
-				<jsp:include page="element/top_right.jsp"></jsp:include>
+				<jsp:include page="element/language.jsp">
+					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
+					<jsp:param name="url" value="author-answer"/>
+				</jsp:include>
 				<jsp:include page="element/question.jsp">
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="author" value="<%=author %>"/>
