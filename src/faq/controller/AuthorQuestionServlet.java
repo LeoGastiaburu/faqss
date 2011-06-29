@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.RunLanguage;
 import faq.model.Question;
 
 @SuppressWarnings("serial")
@@ -38,7 +39,7 @@ public class AuthorQuestionServlet extends HttpServlet {
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
 		st.nextToken();
-		
+		language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		String title_url = st.nextToken();

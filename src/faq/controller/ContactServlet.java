@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import faq.language.RunLanguage;
+
 @SuppressWarnings("serial")
 public class ContactServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -31,7 +33,7 @@ public class ContactServlet extends HttpServlet {
         }
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
-		
+        language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		req.setAttribute("seo_title", "Contact us");

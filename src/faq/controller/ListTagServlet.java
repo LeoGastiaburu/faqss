@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.RunLanguage;
 import faq.model.Tags;
 
 @SuppressWarnings("serial")
@@ -40,7 +41,7 @@ public class ListTagServlet extends HttpServlet {
         }
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
-		
+        language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		if(count == 3)

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.RunLanguage;
 import faq.model.Question;
 
 
@@ -37,7 +38,7 @@ public class SitemapServlet extends HttpServlet {
         }
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
-		
+        language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		Query query = psm.newQuery(Question.class);

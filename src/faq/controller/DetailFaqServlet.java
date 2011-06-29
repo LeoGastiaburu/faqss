@@ -3,6 +3,7 @@ package faq.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -54,7 +55,7 @@ public class DetailFaqServlet extends HttpServlet {
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
 		st.nextToken();
-		
+		language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		String title_url = st.nextToken();
@@ -92,10 +93,21 @@ public class DetailFaqServlet extends HttpServlet {
 			
 			Query query_question = psm.newQuery(Question.class);
 			query_question.setFilter("aliasAuthor == '"+faq.get(0).getAliasAuthor()+"' && alias != '"+faq.get(0).getAlias()+"'");
-			query_question.setRange(0,10);
+			query_question.setRange(0,30);
 			@SuppressWarnings("unchecked")
 			List<Question> listTagQuestion = (List<Question>) query_question.execute();
 			req.setAttribute("listTagQuestion", listTagQuestion);
+			
+			Query query2 = psm.newQuery(Question.class);
+			query2.setFilter("lastUpdateDate");
+			query2.setFilter("lastUpdateDate < date");
+			query2.declareParameters("java.util.Date date");
+			query2.setOrdering("lastUpdateDate desc");
+			query2.setRange(0, 15);
+			Date date = faq.get(0).getLastUpdateDate(); 
+			@SuppressWarnings("unchecked")
+			List<Question> list=  (List<Question>)query2.execute(date);
+			req.setAttribute("list", list);
 			
 			Cache cache=null;
 	        try {

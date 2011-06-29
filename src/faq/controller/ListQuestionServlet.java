@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.RunLanguage;
 import faq.model.Question;
 
 @SuppressWarnings("serial")
@@ -36,7 +37,7 @@ public class ListQuestionServlet extends HttpServlet {
         }
 		// skip one token /sites/gooogle.com (remove sites)
         String language = st.nextToken();
-		
+        language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		
 		if(count == 3)
