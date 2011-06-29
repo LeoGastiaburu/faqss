@@ -131,7 +131,10 @@ String keywords = author+","+resource.getString("keyword");
 			</div>
 			<div class="br">
 				
-				<jsp:include page="element/top_right.jsp"></jsp:include>
+				<jsp:include page="element/language.jsp">
+					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
+					<jsp:param name="url" value="author"/>
+				</jsp:include>
 				<jsp:include page="element/tag.jsp">
 					<jsp:param name="language" value="<%=language %>"/>
 				</jsp:include>

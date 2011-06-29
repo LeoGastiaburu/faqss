@@ -97,7 +97,10 @@ String keywords = tag+","+resource.getString("keyword");
 			</div>
 			<div class="br">
 				
-				<jsp:include page="element/top_right.jsp"></jsp:include>
+				<jsp:include page="element/language.jsp">
+					<jsp:param name="alias" value="<%=Replace.tag(tag) %>"/>
+					<jsp:param name="url" value="tag"/>
+				</jsp:include>
 				<jsp:include page="element/other_tag.jsp">
 					<jsp:param name="start" value="<%=start %>"/>
 					<jsp:param name="language" value="<%=language %>"/>
