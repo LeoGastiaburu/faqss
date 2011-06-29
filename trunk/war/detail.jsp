@@ -99,7 +99,7 @@ String keywords = (String) request.getAttribute("keyword");
 				if(listTagQuestion.size()>0)
 				{
 				%>
-				<h3><%=resource.getString("other_tag") %></h3>
+				<h3><%=resource.getString("list_question") %></h3>
 				<ul class="vr">
 					<%
 					ArrayList<String> check = new ArrayList<String>();
