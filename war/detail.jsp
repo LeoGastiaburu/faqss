@@ -22,6 +22,7 @@ ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(langua
 Question question = (Question)request.getAttribute("faq");
 List<Tags> listTags = (List<Tags>)request.getAttribute("listTags");
 List<Question> listTagQuestion = (List<Question>)request.getAttribute("listTagQuestion");
+List<Question> list = (List<Question>)request.getAttribute("list");
 String title = (String) request.getAttribute("title");
 String description = (String) request.getAttribute("description");
 String keywords = (String) request.getAttribute("keyword");
@@ -71,6 +72,32 @@ String keywords = (String) request.getAttribute("keyword");
 				<div class="clear"></div>
 				<br/>
 				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=APP_ID&amp;xfbml=1"></script><fb:comments href="http://www.yooarticles.com/article/<%=question.getAlias() %>" width="728"></fb:comments>
+				
+				<ul class="oln">
+					<%
+					if(list.size() > 0)
+					{
+						for(int i=0;i<list.size();i++)
+						{
+					%>
+						<li>
+							<h1><a href="/<%=language %>/question/<%=list.get(i).getAlias() %>" title="<%=Replace.replace(RunLanguage.title(list.get(i),language)) %>"><%=RunLanguage.title(list.get(i),language) %></a></h1>
+							<p>
+								<%
+									String des = RunLanguage.question(list.get(i),language).replaceAll("\\<.*?\\>", ""); 
+									if(des.length() > 200)
+									{
+										des = des.substring(0,200)+" ...";
+									}
+									out.println(des);
+								%>
+							</p>
+						</li>
+					<%
+						}
+					}
+					%>
+				</ul>	
 			</div>
 			<div class="br">
 				

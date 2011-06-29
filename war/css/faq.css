@@ -43,7 +43,7 @@ float: left;
 .menu{
 list-style: none;
 float: right;
-margin-top: 30px;
+margin-top: 22px;
 }
 .menu li{
 float: left;
@@ -148,13 +148,13 @@ list-style: none;
 .vr li{
 padding: 5px 0px 5px 0px;
 }
-.vr a{
+.vr a,.oln a{
 color: #0077CC;
 text-decoration: none;
 font-weight: bold;
 font-size: 11px;
 }
-.vr a:HOVER{
+.vr a:HOVER,.oln a:HOVER{
 color: #FF9900;
 }
 .ft{
@@ -390,4 +390,10 @@ color: #0C85BA;
 }
 .lgu li a:HOVER {
 	color: #FF9900;
+}
+.oln{
+margin: 10px 20px;
+}
+.oln li{
+padding: 5px;
 }

@@ -7,7 +7,7 @@ import faq.model.Question;
 public class RunLanguage {
 	public static Hashtable<String, String> string = new Hashtable<String, String>();
 	public static String title(Question question,String language) {		
-		string.put("en", question.getTitle());
+		string.put("en", (question.getTitle() != null)?question.getTitle():"");
 		string.put("es", (question.getEsTitle()!=null)?question.getEsTitle():"");
 		string.put("de", (question.getDeTitle()!=null)?question.getDeTitle():"");
 		string.put("fr", (question.getFrTitle()!=null)?question.getFrTitle():"");
@@ -24,7 +24,7 @@ public class RunLanguage {
 	    return (string.get(language) != null)?string.get(language):string.get("en");
     }
 	public static String question(Question question,String language) {
-		string.put("en", question.getContent().getValue());
+		string.put("en", (question.getContent() != null)?question.getContent().getValue():"");
 		string.put("es", (question.getEsContent()!=null)?question.getEsContent().getValue():"");
 		string.put("de", (question.getDeContent()!=null)?question.getDeContent().getValue():"");
 		string.put("fr", (question.getFrContent()!=null)?question.getFrContent().getValue():"");
@@ -41,7 +41,7 @@ public class RunLanguage {
 	    return (string.get(language) != null)?string.get(language):string.get("en");
     }
 	public static String anwer(Question question,String language) {
-		string.put("en", question.getContentAnwer().getValue());
+		string.put("en", (question.getContentAnwer() != null)?question.getContentAnwer().getValue():"");
 		string.put("es", (question.getEsContentAnwer()!=null)?question.getEsContentAnwer().getValue():"");
 		string.put("de", (question.getDeContentAnwer()!=null)?question.getDeContentAnwer().getValue():"");
 		string.put("fr", (question.getFrContentAnwer()!=null)?question.getFrContentAnwer().getValue():"");
@@ -55,6 +55,23 @@ public class RunLanguage {
 		string.put("tr", (question.getTrContentAnwer()!=null)?question.getTrContentAnwer().getValue():"");
 		string.put("ru", (question.getRuContentAnwer()!=null)?question.getRuContentAnwer().getValue():"");
 		string.put("zh", (question.getZhContentAnwer()!=null)?question.getZhContentAnwer().getValue():"");
+	    return (string.get(language) != null)?string.get(language):string.get("en");
+    }
+	public static String checkLanguage(String language) {
+		string.put("en", "en");
+		string.put("es", "es");
+		string.put("de", "de");
+		string.put("fr", "fr");
+		string.put("hi", "hi");
+		string.put("ja", "ja");
+		string.put("ko", "ko");
+		string.put("nl", "nl");
+		string.put("pl", "pl");
+		string.put("pt", "pt");
+		string.put("ro", "ro");
+		string.put("tr", "tr");
+		string.put("ru", "ru");
+		string.put("zh", "zh");
 	    return (string.get(language) != null)?string.get(language):string.get("en");
     }
 }
