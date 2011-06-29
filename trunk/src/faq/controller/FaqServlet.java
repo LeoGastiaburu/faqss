@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import faq.data.QnAPersistenceManager;
+import faq.language.RunLanguage;
 import faq.language.Seo;
 import faq.model.Question;
 
@@ -32,7 +33,7 @@ public class FaqServlet extends HttpServlet {
 		{
 			language = st.nextToken();
 		}
-		
+		language = RunLanguage.checkLanguage(language);
 		req.setAttribute("language", language);
 		ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
