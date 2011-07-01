@@ -18,7 +18,7 @@ ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(langua
 		<meta name="Keywords" content="<%=request.getParameter("keywords").replaceAll("[\"\']+","") %>"/>	
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta id="metaLanguage" http-equiv="Content-Language" content="<%=language %>" />
-		<link rel='stylesheet' type='text/css' href='/css/faq.css' />
+		<link rel='stylesheet' type='text/css' href='/css/re_faq.css' />
 		
 	</head>
 	<body>
