@@ -36,4 +36,19 @@
     <description>get content question</description>
     <schedule>every 1 minutes</schedule>
 </cron>
+<cron>
+    <url>/craw_zh</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_es</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
+<cron>
+    <url>/craw_pt</url>
+    <description>get content question</description>
+    <schedule>every 1 minutes</schedule>
+</cron>
 </cronentries>
