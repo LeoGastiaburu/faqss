@@ -36,7 +36,7 @@ public class CrawEs {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("esTitle == null");
+			query.setFilter("esTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
