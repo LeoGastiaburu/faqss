@@ -36,7 +36,7 @@ public class CrawZh {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("zhTitle == null");
+			query.setFilter("zhTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
