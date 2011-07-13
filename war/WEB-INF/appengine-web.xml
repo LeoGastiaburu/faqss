@@ -10,6 +10,7 @@
 	<static-files>
       
         <include path="/css/*" expiration="10d"/>
+        <include path="/js/*" expiration="10d"/>
         <include path="/robots.txt" expiration="10d"/>
         <include path="/google687c1b6706b5d4b4.html" expiration="10d"/>
         <include path="/images/*" expiration="10d"/>
