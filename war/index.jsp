@@ -26,8 +26,10 @@ String keywords = (String) request.getAttribute("keyword");
 	<jsp:param name="keywords" value="<%=keywords %>"/>
 	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
+<center><jsp:include page="element/adv3.jsp"></jsp:include></center>
 		<div class="bd">
 			<div class="bl">
+				<jsp:include page="element/adv1.jsp"></jsp:include>
 				<h2><%=resource.getString("lastest")%></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
@@ -76,7 +78,8 @@ String keywords = (String) request.getAttribute("keyword");
 				</ul>
 			</div>
 			<div class="br">
-				
+				<jsp:include page="element/adv2.jsp"></jsp:include>
+				<br/><br/>
 				<jsp:include page="element/top_right.jsp"></jsp:include>
 				<jsp:include page="element/tag.jsp">
 					<jsp:param name="language" value="<%=language %>"/>
