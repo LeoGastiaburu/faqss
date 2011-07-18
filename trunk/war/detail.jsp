@@ -42,8 +42,9 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
-				<div class="right"><jsp:include page="element/adv2.jsp"></jsp:include></div>
+				<div class="left"><jsp:include page="element/adv4.jsp"></jsp:include></div>
 				<%=RunLanguage.question(question,language) %>
+				<div class="clear"></div>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
 				<hr size="1"/>
