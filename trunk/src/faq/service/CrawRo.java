@@ -36,7 +36,7 @@ public class CrawRo {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("roTitle == null");
+			query.setFilter("roTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")

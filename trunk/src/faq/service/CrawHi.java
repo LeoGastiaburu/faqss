@@ -36,7 +36,7 @@ public class CrawHi {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("hiTitle == null");
+			query.setFilter("hiTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")

@@ -36,7 +36,7 @@ public class CrawJa {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("jaTitle == null");
+			query.setFilter("jaTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
