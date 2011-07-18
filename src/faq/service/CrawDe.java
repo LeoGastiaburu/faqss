@@ -36,7 +36,7 @@ public class CrawDe {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("deTitle == null");
+			query.setFilter("deTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")

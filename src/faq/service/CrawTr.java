@@ -36,7 +36,7 @@ public class CrawTr {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("trTitle == null");
+			query.setFilter("trTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")

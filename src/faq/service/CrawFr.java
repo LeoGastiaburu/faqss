@@ -36,7 +36,7 @@ public class CrawFr {
 		try {
 			
 			Query query = psm.newQuery(Question.class);
-			query.setFilter("frTitle == null");
+			query.setFilter("frTitle == ''");
 			query.setOrdering("lastUpdateDate desc");
 			query.setRange(0,1);
 			@SuppressWarnings("unchecked")
