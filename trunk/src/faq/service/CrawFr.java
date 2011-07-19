@@ -4,9 +4,12 @@ package faq.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import java.nio.charset.Charset;
 
@@ -46,41 +49,122 @@ public class CrawFr {
 			{
 				for(int j=0;j<listQuestion.size();j++)
 				{
-					URL dataURL = new URL(listQuestion.get(j).getUrl());
-					HttpURLConnection connection1;
+					String appId = "BB377A70C091DCD1C1F2C7EE5EE7D5A85F59D43C";
+					String from = "en";
+					String to = "fr";
 					
-					BufferedReader reader1;
-					String content1 = "";
-					
-					
-					Text content;
-					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "fr.efreedom.com"));
-						connection1 = (HttpURLConnection) dataURL.openConnection();
-						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
-						connection1.setReadTimeout(500000);
-						connection1.setConnectTimeout(1000000);
-						
-						reader1 = new BufferedReader(new InputStreamReader(connection1.getInputStream(), Charset.forName("utf-8")));
-						content1 = "";
-						while(1==1)
-						{
-							String str = reader1.readLine();
-							if(str==null) break;
-							content1+=str;
-							
-						}
-						doc = Jsoup.parse(content1);
+					String str = listQuestion.get(j).getTitle();
+					str = java.net.URLEncoder.encode(str.toString(), "ISO-8859-1");
 
-						listQuestion.get(j).setFrTitle(doc.select("#questionTitle").html());
-						content = new Text(doc.select("#fullQuestionBody").html());
-						listQuestion.get(j).setFrContent(content);
-						content = new Text(doc.select("#fullAnswerBody").html());
-						listQuestion.get(j).setFrContentAnwer(content);
-					} catch (Exception e) {
-						// TODO: handle exception
-					}
+					URL dataURL = new URL("http://api.microsofttranslator.com/v2/Http.svc/Translate?appId="+appId+"&text="+str+"&from="+from+"&to="+to);
+					HttpURLConnection connection = (HttpURLConnection) dataURL.openConnection();
 					
+					BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("utf-8")));
+					String content = "";
+					str = "";
+					while(1==1)
+					{
+						str = reader.readLine();
+						if(str==null) break;
+						content+=str;
+						
+					}
+					doc = Jsoup.parse(content);
+					
+					String title = doc.select("string").text();
+					
+					listQuestion.get(j).setFrTitle(title);
+					
+			        str = java.net.URLEncoder.encode(listQuestion.get(j).getContent().getValue().replaceAll("<pre class=\"prettyprint\">", "/////").replaceAll("<\\/pre>", "//////"), "ISO-8859-1");
+					str = str.replaceAll("[<]+", "%3c");
+					
+					str = URLEncoder.encode(str.toString(), "ISO-8859-1");
+
+			        try {
+			            URL url = new URL("http://www.microsofttranslator.com/m/default.aspx");
+			            connection = (HttpURLConnection) url.openConnection();
+			            connection.setDoOutput(true);
+			            connection.setRequestMethod("POST");
+			            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded "); 
+			            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			            writer.write("SourceTextbox="+str);
+			            writer.write("&ddFromLanguage=8");
+			            writer.write("&ddToLanguage=11");
+			            writer.close();
+			    
+			            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			            	 reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("utf-8")));
+			            	 content = "";
+			            	 str = "";
+			            	 while(1==1)
+			     			 {
+			     				 str = reader.readLine();
+			     				 if(str==null) break;
+			     				 content+=str;   				
+			     			 }
+			            	 doc = Jsoup.parse(content);
+
+			            	 int begin = doc.html().indexOf("<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />");
+			            	 begin += "<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />".length();
+			            	 int end = doc.html().indexOf("Please select your source language");
+			            	 
+			            	 str = doc.html().substring(begin, end);
+			            	 
+			            	 listQuestion.get(j).setFrContent(new Text(str.replaceAll("(\\<div.*?\\>)|(\\<\\/div.*?\\>)", "").replaceAll("(\\<span.*?\\>)", "<p>").replaceAll("(\\</span.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("[<]+[(br)]+[ ]+[/]+[>]+","").replaceAll("[\\/]{6}", "</pre>").replaceAll("[\\/]{5}", "<pre class=\"prettyprint\">")));
+			            } else {
+			                // Server returned HTTP error code.
+			            }
+			        } catch (MalformedURLException e) {
+			            // ...
+			        } catch (IOException e) {
+			            // ...
+			        }
+			        
+			        str = java.net.URLEncoder.encode(listQuestion.get(j).getContentAnwer().getValue().replaceAll("<pre class=\"prettyprint\">", "/////").replaceAll("<\\/pre>", "//////"), "ISO-8859-1");
+					
+					str = str.replaceAll("[<]+", "%3c");
+					str = URLEncoder.encode(str.toString(), "ISO-8859-1");
+
+			        try {
+			            URL url = new URL("http://www.microsofttranslator.com/m/default.aspx");
+			            connection = (HttpURLConnection) url.openConnection();
+			            connection.setDoOutput(true);
+			            connection.setRequestMethod("POST");
+			            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded "); 
+			            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			            writer.write("SourceTextbox="+str);
+			            writer.write("&ddFromLanguage=8");
+			            writer.write("&ddToLanguage=11");
+			            writer.close();
+			    
+			            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			            	 reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("utf-8")));
+			            	 content = "";
+			            	 str = "";
+			            	 while(1==1)
+			     			 {
+			     				 str = reader.readLine();
+			     				 if(str==null) break;
+			     				 content+=str;   				
+			     			 }
+			            	 doc = Jsoup.parse(content);
+
+			            	 int begin = doc.html().indexOf("<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />");
+			            	 begin += "<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />".length();
+			            	 int end = doc.html().indexOf("Please select your source language");
+			            	 
+			            	 str = doc.html().substring(begin, end);
+			            	 System.out.println(str.replaceAll("(\\<span.*?\\>)|(\\<\\/span.*?\\>)", "").replaceAll("(\\<div.*?\\>)", "<p>").replaceAll("(\\</div.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("^[<]+[(br)]+[ ]+[/]+[>]+",""));
+			            	 listQuestion.get(j).setFrContentAnwer(new Text(str.replaceAll("(\\<div.*?\\>)|(\\<\\/div.*?\\>)", "").replaceAll("(\\<span.*?\\>)", "<p>").replaceAll("(\\</span.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("[<]+[(br)]+[ ]+[/]+[>]+","").replaceAll("[\\/]{6}", "</pre>").replaceAll("[\\/]{5}", "<pre class=\"prettyprint\">")));
+			            } else {
+			                // Server returned HTTP error code.
+			            }
+			        } catch (MalformedURLException e) {
+			            // ...
+			        } catch (IOException e) {
+			            // ...
+			        }
+			        
 					psm=JDOHelper.getPersistenceManager(listQuestion.get(j));
  					psm.currentTransaction().begin();
  					psm.makePersistent(listQuestion.get(j));

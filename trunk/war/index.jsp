@@ -90,7 +90,9 @@ String keywords = (String) request.getAttribute("keyword");
 				<jsp:include page="element/random.jsp">
 					<jsp:param name="language" value="<%=language %>"/>
 				</jsp:include>
-
+				<jsp:include page="element/new.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
 			</div>
 			<div class="clear"></div>
 		</div>
