@@ -75,7 +75,7 @@ String keywords = (String) request.getAttribute("keyword");
 				</div>
 				<div class="clear"></div>
 				<br/>
-				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=APP_ID&amp;xfbml=1"></script><fb:comments href="http://www.yooarticles.com/article/<%=question.getAlias() %>" width="728"></fb:comments>
+				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=APP_ID&amp;xfbml=1"></script><fb:comments href="http://www.gardenquestions.com/<%=language %>/question/<%=question.getAlias()%>" width="728"></fb:comments>
 				
 				<ul class="oln">
 					<%
@@ -144,6 +144,9 @@ String keywords = (String) request.getAttribute("keyword");
 				<%
 				}
 				%>
+				<jsp:include page="element/new.jsp">
+					<jsp:param name="language" value="<%=language %>"/>
+				</jsp:include>
 			</div>
 			<div class="clear"></div>
 		</div>
