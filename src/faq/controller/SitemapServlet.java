@@ -4,6 +4,7 @@ package faq.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -17,11 +18,23 @@ import faq.language.RunLanguage;
 import faq.model.Question;
 
 
+@SuppressWarnings("serial")
 public class SitemapServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 	
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
+		
+		String url = req.getRequestURL().toString();
+		if(Pattern.matches("^http://demoquestions.appspot.com[\\w\\W]*", url))
+		{
+			url = url.replaceAll("http://demoquestions.appspot.com", "http://www.gardenquestions.com");
+			
+			resp.setStatus(301);
+			resp.setHeader( "Location", url );
+			resp.setHeader( "Connection", "close" );
+			
+		}
 		
 		String path = ((HttpServletRequest)req).getRequestURI();
 		

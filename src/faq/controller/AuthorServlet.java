@@ -3,6 +3,7 @@ package faq.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -24,6 +25,17 @@ public class AuthorServlet extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 		resp.getWriter().println("Hello, world");
 		String path = ((HttpServletRequest)req).getRequestURI();
+		
+		String url = req.getRequestURL().toString();
+		if(Pattern.matches("^http://demoquestions.appspot.com[\\w\\W]*", url))
+		{
+			url = url.replaceAll("http://demoquestions.appspot.com", "http://www.gardenquestions.com");
+			
+			resp.setStatus(301);
+			resp.setHeader( "Location", url );
+			resp.setHeader( "Connection", "close" );
+			
+		}
 		
 		StringTokenizer st = new StringTokenizer( path,"/");
         int count = st.countTokens(); 
