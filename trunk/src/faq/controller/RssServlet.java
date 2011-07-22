@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -26,6 +27,17 @@ public class RssServlet extends HttpServlet {
 		resp.setHeader("Vary","Accept-Encoding");
 		resp.setCharacterEncoding("utf-8");
 		resp.getWriter().println("Hello, world");
+		
+		String url = req.getRequestURL().toString();
+		if(Pattern.matches("^http://demoquestions.appspot.com[\\w\\W]*", url))
+		{
+			url = url.replaceAll("http://demoquestions.appspot.com", "http://www.gardenquestions.com");
+			
+			resp.setStatus(301);
+			resp.setHeader( "Location", url );
+			resp.setHeader( "Connection", "close" );
+			
+		}
 		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		
