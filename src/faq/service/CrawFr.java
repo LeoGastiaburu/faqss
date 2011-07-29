@@ -75,21 +75,17 @@ public class CrawFr {
 					
 					listQuestion.get(j).setFrTitle(title);
 					
-			        str = java.net.URLEncoder.encode(listQuestion.get(j).getContent().getValue().replaceAll("<pre class=\"prettyprint\">", "/////").replaceAll("<\\/pre>", "//////"), "ISO-8859-1");
-					str = str.replaceAll("[<]+", "%3c");
-					
-					str = URLEncoder.encode(str.toString(), "ISO-8859-1");
+			        str = listQuestion.get(j).getContent().getValue();
 
 			        try {
-			            URL url = new URL("http://www.microsofttranslator.com/m/default.aspx");
+			            URL url = new URL("http://o2tv.vn/translate.php");
 			            connection = (HttpURLConnection) url.openConnection();
 			            connection.setDoOutput(true);
 			            connection.setRequestMethod("POST");
 			            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded "); 
 			            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-			            writer.write("SourceTextbox="+str);
-			            writer.write("&ddFromLanguage=8");
-			            writer.write("&ddToLanguage=11");
+			            writer.write("name="+str);
+			            writer.write("&language=fr");
 			            writer.close();
 			    
 			            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -103,14 +99,8 @@ public class CrawFr {
 			     				 content+=str;   				
 			     			 }
 			            	 doc = Jsoup.parse(content);
-
-			            	 int begin = doc.html().indexOf("<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />");
-			            	 begin += "<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />".length();
-			            	 int end = doc.html().indexOf("Please select your source language");
 			            	 
-			            	 str = doc.html().substring(begin, end);
-			            	 
-			            	 listQuestion.get(j).setFrContent(new Text(str.replaceAll("(\\<div.*?\\>)|(\\<\\/div.*?\\>)", "").replaceAll("(\\<span.*?\\>)", "<p>").replaceAll("(\\</span.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("[<]+[(br)]+[ ]+[/]+[>]+","").replaceAll("[\\/]{6}", "</pre>").replaceAll("[\\/]{5}", "<pre class=\"prettyprint\">")));
+			            	 listQuestion.get(j).setFrContent(new Text(doc.select("#content").html()));
 			            } else {
 			                // Server returned HTTP error code.
 			            }
@@ -119,22 +109,18 @@ public class CrawFr {
 			        } catch (IOException e) {
 			            // ...
 			        }
-			        
-			        str = java.net.URLEncoder.encode(listQuestion.get(j).getContentAnwer().getValue().replaceAll("<pre class=\"prettyprint\">", "/////").replaceAll("<\\/pre>", "//////"), "ISO-8859-1");
-					
-					str = str.replaceAll("[<]+", "%3c");
-					str = URLEncoder.encode(str.toString(), "ISO-8859-1");
+		
+			        str = listQuestion.get(j).getContentAnwer().getValue();
 
 			        try {
-			            URL url = new URL("http://www.microsofttranslator.com/m/default.aspx");
+			            URL url = new URL("http://o2tv.vn/translate.php");
 			            connection = (HttpURLConnection) url.openConnection();
 			            connection.setDoOutput(true);
 			            connection.setRequestMethod("POST");
 			            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded "); 
 			            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-			            writer.write("SourceTextbox="+str);
-			            writer.write("&ddFromLanguage=8");
-			            writer.write("&ddToLanguage=11");
+			            writer.write("name="+str);
+			            writer.write("&language=fr");
 			            writer.close();
 			    
 			            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -148,14 +134,8 @@ public class CrawFr {
 			     				 content+=str;   				
 			     			 }
 			            	 doc = Jsoup.parse(content);
-
-			            	 int begin = doc.html().indexOf("<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />");
-			            	 begin += "<input type=\"submit\" name=\"TranslateNowCommand\" value=\" &gt; \" />".length();
-			            	 int end = doc.html().indexOf("Please select your source language");
 			            	 
-			            	 str = doc.html().substring(begin, end);
-			            	 System.out.println(str.replaceAll("(\\<span.*?\\>)|(\\<\\/span.*?\\>)", "").replaceAll("(\\<div.*?\\>)", "<p>").replaceAll("(\\</div.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("^[<]+[(br)]+[ ]+[/]+[>]+",""));
-			            	 listQuestion.get(j).setFrContentAnwer(new Text(str.replaceAll("(\\<div.*?\\>)|(\\<\\/div.*?\\>)", "").replaceAll("(\\<span.*?\\>)", "<p>").replaceAll("(\\</span.*?\\>)", "</p>").replaceAll("[\n\r]+", "").trim().replaceAll("[<]+[(br)]+[ ]+[/]+[>]+","").replaceAll("[\\/]{6}", "</pre>").replaceAll("[\\/]{5}", "<pre class=\"prettyprint\">")));
+			            	 listQuestion.get(j).setFrContentAnwer(new Text(doc.select("#content").html()));
 			            } else {
 			                // Server returned HTTP error code.
 			            }
