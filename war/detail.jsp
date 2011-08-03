@@ -33,17 +33,17 @@ String keywords = (String) request.getAttribute("keyword");
 	<jsp:param name="keywords" value="<%=keywords %>"/>
 	<jsp:param name="language" value="<%=language %>"/>
 </jsp:include>
-<center><jsp:include page="element/adv3.jsp"></jsp:include></center>
 		<div class="bd">
-			<div class="bl">
+			<div class="bl dtt">
 				<jsp:include page="element/adv1.jsp"></jsp:include>
 				<h2><%=RunLanguage.title(question,language) %></h2>
 				<div class="clear"></div>
 				<br/>
 				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
-				<div class="left"><jsp:include page="element/adv4.jsp"></jsp:include></div>
-				<%=RunLanguage.question(question,language) %>
+				<%=RunLanguage.question(question,language) %><br/>
+				<jsp:include page="element/adv5.jsp"></jsp:include>
+				<br/>
 				<div class="clear"></div>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
@@ -53,8 +53,9 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("anwer_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
-				<%=RunLanguage.anwer(question,language)%>
-				<br/>
+				<%=RunLanguage.anwer(question,language)%><br/>
+				<jsp:include page="element/adv5.jsp"></jsp:include>
+				<br/><br/>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
