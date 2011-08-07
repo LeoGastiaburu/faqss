@@ -41,9 +41,10 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
-				<%=RunLanguage.question(question,language) %><br/>
 				<jsp:include page="element/adv5.jsp"></jsp:include>
 				<br/>
+				<%=RunLanguage.question(question,language) %><br/>				
+				
 				<div class="clear"></div>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
 				<br/>
@@ -53,9 +54,9 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("anwer_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
-				<%=RunLanguage.anwer(question,language)%><br/>
 				<jsp:include page="element/adv5.jsp"></jsp:include>
 				<br/><br/>
+				<%=RunLanguage.anwer(question,language)%><br/>				
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
