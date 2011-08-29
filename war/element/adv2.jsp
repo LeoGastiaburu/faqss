@@ -1,7 +1,7 @@
 <script type="text/javascript"><!--
-google_ad_client = "ca-pub-5761106139279792";
-/* gardenquestion */
-google_ad_slot = "2125963997";
+google_ad_client = "ca-pub-0793232849423114";
+/* gar den o */
+google_ad_slot = "8827008917";
 google_ad_width = 200;
 google_ad_height = 200;
 //-->
