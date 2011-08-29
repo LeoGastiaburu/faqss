@@ -28,9 +28,9 @@ public class AuthorAnwerServlet extends HttpServlet {
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		String url = req.getRequestURL().toString();
-		if(Pattern.matches("^http://demoquestions.appspot.com[\\w\\W]*", url))
+		if(Pattern.matches("^http://www.gardenquestions.com[\\w\\W]*", url))
 		{
-			url = url.replaceAll("http://demoquestions.appspot.com", "http://www.gardenquestions.com");
+			url = url.replaceAll("http://www.gardenquestions.com", "http://dev.gardenquestions.com");
 			
 			resp.setStatus(301);
 			resp.setHeader( "Location", url );
