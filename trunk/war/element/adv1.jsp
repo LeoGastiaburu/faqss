@@ -1,7 +1,7 @@
 <script type="text/javascript"><!--
-google_ad_client = "ca-pub-5761106139279792";
-/* bisiness_banner */
-google_ad_slot = "3495244885";
+google_ad_client = "ca-pub-0793232849423114";
+/* gar den q */
+google_ad_slot = "5340596052";
 google_ad_width = 728;
 google_ad_height = 90;
 //-->
