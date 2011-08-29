@@ -51,7 +51,7 @@ public class CrawContent {
 			{
 				for(int j=0;j<listQuestion.size();j++)
 				{
-					URL dataURL = new URL(listQuestion.get(j).getUrl());
+					URL dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl());
 					HttpURLConnection connection1 = (HttpURLConnection) dataURL.openConnection();
 					connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 					
@@ -177,7 +177,7 @@ public class CrawContent {
 					}
 					
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "de.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "de.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -203,7 +203,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "es.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "es.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -229,7 +229,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "fr.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "fr.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -255,7 +255,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "hi.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "hi.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -281,7 +281,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ja.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ja.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -307,7 +307,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ko.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ko.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -333,7 +333,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "nl.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "nl.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -359,7 +359,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pl.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pl.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -385,7 +385,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pt.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "pt.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -411,7 +411,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ro.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ro.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -437,7 +437,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ru.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "ru.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -463,7 +463,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "tr.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "tr.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
@@ -489,7 +489,7 @@ public class CrawContent {
 						// TODO: handle exception
 					}
 					try {
-						dataURL = new URL(listQuestion.get(j).getUrl().replaceAll("efreedom.com", "zh.efreedom.com"));
+						dataURL = new URL("http://prapi.net:81/efreedom.php?url="+listQuestion.get(j).getUrl().replaceAll("efreedom.com", "zh.efreedom.com"));
 						connection1 = (HttpURLConnection) dataURL.openConnection();
 						connection1.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 						connection1.setReadTimeout(500000);
