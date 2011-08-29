@@ -47,7 +47,7 @@ public class CrawUrl {
 				psm.currentTransaction().commit();
 			}
 			
-			String url = "http://efreedom.com/Questions/"+p;
+			String url = "http://prapi.net:81/efreedom.php?url="+"http://efreedom.com/Questions/"+p;
 			
 			URL dataURL = new URL(url);
 			HttpURLConnection connection1 = (HttpURLConnection) dataURL.openConnection();
