@@ -14,7 +14,7 @@ ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(langua
            	<a href="http://www.yooarticles.com/" target="_blank">Submit your Articles in YooArticles</a> |
            	<a href="http://prapi.net/" target="_blank">PrApi</a> |
 			<a href="http://www.bogay.net/" target="_blank">View information your company</a> |
-			<a href="http://showsiteinfo.appspot.com/" target="_blank">View infomation site in showsiteinfo</a> <br/>
+			<a href="http://www.showsiteinfo.appspot.com/" target="_blank">View infomation site in showsiteinfo</a> <br/>
 			<a href="http://www.domaintips.net/" target="_blank">View infomation site in domaintips</a>
 			<br/>  
 			<img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
