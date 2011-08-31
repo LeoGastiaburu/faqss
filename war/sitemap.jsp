@@ -11,7 +11,7 @@ String language = (String) request.getAttribute("language");
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-  <loc>http://www.gardenquestions.com/<%=language%></loc>
+  <loc>http://dev.gardenquestions.com/<%=language%></loc>
 </url>
 <%
 List<Question> listArticles= (List<Question> )request.getAttribute("listArticles");
@@ -20,7 +20,7 @@ for(Question article : listArticles)
 {
 %>
   <url>
-  <loc>http://www.gardenquestions.com/<%=language%>/question/<%=article.getAlias()%></loc>
+  <loc>http://dev.gardenquestions.com/<%=language%>/question/<%=article.getAlias()%></loc>
 </url>
 
 <%
