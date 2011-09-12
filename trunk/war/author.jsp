@@ -41,6 +41,8 @@ String keywords = author+","+resource.getString("keyword");
 
 		<div class="bd">
 			<div class="bl">
+				<jsp:include page="element/adv3.jsp"></jsp:include>
+				<br/><br/><br/>
 				<h2><%=resource.getString("author") %> : <%=author %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
@@ -130,7 +132,10 @@ String keywords = author+","+resource.getString("keyword");
 				%>
 			</div>
 			<div class="br">
-				
+				<jsp:include page="element/adv2.jsp"></jsp:include>
+				<br/><br/>
+				<jsp:include page="element/adv2.jsp"></jsp:include>
+				<br/><br/>
 				<jsp:include page="element/language.jsp">
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="url" value="author"/>

@@ -38,6 +38,8 @@ String description = title+"."+resource.getString("description");
 
 		<div class="bd">
 			<div class="bl">
+				<jsp:include page="element/adv3.jsp"></jsp:include>
+				<br/><br/><br/>
 				<h2><%=author %>&nbsp;<%=resource.getString("has_questions") %></h2>
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
@@ -93,7 +95,10 @@ String description = title+"."+resource.getString("description");
 				</ul>
 			</div>
 			<div class="br">
-				
+				<jsp:include page="element/adv2.jsp"></jsp:include>
+				<br/><br/>
+				<jsp:include page="element/adv2.jsp"></jsp:include>
+				<br/><br/>
 				<jsp:include page="element/language.jsp">
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="url" value="author-question"/>
