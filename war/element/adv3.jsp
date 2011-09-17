@@ -1,4 +1,3 @@
-<br/>
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0793232849423114";
 /* garden */

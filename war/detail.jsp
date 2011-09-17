@@ -41,12 +41,10 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
-				<jsp:include page="element/adv5.jsp"></jsp:include>
-				<br/>
+				<jsp:include page="/element/adv3.jsp"></jsp:include>
+				<br/><br/>
 				
 				<%=RunLanguage.question(question,language) %><br/>				
-			
-				<script type="text/javascript"> ch_client = "habogay"; ch_width = 728; ch_height = 90; ch_type = "mpu"; ch_sid = "Chitika Default"; ch_backfill = 1; ch_color_site_link = "#0000CC"; ch_color_title = "#0000CC"; ch_color_border = "#FFFFFF"; ch_color_text = "#000000"; ch_color_bg = "#FFFFFF"; </script> <script src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript"> </script><br/>
 				
 				<div class="clear"></div>
 				<%=Utils.showAlltag(question.getTags(),language) %> 
@@ -57,10 +55,10 @@ String keywords = (String) request.getAttribute("keyword");
 				<br/>
 				<strong><%=resource.getString("anwer_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthorAnwer()%>" class="author"><%=question.getAuthorAnwer() %></a>
 				<br/><br/>
-				<jsp:include page="element/adv5.jsp"></jsp:include>
+				<jsp:include page="element/adv3.jsp"></jsp:include>
 				<br/><br/>
 				<%=RunLanguage.anwer(question,language)%><br/>	
-				<script type="text/javascript"> ch_client = "habogay"; ch_width = 728; ch_height = 90; ch_type = "mpu"; ch_sid = "Chitika Default"; ch_backfill = 1; ch_color_site_link = "#0000CC"; ch_color_title = "#0000CC"; ch_color_border = "#FFFFFF"; ch_color_text = "#000000"; ch_color_bg = "#FFFFFF"; </script> <script src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript"> </script><br/><br/>			
+							
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -110,7 +108,8 @@ String keywords = (String) request.getAttribute("keyword");
 				</ul>	
 			</div>
 			<div class="br">
-				<script type="text/javascript"> ch_client = "habogay"; ch_width = 200; ch_height = 250; ch_type = "mpu"; ch_sid = "Chitika Default"; ch_backfill = 1; ch_color_site_link = "#0000CC"; ch_color_title = "#0000CC"; ch_color_border = "#FFFFFF"; ch_color_text = "#000000"; ch_color_bg = "#FFFFFF"; </script> <script src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript"> </script><br/><br/>
+				<jsp:include page="element/adv2.jsp"></jsp:include><br/><br/>
+				<jsp:include page="element/adv4.jsp"></jsp:include><br/><br/>
 				<jsp:include page="element/detail.jsp">
 					<jsp:param name="alias" value="<%=question.getAlias() %>"/>
 				</jsp:include>
