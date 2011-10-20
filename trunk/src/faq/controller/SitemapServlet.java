@@ -2,6 +2,7 @@ package faq.controller;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
@@ -23,6 +24,11 @@ public class SitemapServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 	
+		Date date_cache = new Date(new Date().getTime()+5*60*1000);
+		
+		resp.setHeader( "Cache-Control", "public, max-age=60");
+		resp.setHeader( "Expires", date_cache.toGMTString() );
+		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		
 		String url = req.getRequestURL().toString();
