@@ -63,6 +63,16 @@ String keywords = author+","+resource.getString("keyword");
 					<g:plusone size="standard" count="true"></g:plusone>
 				</div>
 				<div class="clear"></div>
+				
+				<br/>
+				<div style="float: left;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div style="float: right;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div class="clear"></div>
+				
 				<%
 				if(listQuestion.size()>0)
 				{
@@ -132,10 +142,6 @@ String keywords = author+","+resource.getString("keyword");
 				%>
 			</div>
 			<div class="br">
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
 				<jsp:include page="element/language.jsp">
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="url" value="author"/>

@@ -39,6 +39,14 @@ String keywords = (String) request.getAttribute("keyword");
 				<h2><%=RunLanguage.title(question,language) %></h2>
 				<div class="clear"></div>
 				<br/>
+				<div style="float: left;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div style="float: right;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div class="clear"></div>
+				<br/><br/>
 				<strong><%=resource.getString("question_by") %></strong> <a href="/<%=language %>/author/<%=question.getAliasAuthor()%>" class="author"><%=question.getAuthor() %></a>
 				<br/><br/>
 				<jsp:include page="/element/adv3.jsp"></jsp:include>
@@ -108,8 +116,6 @@ String keywords = (String) request.getAttribute("keyword");
 				</ul>	
 			</div>
 			<div class="br">
-				<jsp:include page="element/adv2.jsp"></jsp:include><br/><br/>
-				<jsp:include page="element/adv4.jsp"></jsp:include><br/><br/>
 				<jsp:include page="element/detail.jsp">
 					<jsp:param name="alias" value="<%=question.getAlias() %>"/>
 				</jsp:include>
