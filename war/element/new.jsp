@@ -1,3 +1,7 @@
+<%@page import="net.sf.jsr107cache.CacheException"%>
+<%@page import="java.util.Collections"%>
+<%@page import="net.sf.jsr107cache.CacheManager"%>
+<%@page import="net.sf.jsr107cache.Cache"%>
 <%@page import="faq.language.RunLanguage"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.ResourceBundle"%>
@@ -9,42 +13,40 @@
 <%@page import="faq.data.QnAPersistenceManager"%>
 <%@page import="javax.jdo.PersistenceManager"%>
 <%
-PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
-Query query = psm.newQuery(Question.class);
-query.setOrdering("lastUpdateDate desc");
-query.setRange(0,1);
-List<Question> listQuestion = (List<Question>)query.execute();
-String language = request.getParameter("language");
-ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(language));
+Cache cache = null;
+try {
+    cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());
+} catch (CacheException e) {
+   e.printStackTrace();
+   
+}
+Question question = null;
+if(cache.containsKey("new"))
+{
+	question = (Question)cache.get("new");
 %>
 <%
-if(listQuestion.size()>0)
+if(question != null)
 {
 %>
 <h3>New Question</h3>
 <ul class="vr">
-	<%
-	for(int i=0;i<listQuestion.size();i++)
-	{
-	%>
-		<li><a href="/en/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getTitle()!=null)?listQuestion.get(i).getTitle():"" %></a></li>
-		<li><a href="/es/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getEsTitle()!=null)?listQuestion.get(i).getEsTitle():"" %></a></li>
-		<li><a href="/de/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getDeTitle()!=null)?listQuestion.get(i).getDeTitle():"" %></a></li>
-		<li><a href="/fr/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getFrTitle()!=null)?listQuestion.get(i).getFrTitle():"" %></a></li>
-		<li><a href="/hi/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getHiTitle()!=null)?listQuestion.get(i).getHiTitle():"" %></a></li>
-		<li><a href="/ja/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getJaTitle()!=null)?listQuestion.get(i).getJaTitle():"" %></a></li>
-		<li><a href="/ko/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getKoTitle()!=null)?listQuestion.get(i).getKoTitle():"" %></a></li>
-		<li><a href="/nl/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getNlTitle()!=null)?listQuestion.get(i).getNlTitle():"" %></a></li>
-		<li><a href="/pl/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getPlTitle()!=null)?listQuestion.get(i).getPlTitle():"" %></a></li>
-		<li><a href="/pt/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getPtTitle()!=null)?listQuestion.get(i).getPtTitle():"" %></a></li>
-		<li><a href="/ro/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getRoTitle()!=null)?listQuestion.get(i).getRoTitle():"" %></a></li>
-		<li><a href="/tr/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getTrTitle()!=null)?listQuestion.get(i).getTrTitle():"" %></a></li>
-		<li><a href="/ru/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getRuTitle()!=null)?listQuestion.get(i).getRuTitle():"" %></a></li>
-		<li><a href="/zh/question/<%=listQuestion.get(i).getAlias()%>" ><%=(listQuestion.get(i).getZhTitle()!=null)?listQuestion.get(i).getZhTitle():"" %></a></li>
-	<%
-	}
-	%>
+		<li><a href="/en/question/<%=question.getAlias()%>" ><%=(question.getTitle()!=null)?question.getTitle():"" %></a></li>
+		<li><a href="/es/question/<%=question.getAlias()%>" ><%=(question.getEsTitle()!=null)?question.getEsTitle():"" %></a></li>
+		<li><a href="/de/question/<%=question.getAlias()%>" ><%=(question.getDeTitle()!=null)?question.getDeTitle():"" %></a></li>
+		<li><a href="/fr/question/<%=question.getAlias()%>" ><%=(question.getFrTitle()!=null)?question.getFrTitle():"" %></a></li>
+		<li><a href="/hi/question/<%=question.getAlias()%>" ><%=(question.getHiTitle()!=null)?question.getHiTitle():"" %></a></li>
+		<li><a href="/ja/question/<%=question.getAlias()%>" ><%=(question.getJaTitle()!=null)?question.getJaTitle():"" %></a></li>
+		<li><a href="/ko/question/<%=question.getAlias()%>" ><%=(question.getKoTitle()!=null)?question.getKoTitle():"" %></a></li>
+		<li><a href="/nl/question/<%=question.getAlias()%>" ><%=(question.getNlTitle()!=null)?question.getNlTitle():"" %></a></li>
+		<li><a href="/pl/question/<%=question.getAlias()%>" ><%=(question.getPlTitle()!=null)?question.getPlTitle():"" %></a></li>
+		<li><a href="/pt/question/<%=question.getAlias()%>" ><%=(question.getPtTitle()!=null)?question.getPtTitle():"" %></a></li>
+		<li><a href="/ro/question/<%=question.getAlias()%>" ><%=(question.getRoTitle()!=null)?question.getRoTitle():"" %></a></li>
+		<li><a href="/tr/question/<%=question.getAlias()%>" ><%=(question.getTrTitle()!=null)?question.getTrTitle():"" %></a></li>
+		<li><a href="/ru/question/<%=question.getAlias()%>" ><%=(question.getRuTitle()!=null)?question.getRuTitle():"" %></a></li>
+		<li><a href="/zh/question/<%=question.getAlias()%>" ><%=(question.getZhTitle()!=null)?question.getZhTitle():"" %></a></li>
 </ul>
 <%
+}
 }
 %>
