@@ -1,9 +1,9 @@
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0793232849423114";
-/* gar den o */
-google_ad_slot = "8827008917";
-google_ad_width = 200;
-google_ad_height = 200;
+/* gardenquestion 300x250 */
+google_ad_slot = "5937282133";
+google_ad_width = 300;
+google_ad_height = 250;
 //-->
 </script>
 <script type="text/javascript"
