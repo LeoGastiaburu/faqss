@@ -12,12 +12,17 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import net.sf.jsr107cache.Cache;
+import net.sf.jsr107cache.CacheException;
+import net.sf.jsr107cache.CacheManager;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -568,6 +573,17 @@ public class CrawContent {
 					listQuestion.get(j).setContentAnwer(content);	
 					listQuestion.get(j).setAuthorAnwer(answerAuthor);
 					listQuestion.get(j).setAliasAuthorAnwer(Replace.replace(answerAuthor));
+					
+					Cache cache=null;
+					try {
+			            cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());
+			        } catch (CacheException e) {
+			           e.printStackTrace();
+			           
+			        }
+			        
+					cache.put("new", listQuestion.get(j));		        	
+					
 					
 					psm=JDOHelper.getPersistenceManager(listQuestion.get(j));
  					psm.currentTransaction().begin();
