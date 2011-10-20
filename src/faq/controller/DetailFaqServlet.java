@@ -38,6 +38,12 @@ public class DetailFaqServlet extends HttpServlet {
 		resp.getWriter().println("さんの質問");
 		resp.getWriter().println("Link has been deleted or does not exist, please choose another link");
 		
+		Date date_cache = new Date(new Date().getTime()+24*60*60*1000);
+		
+		resp.setHeader( "Cache-Control", "public, max-age=3000");
+		resp.setHeader( "Expires", date_cache.toGMTString() );
+		
+		
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		
 		String path = ((HttpServletRequest)req).getRequestURI();

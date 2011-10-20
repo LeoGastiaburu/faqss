@@ -1,6 +1,7 @@
 package faq.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
@@ -26,6 +27,12 @@ public class TagServlet extends HttpServlet {
 		resp.setHeader("Vary","Accept-Encoding");
 		resp.setCharacterEncoding("utf-8");
 		resp.getWriter().println("Hello, world");
+		
+		Date date_cache = new Date(new Date().getTime()+60*60*1000);
+		
+		resp.setHeader( "Cache-Control", "public, max-age=300");
+		resp.setHeader( "Expires", date_cache.toGMTString() );
+		
 		String path = ((HttpServletRequest)req).getRequestURI();
 		
 		String url = req.getRequestURL().toString();
