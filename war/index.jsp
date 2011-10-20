@@ -78,10 +78,6 @@ String keywords = (String) request.getAttribute("keyword");
 				</ul>
 			</div>
 			<div class="br">
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
 				<jsp:include page="element/top_right.jsp"></jsp:include>
 				<jsp:include page="element/tag.jsp">
 					<jsp:param name="language" value="<%=language %>"/>

@@ -41,6 +41,9 @@ String description = title+"."+resource.getString("description");
 				<jsp:include page="element/adv3.jsp"></jsp:include>
 				<br/><br/><br/>
 				<h2><%=author %> <%=resource.getString("has_answers") %></h2>
+				
+				
+				
 				<div class="adt">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -60,6 +63,15 @@ String description = title+"."+resource.getString("description");
 					<g:plusone size="standard" count="true"></g:plusone>
 				</div>
 				<div class="clear"></div>
+				<br/>
+				<div style="float: left;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div style="float: right;">
+					<jsp:include page="/element/adv2.jsp"></jsp:include>
+				</div>
+				<div class="clear"></div>
+				
 				<ul class="lq">
 					<%
 					if(listQuestion.size()>0)
@@ -95,10 +107,6 @@ String description = title+"."+resource.getString("description");
 				</ul>
 			</div>
 			<div class="br">
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
-				<jsp:include page="element/adv2.jsp"></jsp:include>
-				<br/><br/>
 				<jsp:include page="element/language.jsp">
 					<jsp:param name="alias" value="<%=Replace.replace(author) %>"/>
 					<jsp:param name="url" value="author-answer"/>
