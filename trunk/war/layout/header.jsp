@@ -33,7 +33,6 @@ ResourceBundle resource = ResourceBundle.getBundle("language", new Locale(langua
 				<li><a href="/<%=language %>/list-tags" title="tags" <%=(tag.equals("tag"))?"class=\"at\"":"" %>><%=resource.getString("menu_tag") %></a></li>
 				<li><a href="/<%=language %>/list-authors" title="users" <%=(tag.equals("user"))?"class=\"at\"":"" %>><%=resource.getString("menu_user") %></a></li>
 				<li><a href="/<%=language %>/contact" title="contact" <%=(tag.equals("contact"))?"class=\"at\"":"" %>><%=resource.getString("menu_contact") %></a></li>
-				<li><a href="/<%=language %>/sitemap" title="site map" target="_blank">Site map</a></li>
 				<li><a href="/<%=language %>/rss" title="rss" target="_blank">Rss</a></li>	
 			</ul>
 			<div class="clear"></div>
