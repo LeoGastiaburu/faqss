@@ -419,6 +419,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>CronPutContent</servlet-name>
+		<servlet-class>faq.craw.CronPutContentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CronPutContent</servlet-name>
+		<url-pattern>/cron_put_content</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>UpdateQuestion</servlet-name>
 		<servlet-class>faq.craw.UpdateQuestionServlet</servlet-class>
 	</servlet>
