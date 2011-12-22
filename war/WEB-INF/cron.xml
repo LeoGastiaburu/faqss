@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
-
+<cron>
+    <url>/cron_put_content</url>
+    <description>Update domain database</description>
+    <schedule>every 1 minutes</schedule>
+  </cron>
 
 </cronentries>
