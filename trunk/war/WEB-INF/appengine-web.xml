@@ -16,4 +16,5 @@
         <include path="/images/*" expiration="10d"/>
         <include path="/favicon.ico" expiration="10d"/>        
     </static-files>
+    <threadsafe>true</threadsafe>
 </appengine-web-app>

@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
-<cron>
-    <url>/craw_url</url>
-    <description>get url question</description>
-    <schedule>every 15 minutes</schedule>
-</cron>
-<cron>
-    <url>/craw_content</url>
-    <description>get content question</description>
-    <schedule>every 1 minutes</schedule>
-</cron> 
+
 
 </cronentries>
