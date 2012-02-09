@@ -5,5 +5,4 @@
     <description>Update domain database</description>
     <schedule>every 1 minutes</schedule>
   </cron>
-
 </cronentries>

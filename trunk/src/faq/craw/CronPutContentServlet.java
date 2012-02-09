@@ -23,15 +23,15 @@ public class CronPutContentServlet extends HttpServlet {
 			throws IOException {
 		PersistenceManager psm = QnAPersistenceManager.get().getPersistenceManager();
 		Query query = psm.newQuery(Question.class);
-		query.setFilter("twentyTitle==null");
-		query.setRange(0,10);
+		query.setFilter("sevenTitle==null");
+		query.setRange(0,20);
 		@SuppressWarnings("unchecked")
 		List<Question> list = (List<Question>) query.execute();
 		if(list.size() > 0)
 		{
 			for (int i = 0; i < list.size(); i++) {
 				
-				list.get(i).setTwentyTitle("yes");
+				list.get(i).setSevenTitle("yes");
 				psm=JDOHelper.getPersistenceManager(list.get(i));
 				psm.currentTransaction().begin();
 				psm.makePersistent(list.get(i));
